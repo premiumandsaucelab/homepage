@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS:LAB B2B | 방이동 선배들의 확실한 지원</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-corporate: #1E293B; /* Slate 800 - Professional but softer */
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --accent-navy: #3B82F6; /* Trustful gentle blue */
+            --border-light: #E2E8F0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* Navigation */
+        nav {
+            position: sticky; top: 0; width: 100%; z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            backdrop-filter: blur(8px);
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; color: var(--bg-corporate); display:flex; align-items:center; gap: 10px;}
+        .nav-logo span { font-weight: 500; color: var(--text-muted); font-size: 1rem;}
+        
+        .cta-btn {
+            padding: 12px 24px; border-radius: 6px;
+            background-color: var(--accent-navy); color: #FFF;
+            text-decoration: none; font-weight: 700; font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .cta-btn:hover { background-color: #2563EB; }
+
+        /* Hero Section */
+        .hero { padding: 120px 0 100px; text-align: center; background: var(--bg-secondary); border-bottom: 1px solid var(--border-light);}
+        .hero h1 {
+            font-size: 3.2rem; font-weight: 800; line-height: 1.3; margin-bottom: 20px;
+            letter-spacing: -1px; color: var(--bg-corporate);
+        }
+        .hero p {
+            font-size: 1.15rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px;
+            font-weight: 400; line-height: 1.7;
+        }
+        
+        /* Grid */
+        .section { padding: 100px 0; border-bottom: 1px solid var(--border-light); }
+        .section-header { margin-bottom: 50px; text-align: center;}
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; color: var(--bg-corporate); }
+        .section-header p { font-size: 1.1rem; color: var(--text-muted); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;}
+        
+        .card {
+            padding: 40px; background: #FFF; border: 1px solid var(--border-light);
+            border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .card h3 { font-size: 1.3rem; margin-bottom: 16px; font-weight: 800; color: var(--bg-corporate); display:flex; align-items:center; gap: 8px;}
+        .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+
+        /* Mechanism Section */
+        .mockup-container {
+            border: 1px solid var(--border-light); border-radius: 8px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1); overflow: hidden; background: #FFF;
+        }
+        .mockup-header { height: 35px; background: #F8FAFC; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; padding: 0 15px; gap: 6px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #CBD5E1; }
+        .mockup-image { width: 100%; display: block; object-fit: cover; object-position: top; }
+
+        .list-bullet { list-style: none; padding-top: 20px;}
+        .list-bullet li { position: relative; padding-left: 24px; margin-bottom: 30px; }
+        .list-bullet li::before {
+            content: "■"; position: absolute; left: 0; top: 2px;
+            font-size: 0.9rem; color: var(--accent-navy);
+        }
+        .list-bullet h4 { font-size: 1.15rem; margin-bottom: 8px; font-weight: 700; color: var(--bg-corporate); }
+        .list-bullet p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;}
+
+        /* B2B Protocol */
+        .partnership-box {
+            background: var(--bg-corporate); color: white;
+            padding: 50px 60px; border-radius: 16px;
+            text-align: center; margin-top: 40px;
+        }
+        .partnership-box h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; }
+        .partnership-box p { color: #CBD5E1; font-size: 1.05rem; margin-bottom: 30px; line-height: 1.6; max-width: 700px; margin-left:auto; margin-right:auto;}
+        
+        .p-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; max-width: 800px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;}
+        .p-item h4 { color: white; margin-bottom: 10px; font-size: 1.1rem;}
+        .p-item p { margin-bottom: 0; font-size: 0.95rem; color: #94A3B8;}
+
+        /* Footer */
+        footer { padding: 40px 0; text-align:center; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="nav-logo">
+                <a href="songpa_index.html" style="text-decoration: none; color: inherit;">PS:LAB Songpa</a> 
+                <span>B2B 제휴 안내</span>
+            </div>
+            <!-- 카카오톡 오픈채팅 주소 연동 완료 -->
+            <a href="https://open.kakao.com/o/sgVULiqi" target="_blank" class="cta-btn">제휴 문의 (카카오톡)</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>선생님, 골치 아픈 세특 상담은<br>방이동 선배들에게 외주로 넘기십시오.</h1>
+            <p>저희는 거창한 AI 기업도, 비싼 대치동 컨설턴트도 아닙니다.<br>송파·방이 지역 내신을 가장 최근에 뚫어내고 명문대에 진학한 '선배팀'입니다.<br>학원은 교과 수업에만 전념하시고, 방어율 높은 수시 지원 전략은 저희와 깔끔하게 나누십시오.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>교과목 학원과 PS:LAB의 역할 분담</h2>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>💡 선생님의 현실적인 고민</h3>
+                    <p>수시 원서철만 다가오면, 내신을 잘 올려놓은 최상위권 학생들마저 불안감에 종합 컨설팅 학원으로 빠져나갑니다. 그렇다고 전공이 다른 내부 강사들에게 이과/문과 세특 가이드를 맡기기엔 전문성도 떨어지고 수업 준비에 심각한 지장을 초래합니다.</p>
+                </div>
+                
+                <div class="card" style="border-top: 4px solid var(--accent-navy);">
+                    <h3>🤝 선배들의 확실한 서포트</h3>
+                    <p>PS:LAB은 보성고 등 지역 학교 생태계를 잘 아는 실무 멘토들로 구성되어 있습니다. 선생님 학원 재원생들에게 '교과목 맞춤형 세특 전략'을 제공하여 학생들이 굳이 종합 학원으로 빠져나가지 않고 선생님 학원에 남도록 명분을 만들어 드립니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mechanism Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container grid-2">
+            <div>
+                <h2 style="font-size: 2rem; font-weight: 800; color: var(--bg-corporate); margin-bottom: 20px;">어떻게 진행되나요?</h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem;">허풍 없이, 가장 현실적이고 효율적인 방법으로 돕습니다.</p>
+                
+                <ul class="list-bullet">
+                    <li>
+                        <h4>1. 원본 생기부 학부모 직접 접수 (데스크 업무 0%)</h4>
+                        <p>선생님이나 상담 실장님이 학원에서 번거롭게 서류를 걷을 필요가 없습니다. 저희가 제공하는 접수 링크를 학부모님께 문자로 전달만 해주시면, 그 이후의 업로드 및 수집은 저희가 100% 알아서 처리합니다.</p>
+                    </li>
+                    <li>
+                        <h4>2. 로컬 선배들의 진짜 인사이트 투입</h4>
+                        <p>과장된 통계나 뻔한 AI 복붙이 아닙니다. 이 동네 고등학교에서 실제로 시험을 치고, 교내 대회를 준비했던 멘토들이 후배의 데이터를 열어보고 가장 현실성 있는 생기부/세특 전략안을 수작업으로 기획합니다.</p>
+                        
+                        <div style="margin-top: 15px; padding: 15px; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 8px; border-left: 4px solid var(--accent-navy);">
+                            <strong style="color: var(--accent-navy); font-size: 0.9rem; letter-spacing: -0.5px;">[로컬 이과 마스터 추가 리크루팅 중]</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-main); margin-top: 6px; margin-bottom: 0; line-height: 1.6;">
+                                기존 문과/상경계열 핵심 창업진 외에도, 이과 입시 파워를 극대화하기 위해 아래 3개 분야에서 보성고 직속 선배들의 팀 합류를 진행 중에 있습니다.<br>
+                                ✔️ <strong>메디컬 학종:</strong> 중앙대 의대 진학 선배<br>
+                                ✔️ <strong>수리논술:</strong> 서강대 수학과 진학 선배<br>
+                                ✔️ <strong>정시/서울대 공대:</strong> 서울대 기계공학과 진학 선배
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>3. 완성된 리포트 URL 납품</h4>
+                        <p>작업 완료 시, 모바일과 PC에서 언제든 열어볼 수 있는 깔끔한 리포트 URL을 학부모님과 선생님께 동시에 전달해 드립니다. 이를 바탕으로 선생님은 학부모님과 가벼운 후속 상담만 챙기시면 됩니다.</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="mockup-container">
+                <div class="mockup-header">
+                    <div class="dot" style="background:#ef4444;"></div>
+                    <div class="dot" style="background:#f59e0b;"></div>
+                    <div class="dot" style="background:#10b981;"></div>
+                </div>
+                <!-- LIVE REPORT IFRAME -->
+                <div style="position: relative; width: 100%; height: 750px; overflow: hidden; background: var(--bg-light);">
+                    <iframe src="demo_report/report.html" style="width: 100%; height: 100%; border: none; transform: scale(0.9); transform-origin: top center;" title="PS:LAB B2B 시연용 프라이버시 리포트"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="section" style="background: var(--bg-secondary); padding: 100px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>C-Level Executive Board</h2>
+                <p>송파·방이 학군의 정점을 찍은 데이터 분석 기반의 명문대 창업진이 최상의 컨설팅 퀄리티를 유지합니다.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 25px;">
+                <!-- 대표 멘토 CEO -->
+                <div style="background: #FFF; border: 1px solid var(--border-light); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative;">
+                    <img src="assets/khu.png" alt="경희대" style="position: absolute; top: -25px; left: 24px; width: 50px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 0.75rem; font-weight: 900; color: var(--accent-navy); letter-spacing: 1px; margin-bottom: 4px;">CEO</div>
+                        <h3 style="font-size: 1.3rem; color: var(--text-main); font-weight: 800; margin: 0; letter-spacing: -0.5px;">대표 멘토</h3>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">경희대 이과대학</div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--accent-navy); font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; line-height: 1.4;">"역전의 서사를 로직으로 증명합니다"</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 일반고 2.9 극복 → 경희대 이과대학</li>
+                        <li style="position: relative; padding-left: 10px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 아주대 공과대학 합격</li>
+                    </ul>
+                </div>
+                
+                <!-- 자연 D멘토 CTO -->
+                <div style="background: #FFF; border: 1px solid var(--border-light); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative;">
+                    <img src="assets/hyu.png" alt="한양대" style="position: absolute; top: -25px; left: 24px; width: 50px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 0.75rem; font-weight: 900; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 4px;">CTO</div>
+                        <h3 style="font-size: 1.3rem; color: var(--text-main); font-weight: 800; margin: 0; letter-spacing: -0.5px;">자연 D멘토</h3>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">한양대 공과대학</div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--accent-navy); font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; line-height: 1.4;">"공학 입시의 표준, 합격의 메커니즘"</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 정석적인 서사로 합격의 문을 엶</li>
+                        <li style="position: relative; padding-left: 10px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 성균관대 공과대학 합격</li>
+                    </ul>
+                </div>
+                
+                <!-- 인문 B멘토 CFO -->
+                <div style="background: #FFF; border: 1px solid var(--border-light); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative;">
+                    <img src="assets/snu.png" alt="서울대" style="position: absolute; top: -25px; left: 24px; width: 50px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 0.75rem; font-weight: 900; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 4px;">CFO</div>
+                        <h3 style="font-size: 1.3rem; color: var(--text-main); font-weight: 800; margin: 0; letter-spacing: -0.5px;">인문 B멘토</h3>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">서울대 경제학부</div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--accent-navy); font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; line-height: 1.4;">"입시의 끝에서 정점에 도달하는 전략"</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 수시 분석 경험을 정시 압승으로</li>
+                        <li style="position: relative; padding-left: 10px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 고려대 차석 / 한양대 수석 합격</li>
+                    </ul>
+                </div>
+
+                <!-- 인문 C멘토 CRO -->
+                <div style="background: #FFF; border: 1px solid var(--border-light); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative;">
+                    <img src="assets/ku.png" alt="고려대" style="position: absolute; top: -20px; left: 24px; width: 40px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
+                    <div style="margin-bottom: 20px;">
+                        <div style="font-size: 0.75rem; font-weight: 900; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 4px;">COO</div>
+                        <h3 style="font-size: 1.3rem; color: var(--text-main); font-weight: 800; margin: 0; letter-spacing: -0.5px;">인문 C멘토</h3>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">고려대 경영학부</div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--accent-navy); font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; line-height: 1.4;">"경영·경제 입시의 완벽한 해답"</p>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 4관왕의 필승 생기부 로직 설계</li>
+                        <li style="position: relative; padding-left: 10px;"><span style="position: absolute; left: 0; top: 0; color: #CBD5E1;">•</span> 연세대/서강대/성균관대 동시 합격</li>
+                    </ul>
+                </div>
+            </div>
+                
+            <div style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-light); max-width: 600px; margin-left: auto; margin-right: auto;">
+                * 모든 임원진은 방이동 코어 학군인 <strong style="color: var(--text-main);">보성고등학교 동문</strong>으로 연결되어 있습니다.<br>
+                <span style="font-size: 0.85rem; white-space: nowrap;">(자연과학계열 특별 자문: 한양대 화학과 자문멘토)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Protocol -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>선은 확실하게 긋는 B2B 파트너십</h2>
+                <p>좋은 게 좋은 동아리식 제휴가 아닙니다. 역할과 권리를 명확히 나눕니다.</p>
+            </div>
+            
+            <div class="partnership-box">
+                <h3>학원 측 도입 비용: 0원</h3>
+                <p>수익(컨설팅 비용)은 저희 PS:LAB이 학부모님으로부터 다이렉트로 받습니다.<br>대신 학원 측은 어떠한 가맹비나 수수료도 부담하지 마시고, 오직 재원생 이탈을 방어하는 "명품 컨설팅 마케팅 무기"로 저희를 적극 활용하십시오.</p>
+                
+                <div class="p-grid">
+                    <div class="p-item">
+                        <h4>선생님/학원의 권리 (무상)</h4>
+                        <p>복잡한 시스템이나 인력 구축의 스트레스 없이, "우리 학원을 다니면 데이터 기반 명문대 멘토팀의 생기부 케어가 따라온다"는 홍보 명분을 독점적으로 확보합니다.</p>
+                    </div>
+                    <div class="p-item">
+                        <h4>PS:LAB의 역할</h4>
+                        <p>비용 결제부터 분석, 결과지 납품까지 100% 외주로 책임지고 완수하여, 선생님의 기존 교과 수업에 방해가 되지 않는 든든한 서포터가 됩니다.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 50px;">
+                    <!-- 카카오톡 오픈채팅 주소 연동 완료 -->
+                    <a href="https://open.kakao.com/o/sgVULiqi" target="_blank" class="cta-btn" style="background: white; color: var(--bg-corporate);">파트너십 논의하기 (카카오톡)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 PS:LAB 연합. 방이동 보습학원 제휴 안내서.
+        </div>
+    </footer>
+    
+    <!-- Scroll To Top Button -->
+    <div id="scrollToTop" style="position: fixed; bottom: 40px; right: 40px; width: 52px; height: 52px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.08); color: var(--accent-navy); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.6rem; box-shadow: 0 10px 25px rgba(0,0,0,0.06); z-index: 1000; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;">&#8679;</div>
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.pointerEvents = 'auto';
+                scrollToTopBtn.style.transform = 'translateY(0)';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.pointerEvents = 'none';
+            }
+        });
+        scrollToTopBtn.addEventListener('mouseover', () => {
+            scrollToTopBtn.style.background = '#ffffff';
+            scrollToTopBtn.style.transform = 'translateY(-6px)';
+            scrollToTopBtn.style.color = '#2563EB';
+            scrollToTopBtn.style.boxShadow = '0 15px 35px rgba(37, 99, 235, 0.15)';
+            scrollToTopBtn.style.borderColor = 'rgba(37, 99, 235, 0.2)';
+        });
+        scrollToTopBtn.addEventListener('mouseout', () => {
+            scrollToTopBtn.style.background = 'rgba(255, 255, 255, 0.85)';
+            scrollToTopBtn.style.transform = 'translateY(0)';
+            scrollToTopBtn.style.color = 'var(--accent-navy)';
+            scrollToTopBtn.style.boxShadow = '0 10px 25px rgba(0,0,0,0.06)';
+            scrollToTopBtn.style.borderColor = 'rgba(0, 0, 0, 0.08)';
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

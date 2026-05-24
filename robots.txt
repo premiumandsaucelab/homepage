@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# internal / admin / gate pages
+Disallow: /demo_report/admin.html
+Disallow: /demo_report/admin-script.js
+Disallow: /demo_report/admin-styles.css
+Disallow: /demo_report/delivery.html
+Disallow: /demo_report/index.html
+
+# executive / internal pages
+Disallow: /executive.html
+Disallow: /songpa_executive.html
+Disallow: /ceo_profile_report.html
+Disallow: /ceo_enterprise_intelligence.html
+Disallow: /pslab_strategy_report.html
+Disallow: /demo_report/ceo_profile_report.html
+Disallow: /demo_report/ceo_enterprise_intelligence.html
+Disallow: /demo_report/pslab_strategy_report.html
+
+# maintenance / quarantine
+Disallow: /_maintenance/
+Disallow: /_quarantine/
+
+# source / extracted / sensitive files
+Disallow: /pdf_extracted.txt
+Disallow: /pdf_text_raw.txt
+Disallow: /pdf_text2.txt
+Disallow: /report_source.pdf
+Disallow: /assets/competitor_
+Disallow: /assets/competitor_baejewook.pdf
+Disallow: /assets/competitor_godaehyun.pdf
+
+Sitemap: https://www.pslabedu.kr/sitemap.xml

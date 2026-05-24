@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo_true_alpha.png">
+    <title>PS:LAB 전문가 그룹 | Experts</title>
+    <meta name="description" content="PS:LAB의 입시 전문가 그룹을 소개합니다.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Enterprise-Grade List Style (Law Firm Aesthetic) */
+        body {
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        
+        .experts-hero {
+            background: #ffffff;
+            color: #0f172a;
+            padding: 8rem 5% 4rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .experts-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+        }
+        .experts-hero h1 strong {
+            font-weight: 900;
+        }
+        .experts-hero p {
+            font-size: 1.15rem;
+            color: #64748b;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        .filter-container {
+            padding: 1.5rem 0;
+            background: #ffffff;
+            border-bottom: 2px solid #0f172a;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 72px; /* Below navbar */
+            z-index: 90;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 1.05rem;
+            cursor: pointer;
+            padding: 0 0 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            color: #0f172a;
+        }
+        .filter-btn.active {
+            color: #0f172a;
+            font-weight: 700;
+            border-bottom-color: var(--color-primary, #0f172a);
+        }
+
+        .experts-list {
+            padding: 2rem 5% 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .expert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .expert-item:hover {
+            background-color: #f8fafc;
+            box-shadow: inset 3px 0 0 var(--color-accent);
+        }
+        .expert-index {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: rgba(37,99,235,0.1);
+            letter-spacing: -2px;
+            line-height: 1;
+            min-width: 2.8rem;
+            padding-top: 0.5rem;
+            flex-shrink: 0;
+            user-select: none;
+        }
+        .expert-item.hide {
+            display: none;
+        }
+
+        /* expert-logos removed for typography badge layout */
+        .expert-info {
+            flex-grow: 1;
+        }
+        
+        .expert-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .expert-category {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #e2e8f0;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        
+        .expert-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+        }
+        
+        .expert-major {
+            font-size: 1.15rem;
+            color: var(--color-primary, #2563eb);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .local-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            background: #f1f5f9;
+            color: #0f172a;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .highlight-local {
+            color: #0f172a;
+            font-weight: 800;
+        }
+        
+        .songpa-premium-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #ffffff;
+            background-color: var(--color-primary, #2563eb);
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+            margin-left: 8px;
+        }
+
+        
+        .role-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .badge-representative { background-color: #0f172a; }
+        .badge-senior { background-color: #4f46e5; }
+        .badge-local { background-color: #16a34a; }
+        .badge-junior { background-color: #2563eb; }
+        .badge-jeongsi { background-color: #ea580c; }
+
+        .pass-type-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #475569;
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        
+        .special-badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #b91c1c;
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .security-badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #047857;
+            background-color: #d1fae5;
+            border: 1px solid #6ee7b7;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+.expert-history {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .expert-history li {
+            word-break: keep-all;
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .expert-history li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 4px;
+            height: 4px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .expert-item {
+                flex-direction: column;
+                padding: 2rem 0;
+            }
+            .expert-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+            .highlight {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(147, 197, 253, 0.7) 55%);
+            padding: 0 4px;
+            color: #0f172a;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="flex: 1; display: flex; justify-content: flex-start;">
+                <a href="index.html" class="logo" style="white-space: nowrap;">PS<span>:</span>LAB</a>
+            </div>
+            <ul class="nav-links" style="margin: 0; padding: 0; display: flex; justify-content: center; gap: 2rem; flex: 2;">
+                <li style="white-space: nowrap;"><a href="songpa_index.html" style="color: var(--color-accent); font-weight: 700;">SONGPA</a></li>
+                <li style="white-space: nowrap;"><a href="experts.html" style="color: var(--color-accent); font-weight: 700;">멘토진</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#programs">플랜/가격</a></li>
+                <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
+                <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
+            </ul>
+            <div class="nav-cta" style="flex: 1; display: flex; justify-content: flex-end;">
+                <a href="index.html#contact" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">1차 무료 분석 받아보기</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="experts-hero">
+        <h1 class="animate-pop-in">PS:LAB <strong>EXPERTS</strong></h1>
+        <p class="animate-pop-in delay-100">최상위권 명문대 출신, 압도적인 입시 실적을 증명한 PS:LAB의 파트너진입니다. 형식적인 조언이 아닌 치열한 필드 경험을 바탕으로 합격의 본질을 꿰뚫습니다.</p>
+        <div class="animate-pop-in delay-200" style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.9rem 1.4rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <span style="background: #0f172a; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.3px; white-space: nowrap;">대표 멘토진</span>
+                <span style="font-size: 0.88rem; color: #64748b; font-weight: 500;">입시 컨설팅 전 과정 총괄 및 최종 리포트 검수</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.9rem 1.4rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <span style="background: #1e293b; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.3px; white-space: nowrap;">분야별 파트너진</span>
+                <span style="font-size: 0.88rem; color: #64748b; font-weight: 500;">의생명, 이공, 인문상경 등 전공 맞춤형 멘토링 및 탐구 기획</span>
+            </div>
+        </div>
+    </header>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 5%;">
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="전체">전체보기</button>
+            <button class="filter-btn" data-filter="대표 멘토진">대표 멘토진</button>
+            <button class="filter-btn" data-filter="의생명 계열">의생명 계열</button>
+            <button class="filter-btn" data-filter="이공 계열">이공 계열</button>
+            <button class="filter-btn" data-filter="상경·사회 계열">상경·사회 계열</button>
+            <button class="filter-btn" data-filter="인문·교육 계열">인문·교육 계열</button>
+            <button class="filter-btn" data-filter="정시 전략">정시 전략</button>
+        </div>
+    </div>
+
+    <main class="experts-list" id="expertsGrid">
+        <!-- JS will populate list here -->
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo_true_alpha.png" alt="PS:LAB Logo" style="height: 30px; width: 30px; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%); opacity: 0.9;">
+                PS<span>:</span>LAB
+            </div>
+            <div>모든 학생의 노력이 결실을 맺을 수 있도록, 정확한 입시를 제안합니다.</div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PS:LAB Analytics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Data and Logic -->
+    
+    <script>
+        const expertsData = [
+    { id: 14, college: "서울대학교 의과대학", major: "의예과", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "강동 한영고등학교 졸업", strengths: ["일반고 의예 학종 합격 케이스 — 학교생활 충실성 + 인성·독서 위주 / 성실도 강점"], accepted: "<strong class='highlight'>[의예 3관왕]</strong> 서울대 의예 · 연세대 의예 · 충남대 의예", external: "", tags: ["#일반고의예학종", "#강동한영고", "#성실도"], qc: true, security: false, uniLogo: "assets/snu.png" },
+    { id: 13, college: "중앙대학교 의과대학", major: "의학부", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["보성고 전교권 / 메디컬 학종 특화 라인"], accepted: "", external: "", tags: ["#송파보성고", "#메디컬학종", "#전교권"], qc: false, security: false, uniLogo: "assets/cau_med_logo.svg" },
+    { id: 15, college: "중앙대학교 의과대학", major: "의학부", role: "정시 전략", categories: ["의생명 계열", "정시 전략"], passType: "학종+정시 병행", hs: "강동 동북고등학교 졸업", strengths: ["냉철한 자기객관화 / 효율적 공부 전략 / 약점 보완"], accepted: "카이스트 · 건국대 의예", external: "모교 동북고 잇다 멘토링 (주 2회 진행 중) — 생기부 분석 + 공부 가이드", tags: ["#메디컬정시", "#자기객관화", "#모교멘토링"], qc: false, security: false, uniLogo: "assets/cau_med_logo.svg" },
+    { id: 10, college: "경희대학교 한의과대학", major: "한의예과", role: "정시 전략", categories: ["의생명 계열", "정시 전략"], passType: "학종+정시 병행", hs: "", strengths: ["이슈·교과 연결점 신규 발굴 (예: 루나코인·암호화폐) / 통일 스토리 유지"], accepted: "", external: "밀착형 컨설팅 전문 / 학부모 피드백 전문 / 1년+ 수학 온라인 조교", tags: ["#한의예", "#밀착형컨설팅", "#정시학종병행"], qc: false, security: false, uniLogo: "assets/khu.png" },
+    
+    { id: 5, college: "서울대학교 공과대학", major: "전기정보공학부", role: "멘토", categories: ["이공 계열"], passType: "학종", hs: "", strengths: ["이공계·메디컬 학종 / 문제인식→탐구→배움 3년 연계 설계"], accepted: "카이스트 무학과 · 연세대 전기전자 · 고려대 전기전자", external: "자사고 후배 컨설팅 다수 / 한양대·강원대 약대 진학 지도", tags: ["#이공계학종", "#자사고출신", "#현재진행컨설팅"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 2, college: "서울대학교 사회과학대학", major: "경제학부", role: "대표 멘토진", categories: ["대표 멘토진", "정시 전략"], passType: "정시", hs: "송파 보성고등학교 졸업", strengths: ["일반고 2.4 / 수시 → 정시 전환형"], accepted: "고려대 전기전자 차석 · 한양대 인터칼리지 수석", external: "", tags: ["#정시전환형", "#수능내신밸런스", "#전략적효율"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 17, college: "서울대학교 공과대학", major: "기계공학부", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "송파 보성고등학교 졸업", strengths: [], accepted: "연세대 · 카이스트", external: "", tags: ["#송파보성고", "#정시이공", "#카이스트연세대"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 16, college: "서울대학교 공과대학", major: "원자핵공학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "학종+정시 병행", hs: "송파 잠신고등학교 졸업", strengths: [], accepted: "고려대", external: "", tags: ["#송파잠신고", "#이공특수트랙", "#정시학종병행"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 20, college: "서울대학교 인문대학", major: "역사학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["카테고리 정체성 + 학문적 다각화 / 1학년 상경→2학년 어문·사회→3학년 인문·역사"], accepted: "<strong class='highlight'>[학과 매트릭스]</strong> 연세대 · 고려대 · 성균관대 (역사·경제·국제 계열 동시)", external: "대치동 입시 컨설팅 학원 2곳 호평 / 면접 학원 조교 제의", tags: ["#외고출신", "#학과매트릭스", "#학종다중합격"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 29, college: "서울대학교 인문대학", major: "독어독문학과", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["지방 일반고 + 외고 비출신 어문계열 서울대 학종 / 체계적 생기부 관리로 약점 극복"], accepted: "<strong class='highlight'>[학종 6관왕 — 전부 최초 합격]</strong> 연세대 독어독문 · 고려대 영어영문 · 성균관대 인문계열 · 한양대 미디어커뮤니케이션 · 중앙대 영어영문", external: "대형 입시 학원 전임 강사 / 면접 컨설팅 전문", tags: ["#학종6관왕", "#외고비출신어문", "#지방일반고서울대"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 26, college: "서울대학교 학부대학", major: "자유전공학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["기승전결·연결성 있는 스토리 생기부"], accepted: "성균관대", external: "", tags: ["#서울대자전", "#학종", "#일반고"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 21, college: "서울대학교 사범대학", major: "", role: "멘토", categories: ["인문·교육 계열", "이공 계열"], passType: "학종", hs: "", strengths: ["본인 역량 대비 활동의 변화·성장 서사 설계"], accepted: "", external: "입시 컨설턴트 보고서 작성", tags: ["#사범대", "#이공계학종", "#변화서사"], qc: false, security: false, uniLogo: "assets/snu.png" },
+
+    { id: 3, college: "고려대학교 경영대학", major: "경영학과", role: "대표 멘토진", categories: ["대표 멘토진", "상경·사회 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 1.8 / 정석 학종 파이터"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 경영 · 성균관대 경영 · 서강대 경제", external: "", tags: ["#학종4관왕", "#정석학종파이터", "#일관된생기부"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 24, college: "고려대학교 정경대학", major: "경제학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["나만의 프로젝트 탐구·타과목 융합"], accepted: "성균관대 자유전공 · 고려대 산업경영공", external: "", tags: ["#학종", "#수행평가진로연결", "#융합탐구"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 25, college: "고려대학교 정경대학", major: "", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["동기→과정→결과→복기·수정점 4단계 구조 / 수평·수직적 활동 연장"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 HASS · 성균관대 글리 · 성균관대 사회과학계열", external: "", tags: ["#외고출신", "#학종4관왕", "#사회과학"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 23, college: "고려대학교 정보보호학부", major: "사이버국방학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "", strengths: [], accepted: "한양대 파이낸스경영 · 서강대 AI자전", external: "입시 학원 강사 (학부모 보고서 작성)", tags: ["#사이버국방학과", "#국방부계약학과", "#보안전문"], qc: false, security: true, uniLogo: "assets/ku.png" },
+    { id: 7, college: "고려대학교 문과대학", major: "", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["전략적 전형 선택 / 양질의 생기부·자기소개서"], accepted: "서강대 · 경희대 · 시립대", external: "캠퍼스 투어 / 국어 강사 / 전공 멘토링 / 생기부 소재 개발", tags: ["#인문계학종", "#전략적전형", "#자기소개서설계"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 9, college: "고려대학교 문과대학", major: "", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["흔하지 않은 주제 / 전공 관련 성적 우수 / 깊이있고 체계적인 활동"], accepted: "[현역] 중앙대 다빈치 · 경희대 사학 · 동국대 사학 / [반수] 서강대", external: "대치동 입시 컨설팅 학원 전임 강사 2년", tags: ["#반수합격", "#대치동전임강사", "#인문계학종"], qc: true, security: false, uniLogo: "assets/ku.png" },
+    { id: 8, college: "고려대학교 사범대학", major: "", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["과목 간 연결 독서 / 학년별 범위 좁히기 / 사교육 없는 창의 세특"], accepted: "한국외대 영어교육", external: "대치동 입시 학원 조교 (상담·문제 개발·트렌드 분석)", tags: ["#외고출신", "#영어교과", "#연결독서"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 22, college: "고려대학교 공과대학", major: "산업경영공학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "", strengths: ["선택과 집중 / 고1 겨울부터 정시 준비"], accepted: "한양대 인터칼리지", external: "수능 국어 질의응답 조교 / 입시 컨설팅 업체 강사", tags: ["#정시이공", "#선택과집중", "#1학년정시준비"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 11, college: "고려대학교 보건과학대학", major: "", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "하남고등학교 졸업 (강동학군 공유)", strengths: ["활동 기반 컨셉 누적 / 과목·학년 유기적 연결 / 자기주도 실험"], accepted: "", external: "학원 입시 토크콘서트 발표 / 입시 학원 조교", tags: ["#하남고", "#의생명탐구", "#자기주도실험"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 19, college: "고려대학교 보건과학대학", major: "", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["내신 향상 + 깊이있는 탐구 / 사회과학 도서 활용 / 생기부=퍼스널 브랜딩"], accepted: "경희대 경영회계 · 이화여대 경영 · 한국외대 경영", external: "입시 플랫폼 자료집 7종 집필진 / 진학사 시리즈 에디터 (칼럼 10편)", tags: ["#자료집7종", "#진학사에디터", "#상경인접"], qc: false, security: false, uniLogo: "assets/ku.png" },
+
+    { id: 4, college: "한양대학교 공과대학", major: "", role: "대표 멘토진", categories: ["대표 멘토진", "이공 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["건축·도시 분야 3년 생기부 일관성"], accepted: "성균관대 건설환경공", external: "", tags: ["#분야일관형", "#건축도시전문", "#이공계학종"], qc: false, security: false, uniLogo: "assets/hyu.png" },
+    { id: 28, college: "한양대학교 공과대학", major: "미래자동차공학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "", strengths: ["진학사 모의지원 + 3개년 커트라인 + 실제 지원자 성적 추이 분석 → 학과 펑크 예측"], accepted: "<strong class='highlight'>[정시 4합격]</strong> 한양대 화학(1칸) · 고려대 경영(2칸) · 서강대 자전(4칸) · 한양대 미자공(3칸, 진학)", external: "수행평가 보고서 다수 / 학습 코치 / 정시 지원 상담 / 수학 모의고사 출제 검토", tags: ["#정시4합격", "#N칸분석실증", "#진학사3개년분석"], qc: false, security: false, uniLogo: "assets/hyu.png" },
+    { id: 12, college: "한양대학교 경영대학", major: "경영학부", role: "멘토", categories: ["상경·사회 계열"], passType: "학종+교과 병행", hs: "송파 오금고등학교 졸업", strengths: [], accepted: "성균관대 사회학", external: "", tags: ["#송파오금고", "#학종교과병행", "#상경계열"], qc: false, security: false, uniLogo: "assets/hyu.png" },
+    { id: 27, college: "한양대학교 사회과학대학", major: "", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["전공 적합성 + 탐구 역량 + 인성·리더십 어필 / 어문 라인 학종 통과"], accepted: "중앙대 러시아어문 · 한국외대 노어", external: "", tags: ["#외고출신", "#어문라인", "#학종다중합격"], qc: false, security: false, uniLogo: "assets/hyu.png" },
+
+    { id: 1, college: "경희대학교 이과대학", major: "지리학과", role: "대표 멘토진", categories: ["대표 멘토진", "인문·교육 계열", "이공 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 약점 극복형 / 3학년 역전 생기부 / 미적분 5등급 극복 / 경희대식 내신 2.9"], accepted: "아주대 최종합 · 시립대 1차", external: "", tags: ["#일반고학종", "#약점극복형", "#문이과교차"], qc: false, security: false, uniLogo: "assets/khu.png" },
+    { id: 6, college: "경희대학교 생명과학대학", major: "", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "", strengths: ["3년 일관 관심사 / 학년·교과 연계 탐구 / 본인 빌드업"], accepted: "이화여대 · 건국대 · 홍익대", external: "대형 입시 컨설팅 학원 다년 근무 (3곳) / 1:1 + 학급 단위 멘토링 진행 중", tags: ["#생명과학탐구", "#컨설팅+멘토링병행", "#현재진행"], qc: false, security: false, uniLogo: "assets/khu.png" },
+    { id: 18, college: "경희대학교 경영대학", major: "경영학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["일반고 탐구 보고서 / 계기→내용→결론→비판 4단계 구조"], accepted: "건국대 경영 · 국민대 법학", external: "입시 플랫폼 자료집 집필진 / 윈터스쿨 생기부 튜터 (학생 4명 밀착)", tags: ["#일반고학종", "#탐구보고서", "#상경계열"], qc: false, security: false, uniLogo: "assets/khu.png" }
+];
+
+        const grid = document.getElementById('expertsGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const isSongpaSource = urlParams.get('source') === 'songpa';
+
+        function isLocalMentor(hs) {
+            return hs && (hs.includes('송파') || hs.includes('강동') || hs.includes('하남'));
+        }
+
+        function renderExperts(filter = "전체") {
+            grid.innerHTML = "";
+
+            let filtered = expertsData;
+            if (filter !== "전체") {
+                filtered = expertsData.filter(e => e.categories.includes(filter));
+            }
+            
+            function getRank(college, major) {
+                let isKoreanMed = major.includes("한의") || college.includes("한의과");
+                let isMed = !isKoreanMed && (major.includes("의예") || major.includes("의학") || college.includes("의과"));
+                
+                let uniTier = 5;
+                if (college.includes("서울대")) uniTier = 1;
+                else if (college.includes("연세대") || college.includes("고려대")) uniTier = 2;
+                else if (college.includes("서강대") || college.includes("성균관대") || college.includes("한양대")) uniTier = 3;
+                else if (college.includes("중앙대") || college.includes("경희대") || college.includes("한국외대") || college.includes("시립대")) uniTier = 4;
+                
+                if (isKoreanMed) return 10 + uniTier;
+                if (isMed) return 0 + uniTier;
+                return 20 + uniTier;
+            }
+
+            filtered.sort((a, b) => {
+                let aLocal = isLocalMentor(a.hs) ? 0 : 1;
+                let bLocal = isLocalMentor(b.hs) ? 0 : 1;
+                
+                if (isSongpaSource) {
+                    if (aLocal !== bLocal) return aLocal - bLocal;
+                }
+
+                let aRank = getRank(a.college, a.major);
+                let bRank = getRank(b.college, b.major);
+                if (aRank !== bRank) return aRank - bRank;
+                
+                return a.id - b.id;
+            });
+
+            if (filtered.length === 0) {
+                // If empty, we still just let the recruiting block render at the end
+            }
+
+            filtered.forEach((expert, index) => {
+                const item = document.createElement('div');
+                item.className = 'expert-item animate-pop-in';
+                item.style.animationDelay = `${index * 30}ms`;
+                
+                let showRoleBadge = expert.role === '대표 멘토진';
+                let roleBadgeHtml = showRoleBadge ? `<span class="role-badge badge-representative">${expert.role}</span>` : '';
+                
+                let qcBadgeHtml = '';
+                let securityBadgeHtml = expert.security ? `<span class="security-badge">보안 담당</span>` : '';
+                
+                // 본 카테고리 찾기 (계열이 우선, 없으면 첫번째 카테고리)
+                let displayCategory = expert.categories.find(c => c.includes('계열')) || expert.categories[0];
+                if (filter !== "전체" && expert.categories.includes(filter)) {
+                    displayCategory = filter; // 필터링 시 해당 필터명 표시
+                }
+                let categoryBadgeHtml = displayCategory && (!showRoleBadge || displayCategory !== expert.role) ? `<span class="expert-category">${displayCategory}</span>` : '';
+                
+                let historyHtml = '';
+                if(expert.hs) {
+                    if (isSongpaSource && isLocalMentor(expert.hs)) {
+                        historyHtml += `<li><strong class="highlight"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>${expert.hs}</strong></li>`;
+                    } else {
+                        historyHtml += `<li><strong style="color: #0f172a;">${expert.hs}</strong></li>`;
+                    }
+                }
+                if(expert.strengths && expert.strengths.length > 0) {
+                    expert.strengths.forEach((s, idx) => {
+                        let labelHtml = idx === 0 ? '<strong style="color:var(--color-primary, #2563eb);">지도 전문성:</strong> ' : '<span style="visibility:hidden;"><strong>지도 전문성:</strong> </span>';
+                        historyHtml += `<li>${labelHtml}${s}</li>`;
+                    });
+                }
+                if(expert.accepted) {
+                    historyHtml += `<li><strong>추가 합격:</strong> ${expert.accepted}</li>`;
+                }
+                if(expert.external) {
+                    historyHtml += `<li><strong>경력/이력:</strong> ${expert.external}</li>`;
+                }
+                
+                let tagsHtml = expert.tags.map(t => `<span style="background: rgba(37,99,235,0.06); color: var(--color-accent); border: 1px solid rgba(37,99,235,0.15); padding: 5px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: -0.3px;">${t}</span>`).join('');
+                
+                let headerHtml = `
+                    <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <img src="${expert.uniLogo}" alt="Logo" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.style.display='none'">
+                            <h3 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.5px;">${expert.college}</h3>
+                            ${categoryBadgeHtml}
+                            ${roleBadgeHtml}
+                            ${qcBadgeHtml}
+                            ${securityBadgeHtml}
+                            <span class="pass-type-tag">${expert.passType}</span>
+                        </div>
+                        ${expert.major ? `<div style="font-size: 1.05rem; font-weight: 600; color: #64748b; margin-left: 36px;">${expert.major}</div>` : ''}
+                    </div>
+                `;
+
+                item.innerHTML = `
+                    <div class="expert-index">${String(index + 1).padStart(2, '0')}</div>
+                    <div class="expert-info" style="flex: 1;">
+                        <div class="expert-header">
+                            ${headerHtml}
+                        </div>
+                        <div style="margin-bottom: 1.5rem;"></div>
+                        <ul class="expert-history">
+                            ${historyHtml}
+                        </ul>
+                        <div style="margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 6px;">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(item);
+            });
+
+            // Append Recruiting Block at the end
+            const recruitingItem = document.createElement('div');
+            recruitingItem.style = "text-align: center; padding: 4rem 2rem; width: 100%; border-top: 1px dashed #e2e8f0; margin-top: 2rem; opacity: 0.7;";
+            recruitingItem.innerHTML = `
+                <div style="font-size: 2rem; color: #cbd5e1; margin-bottom: 0.8rem;">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #475569; margin-bottom: 0.5rem; letter-spacing: -0.02em;">Recruiting...</h3>
+                <p style="font-size: 0.9rem; color: #94a3b8; margin: 0; word-break: keep-all;">각 분야의 압도적인 전문성을 갖춘 파트너 멘토진을 지속 영입 중입니다.</p>
+            `;
+            grid.appendChild(recruitingItem);
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderExperts(btn.getAttribute('data-filter'));
+            });
+        });
+
+        renderExperts();
+    </script>
+
+</body>
+</html>

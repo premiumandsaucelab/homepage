@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo_true_alpha.png">
+    <title>PS:LAB | 자주 묻는 질문 (FAQ)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .faq-page-section { padding: 8rem 5% 5rem; min-height: 80vh; background-color: var(--color-bg-main); }
+
+        /* 카테고리 그룹 (2단 아코디언) */
+        .faq-group { margin-bottom: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .faq-category { padding: 1.3rem 1.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); transition: background 0.3s; user-select: none; }
+        .faq-category:hover { background: linear-gradient(135deg, #eef2ff 0%, #e8ecf4 100%); }
+        .faq-category h3 { color: var(--color-primary); font-size: 1.25rem; font-weight: 800; margin: 0; }
+        .faq-category-icon { font-size: 1.4rem; color: var(--color-accent); transition: transform 0.3s ease; font-weight: 300; }
+        .faq-group.cat-open .faq-category-icon { transform: rotate(45deg); }
+        .faq-group.cat-open .faq-category { background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%); border-bottom: 1px solid var(--color-border); }
+
+        /* 카테고리 하위 문항 묶음 */
+        .faq-items { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .faq-group.cat-open .faq-items { max-height: 3000px; }
+
+        /* 개별 문항 카드 */
+        .faq-card { border-bottom: 1px solid var(--color-border); }
+        .faq-card:last-child { border-bottom: none; }
+        .faq-question { padding: 1.3rem 1.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.05rem; color: #333; background: #fff; transition: background 0.3s; margin: 0; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-answer { padding: 0 1.8rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease; color: var(--color-text-muted); line-height: 1.7; opacity: 0 !important; font-size: 0.95rem; }
+        .faq-answer.active { padding: 0.5rem 1.8rem 1.5rem; max-height: 1000px; opacity: 1 !important; }
+        .faq-icon { transition: transform 0.3s; font-size: 1.1rem; color: var(--color-accent); }
+        .faq-card.open .faq-icon { transform: rotate(45deg); }
+
+        /* 문항 개수 뱃지 */
+        .faq-count { font-size: 0.75rem; font-weight: 700; color: var(--color-accent); background: rgba(37,99,235,0.08); padding: 0.2rem 0.6rem; border-radius: 20px; margin-right: 0.8rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+<div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+          <span>현재 정부 부처 및 주요 대학 유망 창업 프로그램 심사 진행 중</span>
+      </div>
+  </div>
+
+    
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo" style="white-space: nowrap;">PS<span>:</span>LAB</a>
+            <ul class="nav-links" style="margin: 0 auto; gap: 2rem;">
+                <li style="white-space: nowrap;"><a href="songpa_index.html" style="color: var(--color-accent); font-weight: 700;">SONGPA</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#about">팀 프로필</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#process">프로세스</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#programs">플랜/가격</a></li>
+                <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
+                <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
+            </ul>
+            <div class="nav-cta" style="flex-shrink: 0;">
+                <a href="index.html#contact" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">1차 무료 분석 받아보기</a>
+            </div>
+            
+        </div>
+    </nav>
+
+    <main class="faq-page-section">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="badge">FAQ</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">자주 묻는 질문</h2>
+                <p style="color: var(--color-text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">PS:LAB 서비스에 대해 가장 많이 궁금해하시는 내용을 정리했습니다.<br>카테고리를 클릭하면 관련 질문이 펼쳐집니다.</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+
+                <!-- 카테고리 1 -->
+                <div class="faq-group">
+                    <div class="faq-category" onclick="toggleCategory(this)">
+                        <h3>1. 서비스 개요 (About PS:LAB)</h3>
+                        <div style="display:flex;align-items:center;"><span class="faq-count">5개</span><span class="faq-category-icon">+</span></div>
+                    </div>
+                    <div class="faq-items">
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">기존 입시 컨설팅과 PS:LAB의 가장 큰 차이는 무엇인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">단순한 경험칙에 의존하지 않습니다. PS:LAB은 자체적인 데이터 분석 시스템과 명문대 멘토진의 실시간 입시 로직을 결합하여, 가장 최신의 입시 경향을 반영한 '데이터 기반 리포트'를 제공합니다. 또한, 일회성 상담에 그치지 않고 지속적인 피드백 루프를 통해 학생의 실질적인 성장을 이끕니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">어떤 학생에게 PS:LAB 컨설팅이 가장 필요한가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">자신의 생기부가 어떤 방향성을 향하고 있는지 모르는 학생, 열심히 활동은 하지만 '스토리'로 엮어내지 못하는 학생, 그리고 목표 대학에 맞는 최적화된 전략이 필요한 고1~고3 학생 모두에게 필요합니다. 특히, 강남·송파 학군의 특성을 누구보다 잘 아는 멘토들이 지역적 특성에 맞춘 최상위권 진입 전략을 제공합니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">멘토진은 어떤 분들인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">보성고를 졸업하고 현재 서울대, 고려대, 한양대, 경희대 등 명문대에서 공부 중인 2007년생 현역 대학생들로 구성되어 있습니다. 갓 입시를 마친 선배들이기 때문에 변화하는 수능과 학종 트렌드를 가장 생생한 직관으로 멘토링합니다. 현재 외고 학종 서울대 경제학부, 학종 중앙대 의대, 정시 서울대 기계공학부 등 추가 멘토 리크루팅도 활발히 진행 중입니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">PS:LAB은 학원인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">PS:LAB은 학원이 아닌, 명문대 현역 합격생들로 구성된 '입시 전략 팀'입니다. 대치동 학원가의 불필요한 마케팅 비용과 데스크 인건비를 완전히 걷어내고, 최고 수준의 명문대 합격생들이 직접 작성하는 데이터 분석 리포트를 합리적인 비용에 제공하는 것을 목표로 합니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">고1, 고2도 상담이 가능한가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">네, 고1~고3 학생 모두 상담 가능합니다. 오히려 이른 시기에 생기부 방향성을 잡을수록 남은 학기에 최적화된 활동을 설계할 수 있기 때문에 더 유리합니다. 학년과 상황에 맞춰 리포트에 반영되는 분석 전략이 달라집니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카테고리 2 -->
+                <div class="faq-group">
+                    <div class="faq-category" onclick="toggleCategory(this)">
+                        <h3>2. 리포트 및 납품물 (Deliverables)</h3>
+                        <div style="display:flex;align-items:center;"><span class="faq-count">3개</span><span class="faq-category-icon">+</span></div>
+                    </div>
+                    <div class="faq-items">
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">'데이터 리포트'란 정확히 어떤 건가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">학생의 생기부를 심층 분석한 결과를 모바일 친화적인 웹 리포트 형태로 납품해 드리는 것입니다. 내신 분석 차트, 세특(세부능력 및 특기사항) 평가, 목표 대학 맞춤 로드맵, 그리고 다음 날 학교 수행평가에 바로 활용할 수 있는 구체적인 액션 플랜이 포함됩니다. 추상적인 상담이 아닌, 실제로 손에 쥘 수 있는 결과물을 제공합니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">리포트 샘플을 미리 볼 수 있나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">네, 홈페이지 프로세스(Process) 섹션에서 실제 납품되는 데이터 리포트의 프라이버시 체험 모드를 직접 확인하실 수 있습니다. 개인정보는 처리되어 있으며, 리포트의 구조와 분석 깊이를 미리 체험해 보실 수 있습니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">Architect 플랜과 Director 플랜의 차이가 무엇인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer"><strong>Architect Plan(Standard)</strong>은 생기부 분석 리포트 제공, 학업 역량과 전공 적합성의 입체적 프레이밍, 심화 탐구 메커니즘 설계, 목표 대학 맞춤형 실전 로드맵 PDF 납품이 포함됩니다.<br><br><strong>Director Plan(Premium)</strong>은 Architect의 모든 내용에 더해, 당락을 가르는 핵심 3과목 밀착 디렉팅(주제 선정~최종 보고서 1:1 독점 관리), 학기말 마감 전 생기부 전체 통합 검수 1회권, 전공/계열별 최우수 멘토진의 1:1 전담 대면/화상 컨설팅, 그리고 수시 카드 제출 전 최종 검수 1회권까지 포함됩니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카테고리 3 -->
+                <div class="faq-group">
+                    <div class="faq-category" onclick="toggleCategory(this)">
+                        <h3>3. 컨설팅 진행 과정 (Process)</h3>
+                        <div style="display:flex;align-items:center;"><span class="faq-count">4개</span><span class="faq-category-icon">+</span></div>
+                    </div>
+                    <div class="faq-items">
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">'1차 무료 분석'이란 정확히 무엇인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">결제 전에 학생의 생기부를 간단히 진단하여, PS:LAB 컨설팅이 실질적으로 도움이 될지 먼저 확인해 드리는 단계입니다. 부담 없이 카카오톡 1:1 오픈채팅으로 신청하시면, 담당 멘토가 배정되어 안내해 드립니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">상담부터 결과물(리포트) 수령까지 얼마나 걸리나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">결제 및 필수 자료(생기부 등) 제출이 완료되면, 멘토진의 심층 분석과 5인 집단 지성 교차 검증을 거쳐 리포트가 제작됩니다. 학생별 데이터 분량에 따라 소요 기간이 상이할 수 있으며, 정확한 일정은 진행 시 개별 안내해 드립니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">상담은 어떻게 진행되나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">배정된 전담 멘토가 완성된 리포트를 바탕으로 심층적인 브리핑과 질의응답을 진행합니다. 구체적인 미팅 방식(온/오프라인) 및 일정은 학생과 학부모님의 상황에 맞춰 조율됩니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">문의나 상담 신청은 어디로 하나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">카카오톡 1:1 오픈채팅을 통해 가장 빠르게 상담 신청이 가능합니다. 그 외에도 네이버 카페 및 인스타그램 다이렉트 문의도 정상 운영 중이니, 편하신 채널로 연락해 주시면 됩니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카테고리 4 -->
+                <div class="faq-group">
+                    <div class="faq-category" onclick="toggleCategory(this)">
+                        <h3>4. 비용 및 결제 (Pricing & Payment)</h3>
+                        <div style="display:flex;align-items:center;"><span class="faq-count">3개</span><span class="faq-category-icon">+</span></div>
+                    </div>
+                    <div class="faq-items">
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">결제는 어떻게 하나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">자세한 결제 방식 및 안내 사항은 1차 무료 분석 진행 후, 본 컨설팅 신청 시 개별적으로 상세히 안내해 드리고 있습니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">컨설팅 진행 중 환불이 가능한가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">결제 후 맞춤형 분석 작업이 본격적으로 시작되기 전까지는 환불이 가능하나, 리포트 제작이 착수된 이후에는 작업 특성상 환불이 제한될 수 있습니다. 상세한 환불 규정은 컨설팅 신청 시 안내해 드리는 규정을 따릅니다.</div>
+                        </div>
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">알룸나이(장학금) 제도가 무엇인가요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">Director Plan 이용 후 목표 대학에 최종 합격하시면, 결제액의 30%를 장학금으로 환급해 드립니다. 추가로, 향후 PS:LAB 공식 멘토진 합류(채용) 인터뷰 기회가 최우선으로 부여됩니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카테고리 5 -->
+                <div class="faq-group">
+                    <div class="faq-category" onclick="toggleCategory(this)">
+                        <h3>5. 보안 및 신뢰 (Trust & Security)</h3>
+                        <div style="display:flex;align-items:center;"><span class="faq-count">1개</span><span class="faq-category-icon">+</span></div>
+                    </div>
+                    <div class="faq-items">
+                        <div class="faq-card">
+                            <h4 class="faq-question" onclick="toggleFaq(this)">제출한 생기부 데이터는 안전하게 관리되나요? <span class="faq-icon">+</span></h4>
+                            <div class="faq-answer">제출해 주신 생기부 자료는 해당 학생의 분석 리포트 제작 목적으로만 활용되며, 외부에 공유되거나 다른 용도로 사용되지 않습니다. 데이터 관리 및 보안에 대한 자세한 사항은 상담 시 안내해 드립니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo_true_alpha.png" alt="PS:LAB Logo" style="height: 30px; width: 30px; min-width: 30px; flex-shrink: 0; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%);  opacity: 0.9;" onerror="this.onerror=null; this.alt='로고 오류';">
+                PS<span>:</span>LAB
+            </div>
+            <div>모든 학생의 노력이 결실을 맺을 수 있도록, 정확한 입시를 제안합니다.</div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PS:LAB Analytics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 카테고리 토글 (2단 아코디언 상위)
+        function toggleCategory(element) {
+            const group = element.parentElement;
+            group.classList.toggle('cat-open');
+        }
+
+        // 개별 문항 토글 (2단 아코디언 하위)
+        function toggleFaq(element) {
+            const card = element.parentElement;
+            const answer = element.nextElementSibling;
+            const isOpen = card.classList.contains('open');
+
+            // 같은 카테고리 내 다른 문항 닫기
+            const group = card.closest('.faq-group');
+            group.querySelectorAll('.faq-card').forEach(c => {
+                c.classList.remove('open');
+                c.querySelector('.faq-answer').classList.remove('active');
+            });
+
+            if (!isOpen) {
+                card.classList.add('open');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+<script src="script.js"></script>
+</body>
+</html>

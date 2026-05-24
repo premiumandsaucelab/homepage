@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손O주 학생을 위한 PS:LAB 분석 보고서</title>
+    <meta name="description" content="PS:LAB이 제공하는 손O주 학생 맞춤형 퍼스널 입시 분석 리포트">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="report-wrapper">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="hero-section">
+        <div class="hero-top-bar">
+            <span class="pslab-brand">PS:LAB</span>
+            <span class="hero-date">2026년 4월 11일 발행</span>
+        </div>
+        <div class="hero-logos">
+            <div class="hero-logo-block">
+                <img src="../assets/hyu.png" alt="한양대" class="hero-logo-img">
+                <span class="hero-logo-label">한양대 공과대학</span>
+            </div>
+            <span class="hero-logo-arrow">·</span>
+            <div class="hero-logo-block">
+                <img src="../assets/khu.png" alt="경희대" class="hero-logo-img">
+                <span class="hero-logo-label">경희대 이과대학</span>
+            </div>
+        </div>
+        <h1 class="hero-main-title">
+            <span class="hero-subtitle">PS:LAB REPORT</span>
+            <span class="privacy-blur">손용주</span> 학생을 위한<br>
+            <em>퍼스널 입시 분석 보고서</em>
+        </h1>
+        <p class="slogan">"데이터를 기반으로 설계하고, 입학사정관의 시선으로 완성합니다."</p>
+        <div class="hero-meta-row">
+            <div class="hero-chip">담당 멘토: 자연 D멘토 · 대표 멘토</div>
+            <div class="hero-chip"><span class="privacy-blur">용남고등학교</span> 3학년 · <span class="privacy-blur">충남 계룡</span></div>
+            <div class="hero-chip personal-chip">📄 개인 맞춤 리포트</div>
+        </div>
+    </header>
+
+    <!-- ═══════════════ TOC ═══════════════ -->
+    <nav class="toc-section">
+        <p class="toc-label">목차 · CONTENTS</p>
+        <div class="toc-grid">
+            <a href="#overview" class="toc-item"><span>01</span> CONSULTING OVERVIEW</a>
+            <a href="#data-analysis" class="toc-item"><span>02</span> ACADEMIC DATA ANALYSIS</a>
+            <a href="#evaluation" class="toc-item"><span>03</span> STUDENT RECORD EVALUATION</a>
+            <a href="#roadmap" class="toc-item"><span>04</span> TARGET UNIVERSITY ROADMAP</a>
+            <a href="#action-plan" class="toc-item"><span>05</span> 3-1 ACTION PLAN</a>
+            <a href="#mentors-tip" class="toc-item"><span>06</span> MENTOR'S SPECIAL TIP</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ 01 CONSULTING OVERVIEW ═══════════════ -->
+    <section class="report-section" id="overview">
+        <div class="section-header">
+            <span class="section-num">01</span>
+            <h2 class="section-title">CONSULTING OVERVIEW</h2>
+        </div>
+
+        <div class="pslab-intro-box">
+            <div class="pslab-intro-text">
+                <h3>안녕하세요, <strong>PS:LAB</strong>입니다.</h3>
+                <p>보성고를 졸업하고 현재 서울대, 고려대, 한양대 등 명문대에서 공부 중인 선배들이 모인 입시 전략 팀입니다. 우리가 직접 겪고 뚫어낸 강남·송파 입시의 정답을 후배들에게 가장 직관적인 <strong>'데이터 리포트'</strong>로 전달하며, 합리적인 비용으로 최고의 퀄리티를 보장합니다.</p>
+            </div>
+                                                <div class="pslab-strengths">
+                <div class="strength-item">
+                    <span class="s-icon">🤖</span>
+                    <div>
+                        <strong>완벽한 AI Workspace</strong>
+                        <p>고도화된 AI 환경으로 방대한 입시 데이터를 크로스체크합니다.</p>
+                    </div>
+                </div>
+                <div class="strength-item">
+                    <span class="s-icon">🎯</span>
+                    <div>
+                        <strong>추상적인 조언 배제</strong>
+                        <p>당장 실행 가능한 디테일만 제공합니다.</p>
+                    </div>
+                </div>
+                <div class="strength-item">
+                    <span class="s-icon">💡</span>
+                    <div>
+                        <strong>거품을 뺀 합리적 비용</strong>
+                        <p>명문대 합격생이 직접 작성하는 고퀄리티 리포트.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-section">
+            <h3 class="subsection-title">체계적인 3단계 리포트 솔루션</h3>
+            <div class="process-steps">
+                <div class="process-step active">
+                    <div class="step-num">STEP 1</div>
+                    <div class="step-icon">🔬</div>
+                    <h4>정밀 데이터 분석</h4>
+                    <p>생기부를 입학사정관의 시선에서 냉정하게 평가하여 보완할 수 있는 핵심 키워드를 도출합니다.</p>
+                    <div class="step-badge">현재 단계</div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-num">STEP 2</div>
+                    <div class="step-icon">🗺️</div>
+                    <h4>스토리보드 기획</h4>
+                    <p>목표 대학 인재상에 완벽히 부합하는 방향성을 설정하고 탐구 및 독서 활동을 설계합니다.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-num">STEP 3</div>
+                    <div class="step-icon">📋</div>
+                    <h4>실전 리포팅 &amp; 피드백</h4>
+                    <p>실제 학교 활동에 바로 적용할 수 있는 디테일한 가이드 리포트를 제공하며 피드백을 진행합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 학생 프로필 + 담당 멘토 -->
+        <div class="two-column" style="margin-top: 30px;">
+            <div class="col card">
+                <h3 class="col-title">🎓 학생 프로필</h3>
+                <ul class="info-list">
+                    <li><span class="info-label">이름</span> <strong><span class="privacy-blur">손용주</span></strong></li>
+                    <li><span class="info-label">소속</span> <span class="privacy-blur">용남고등학교</span> 3학년 (<span class="privacy-blur">충남 계룡</span> · 일반고)</li>
+                    <li><span class="info-label">진로</span> <strong class="grade-display" style="font-size:1rem;">건설/환경공학&nbsp;지망</strong> <em class="tag ok">보건/생명&nbsp;→&nbsp;건설/환경&nbsp;공학</em></li>
+                    <li><span class="info-label">출결</span> 질병지각 3회 (미인정 0회) <em class="tag ok">학종 영향 없음</em></li>
+                    <li><span class="info-label">봉사</span> 누계 42시간 <em class="tag ok">3학년 10시간이면 충분</em></li>
+                    <li><span class="info-label">내신</span> <strong class="grade-display"><span class="privacy-blur">1.85</span>등급</strong> <em class="tag up">수과학 압도적</em></li>
+                </ul>
+                <div class="target-summary">
+                    <p class="target-title">🎯 전형별 지원 가이드</p>
+                    <div class="target-row"><strong>상향:</strong> 연세대 · 고려대</div>
+                    <div class="target-row"><strong>소신:</strong> 성균관대 · 한양대</div>
+                    <div class="target-row"><strong>적정:</strong> 중앙대 · 서울시립대 · 경희대</div>
+                    <div class="target-row"><strong>안정:</strong> 건국대 · 동국대 · 홍익대</div>
+                </div>
+            </div>
+            <div class="col card">
+                <h3 class="col-title">👨‍💼 담당 멘토진</h3>
+                <div class="mentor-list">
+                    <div class="mentor-item" onclick="openPopup('mentor1')">
+                        <div class="mentor-logo-wrap">
+                            <img src="../assets/hyu.png" alt="한양대" class="mentor-univ-logo">
+                        </div>
+                        <div class="mentor-info">
+                            <div class="mentor-name">자연 D멘토 <span class="mentor-tag">한양대 공과대학</span></div>
+                            <p>공학 입시의 표준, 합격의 메커니즘 · 성균관대 공과대학 합격</p>
+                        </div>
+                        <span class="mentor-arrow">›</span>
+                    </div>
+                    <div class="mentor-item" onclick="openPopup('mentor2')">
+                        <div class="mentor-logo-wrap">
+                            <img src="../assets/khu.png" alt="경희대" class="mentor-univ-logo">
+                        </div>
+                        <div class="mentor-info">
+                            <div class="mentor-name">대표 멘토 <span class="mentor-tag">경희대 이과대학</span></div>
+                            <p>일반고 내신 2.9 → 역전의 서사를 로직으로 증명합니다</p>
+                        </div>
+                        <span class="mentor-arrow">›</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ 02 ACADEMIC DATA ANALYSIS ═══════════════ -->
+    <section class="report-section" id="data-analysis">
+        <div class="section-header">
+            <span class="section-num">02</span>
+            <h2 class="section-title">ACADEMIC DATA ANALYSIS</h2>
+        </div>
+
+        <div class="two-column">
+            <div class="col card">
+                <h3 class="col-title">📈 내신 성적 추이</h3>
+                <div class="chart-container">
+                    <canvas id="gradeChart"></canvas>
+                </div>
+                <div class="chart-summary-box">
+                    <div class="chart-summary-item">
+                        <span class="csi-label">종합 내신</span>
+                        <span class="csi-value primary"><span class="privacy-blur">1.85</span></span>
+                    </div>
+                    <div class="chart-summary-item">
+                        <span class="csi-label">최고 성적</span>
+                        <span class="csi-value safe">1.75</span>
+                    </div>
+                    <div class="chart-summary-item">
+                        <span class="csi-label">추이</span>
+                        <span class="csi-value up-text">유지형</span>
+                    </div>
+                </div>
+                <p class="chart-desc">1.92 → 1.75 → 1.80 → 1.92 (총 내신 <span class="privacy-blur">1.85</span>). 수과학 내신은 항상 2등급 이내를 고수하며, 특히 2학년 때 물/화/생/지 4과목 모두 1등급을 받은 것은 어느 일반고 수준에서도 압도적인 플러스 요소입니다.</p>
+
+                <div class="memo-box" style="margin-top:15px;">
+                    📊 <strong>모의고사 분석:</strong> 2학년 성적은 상위 목표대학 기준으론 다소 부족하나, 국수 베이스는 양호합니다. 3학년 때는 정시 역량을 평가원의 검증(3·6·9모)을 거쳐 확실히 확인해야 하며, 특히 탐구 영역은 수능 최저 사수를 위해 집중 보완이 필요합니다.
+                </div>
+            </div>
+            <div class="col card">
+                <h3 class="col-title">📊 교과 상세 데이터</h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>과목</th>
+                                <th>1-1</th>
+                                <th>1-2</th>
+                                <th>2-1</th>
+                                <th>2-2</th>
+                                <th>3학년 목표</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-important">
+                                <td><strong>국어</strong></td>
+                                <td class="cell-best">2</td>
+                                <td class="cell-best">2</td>
+                                <td class="cell-best">2</td>
+                                <td style="color:var(--up-color);font-weight:700;">4</td>
+                                <td class="cell-target">2등급 사수 ⚠</td>
+                            </tr>
+                            <tr class="row-important">
+                                <td><strong>수학</strong></td>
+                                <td class="cell-best">1</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td class="cell-target">1등급 금상첨화 (유종의 미)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영어</strong></td>
+                                <td>2</td>
+                                <td class="cell-best">1</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td class="cell-ok">2등급 유지</td>
+                            </tr>
+                            <tr>
+                                <td><strong>사회</strong></td>
+                                <td class="cell-best">1</td>
+                                <td>2</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td class="cell-ok">이과 이점 확보</td>
+                            </tr>
+                            <tr>
+                                <td><strong>한국사</strong></td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td class="cell-ok">—</td>
+                            </tr>
+                            <tr class="row-important">
+                                <td><strong>과학</strong></td>
+                                <td>2</td>
+                                <td class="cell-best">1</td>
+                                <td class="cell-best">1</td>
+                                <td class="cell-best">1</td>
+                                <td class="cell-target" style="white-space: nowrap; min-width: 140px;">II과목 A 필수 사수 ★</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-legend">
+                    <span class="legend-item important">★ 주요 집중 과목</span>
+                    <span class="legend-item best">✦ 강점 등급</span>
+                </div>
+                <div class="subject-analysis">
+                    <div class="subject-bar">
+                        <span class="sb-label">과학 4과목</span>
+                        <div class="sb-track"><div class="sb-fill green" style="width:100%"></div></div>
+                        <span class="sb-note ok">2학년 전부 1등급</span>
+                    </div>
+                    <div class="subject-bar">
+                        <span class="sb-label">수학 (핵심)</span>
+                        <div class="sb-track"><div class="sb-fill" style="width:80%"></div></div>
+                        <span class="sb-note warn">3학년 1등급 목표</span>
+                    </div>
+                    <div class="subject-bar">
+                        <span class="sb-label">국어 (주의)</span>
+                        <div class="sb-track"><div class="sb-fill" style="width:55%"></div></div>
+                        <span class="sb-note warn">2-2 급락 → 반등 필수</span>
+                    </div>
+                </div>
+
+                <div class="memo-box alert" style="margin-top:15px;">
+                    ⚠️ 표준편차 대부분 20 이하(일부 10 초중반)로 양호하나, <strong>입결 추이 및 선배 합격/불합격 생기부와 반드시 대조</strong> 바람.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div style="text-align: center; padding: 60px 20px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9) 20%, white); margin-top: -80px; position: relative; z-index: 10;">
+        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-weight: 800; font-size: 1.4rem;">... 3단계부터 6단계까지의 리포트 상세 내용은<br>샘플 시연 모드에서 제공되지 않습니다.</h3>
+        <p style="color: var(--text-sub);">본 리포트는 실제 학생 개인의 고유한 컨설팅 자산이므로,<br>프라이버시 보호를 위해 1/3 분량까지만 열람이 가능합니다.</p>
+        <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="display: inline-block; margin-top: 25px; padding: 12px 28px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-weight: 700;">PS:LAB 1:1 상담 예약하기</a>
+    </div>
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="report-footer">
+        <div class="footer-top">
+            <div class="footer-brand">PS:LAB</div>
+            <div class="footer-links">
+                <a href="https://cafe.naver.com/labps" target="_blank" class="footer-link">💬 네이버 카페</a>
+                <a href="https://instagram.com/labps_official" target="_blank" class="footer-link">📱 @labps_official</a>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>발행일: 2026년 4월 11일 &nbsp;|&nbsp; 담당: 자연 D멘토 · 대표 멘토</p>
+            <p>© 2026 PS:LAB Analytics. All rights reserved.</p>
+        </div>
+        <div class="footer-confidential">
+            📄 이 리포트는 <strong><span class="privacy-blur">손용주</span> 학생</strong>을 위해 PS:LAB이 개인 맞춤으로 제작한 문서입니다. 무단 배포를 금합니다.
+        </div>
+    </footer>
+
+</div><!-- /report-wrapper -->
+
+<!-- ═══════════════ POPUP MODAL ═══════════════ -->
+<div id="popupModal" class="modal-overlay" onclick="closePopup(event)">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closePopup(event, true)">✕</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# PS:LAB Homepage .gitignore
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.crt
+id_rsa
+id_dsa
+**/secrets/
+**/credentials/
+**/serviceAccount*.json
+**/*_secret.*
+**/*_credentials.*
+
+# local / maintenance / quarantine
+_maintenance/
+_quarantine/
+.antigravity/
+
+# sensitive source / extracted files
+/report_source.pdf
+/pdf_extracted.txt
+/pdf_text_raw.txt
+/pdf_text2.txt
+/assets/competitor_*.pdf
+/*.xlsx
+/*.csv
+/*.docx
+/*.bak
+
+# demo report: keep only public report.html tracked
+/demo_report/admin.html
+/demo_report/admin-script.js
+/demo_report/admin-styles.css
+/demo_report/delivery.html
+/demo_report/index.html
+/demo_report/ceo_profile_report.html
+/demo_report/ceo_enterprise_intelligence.html
+/demo_report/pslab_strategy_report.html
+
+# build / cache / editor
+node_modules/
+dist/
+build/
+.cache/
+.next/
+coverage/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+/ALL_CODE_COMBINED.md
