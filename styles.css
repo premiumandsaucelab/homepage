@@ -765,7 +765,7 @@ h2 {
     font-size: 0.95rem;
 }
 
-/* Scroll To Top Premium */
+/* Scroll To Top */
 .scroll-to-top {
     position: fixed;
     bottom: 40px;
@@ -802,7 +802,7 @@ h2 {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* --- Premium Text Animations for Hero & Headers --- */
+/* --- Text Animations for Hero & Headers --- */
 .text-gradient {
     /* 기존 스타일과 호환을 위해 투명 배경 클립핑 */
     background: linear-gradient(to right, var(--color-primary), var(--color-accent), var(--color-primary));
