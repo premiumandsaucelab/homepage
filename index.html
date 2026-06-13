@@ -538,6 +538,48 @@
             <span style="background: #e2e8f0; color: #475569; font-size: 0.85rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; letter-spacing: -0.3px; white-space: nowrap;">1기 베타 검증</span>
             <span style="color: #475569; font-size: 0.95rem; font-weight: 600; letter-spacing: -0.3px; line-height: 1.4;">만족도 4.6 / 5.0 · 추천 의향 80% · 가격 거부 0건</span>
         </div>
+        <!-- 사전진단 진입 띠 -->
+        <div class="container reveal" style="margin: 0 auto 2rem; max-width: 1100px;">
+            <div style="
+                background: linear-gradient(135deg, #0f172a 0%, #1e2d4a 60%, #0f172a 100%);
+                border: 1px solid rgba(37,99,235,0.35);
+                border-radius: 20px;
+                padding: 1.6rem 2.2rem;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1.2rem;
+                box-shadow: 0 8px 28px rgba(37,99,235,0.12);
+                position: relative;
+                overflow: hidden;
+            ">
+                <!-- 배경 장식 -->
+                <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(37,99,235,0.06);pointer-events:none;"></div>
+                <!-- 왼쪽: 라벨 + 제목/가격 + 설명 -->
+                <div style="display:flex;flex-direction:column;gap:0.55rem;flex:1;min-width:260px;">
+                    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                        <span style="background:rgba(37,99,235,0.25);color:#93c5fd;font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1.2px;text-transform:uppercase;border:1px solid rgba(37,99,235,0.3);white-space:nowrap;">진입 진단</span>
+                        <span style="color:#e2e8f0;font-size:0.82rem;font-weight:600;">상위 플랜 결제 시 49,000원 전액 차감</span>
+                    </div>
+                    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+                        <span style="color:#ffffff;font-size:1.55rem;font-weight:900;letter-spacing:-0.5px;line-height:1;">사전진단 · 49,000원</span>
+                    </div>
+                    <p style="color:#94a3b8;font-size:0.85rem;line-height:1.5;margin:0;word-break:keep-all;max-width:480px;">생기부 현황과 수시 라인을 한 번에 점검하는 진입 진단</p>
+                    <!-- 미니 포인트 -->
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+                        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:4px 12px;font-size:0.78rem;font-weight:600;color:#cbd5e1;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>생기부 현황 진단</span>
+                        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:4px 12px;font-size:0.78rem;font-weight:600;color:#cbd5e1;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>수시 라인 추정 (도전/적정/안정)</span>
+                        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:4px 12px;font-size:0.78rem;font-weight:600;color:#cbd5e1;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>보완 우선순위 Top 3</span>
+                    </div>
+                </div>
+                <!-- 오른쪽: CTA -->
+                <div style="flex-shrink:0;">
+                    <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:0.92rem;font-weight:800;padding:0.85rem 1.8rem;border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(37,99,235,0.35);transition:all .2s;white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 24px rgba(37,99,235,0.45)';" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 18px rgba(37,99,235,0.35)';">사전진단 사전예약<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <!-- /사전진단 진입 띠 -->
         <div class="container pc-grid reveal delay-1">
             <!-- Compass -->
             <div class="pc-card">
@@ -656,7 +698,7 @@
                 PS<span>:</span>LAB
             </div>
             <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
-                <div>운영주체: PS:LAB 준비팀 &nbsp;|&nbsp; 문의: <a href="mailto:pslabedu@gmail.com" style="color: rgba(255,255,255,0.7);">pslabedu@gmail.com</a></div>
+                <div>운영주체: PS:LAB 준비팀 &nbsp;|&nbsp; 문의: <a href="mailto:daehyunkoh@pslabedu.kr" style="color: rgba(255,255,255,0.7);">daehyunkoh@pslabedu.kr</a></div>
                 <div>카카오톡 1:1 문의: <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="color: rgba(255,255,255,0.7);">오픈채팅 바로가기</a></div>
             </div>
         </div>
