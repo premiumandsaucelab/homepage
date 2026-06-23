@@ -2,13 +2,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo_transparent.png">
     <title>PS:LAB B2B | 방이동 선배들의 확실한 지원</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
         :root {
             --bg-primary: #FFFFFF;
@@ -41,7 +40,7 @@
             border-bottom: 1px solid var(--border-light);
             backdrop-filter: blur(8px);
         }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; max-width: 1100px; margin: 0 auto; padding: 0 40px; }
         .nav-logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; color: var(--bg-corporate); display:flex; align-items:center; gap: 10px;}
         .nav-logo span { font-weight: 500; color: var(--text-muted); font-size: 1rem;}
         
@@ -52,6 +51,15 @@
             transition: all 0.2s ease;
         }
         .cta-btn:hover { background-color: #2563EB; }
+        
+        .btn-outline {
+            padding: 12px 24px; border-radius: 6px;
+            background-color: #FFF; color: var(--text-main);
+            border: 1px solid var(--border-light);
+            text-decoration: none; font-weight: 700; font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover { background-color: #F8FAFC; border-color: #CBD5E1; }
 
         /* Hero Section */
         .hero { padding: 120px 0 100px; text-align: center; background: var(--bg-secondary); border-bottom: 1px solid var(--border-light);}
@@ -156,19 +164,52 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             z-index: 999;
         }
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .nav-container { padding: 15px 20px; height: auto; flex-direction: column; gap: 12px; }
+            .nav-logo { font-size: 1.2rem; }
+            .nav-container span { display: none !important; }
+            .nav-container > div:last-child { width: 100%; justify-content: center; }
+            .btn-outline, .cta-btn { padding: 10px 16px; font-size: 0.85rem; flex: 1; text-align: center; }
+            
+            .hero { padding: 60px 0 50px; }
+            .hero h1 { font-size: 2rem; margin-bottom: 15px; }
+            .hero p { font-size: 1rem; margin-bottom: 30px; }
+            
+            .grid-2, .grid-3, .grid-4, .p-grid, .process-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+            
+            .section { padding: 50px 0; }
+            .section-header { margin-bottom: 30px; }
+            .section-header h2 { font-size: 1.8rem; }
+            
+            .card { padding: 25px; }
+            .step-circle { min-width: 45px; height: 45px; font-size: 1.2rem; }
+            .mockup-container { margin-bottom: 20px; }
+            .partnership-box { padding: 30px 20px; }
+        }
     </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PS:LAB B2B | 방이동 선배들의 확실한 지원">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://www.pslabedu.kr/b2b_partnership_proposal.html">
+    <meta property="og:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PS:LAB B2B | 방이동 선배들의 확실한 지원">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <link rel="canonical" href="https://www.pslabedu.kr/b2b_partnership_proposal.html">
 </head>
 <body>
 
-    <nav>
-        <div class="container nav-inner">
-            <div class="nav-logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">PS:LAB</a> 
-                <span>B2B 제휴 안내</span>
+    <nav class="navbar">
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                <a href="index.html" class="nav-logo" style="text-decoration: none;">PS:LAB</a> 
+                <span style="margin-left: 10px; color: var(--text-muted); font-weight: 500; font-size: 1rem; align-self: center;">B2B 제휴 안내</span>
             </div>
-            <div style="display: flex; gap: 12px;">
-                <a href="#" onclick="alert('준비중입니다.'); return false;" class="cta-btn" style="background: var(--bg-secondary); color: var(--text-main); border: 1px solid var(--border-light);">제안서 다운로드</a>
-                <!-- 카카오톡 오픈채팅 주소 연동 완료 -->
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="#" class="btn-outline">제안서 다운로드</a>
                 <a href="https://open.kakao.com/o/sgVULiqi" target="_blank" class="cta-btn">제휴 문의 (카카오톡)</a>
             </div>
         </div>
@@ -180,7 +221,7 @@
             <p>저희는 거창한 AI 기업도, 비싼 대치동 컨설턴트도 아닙니다.<br>송파·방이 지역 내신을 가장 최근에 뚫어내고 명문대에 진학한 '선배팀'입니다.<br>학원은 교과 수업에만 전념하시고, 방어율 높은 수시 지원 전략은 저희와 깔끔하게 나누십시오.</p>
             <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2.5rem;">
                 <div style="text-align: center; background: white; border-radius: 12px; padding: 1rem 1.8rem; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                    <div style="font-size: 1.9rem; font-weight: 900; color: #1E293B; letter-spacing: -1.5px;">20+</div>
+                    <div style="font-size: 1.9rem; font-weight: 900; color: #1E293B; letter-spacing: -1.5px;">30인</div>
                     <div style="font-size: 0.78rem; color: #64748b; font-weight: 600; margin-top: 3px;">명문대 합격 멘토</div>
                 </div>
                 <div style="text-align: center; background: white; border-radius: 12px; padding: 1rem 1.8rem; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
@@ -223,14 +264,14 @@
                 <p>PS:LAB 파트너 학원에게만 제공되는 독보적인 프리미엄 혜택입니다.</p>
             </div>
             
-            <div class="grid-2">
-                <div class="card" style="border-top: 4px solid #10b981; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);">
-                    <h3 style="color: #10b981;">📊 월간 입시 칼럼 정기 배포</h3>
+            <div class="grid-2" style="align-items: stretch;">
+                <div class="card" style="border-top: 4px solid #475569; box-shadow: 0 10px 25px rgba(71, 85, 105, 0.08); height: 100%;">
+                    <h3 style="color: #334155;">📊 월간 입시 칼럼 정기 배포</h3>
                     <p>매월 1회, 원장님 명의로 학부모에게 즉시 발송 가능한 고퀄리티 입시/학습 칼럼을 제공합니다. 학원의 입시 전문성을 학부모님들께 지속적으로 어필할 수 있습니다.</p>
                 </div>
                 
-                <div class="card" style="border-top: 4px solid #f59e0b; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.1);">
-                    <h3 style="color: #f59e0b;">🎓 시즌별 무료 특강 지원</h3>
+                <div class="card" style="border-top: 4px solid #64748b; box-shadow: 0 10px 25px rgba(100, 116, 139, 0.08); height: 100%;">
+                    <h3 style="color: #475569;">🎓 시즌별 무료 특강 지원</h3>
                     <p>제휴 등급에 따라 분기/반기별 1회, PS:LAB 멘토진이 직접 방문하는 '생기부/학종 필승 전략' 오프라인 무료 특강을 지원합니다. 원생 모집 및 유지에 강력한 무기가 됩니다.</p>
                 </div>
             </div>
@@ -253,29 +294,6 @@
                         <h4>2. 로컬 선배들의 진짜 인사이트 투입</h4>
                         <p>과장된 통계나 뻔한 AI 복붙이 아닙니다. 이 동네 고등학교에서 실제로 시험을 치고, 교내 대회를 준비했던 멘토들이 후배의 데이터를 열어보고 가장 현실성 있는 생기부/세특 전략안을 수작업으로 기획합니다.</p>
                         
-                        <div style="margin-top: 15px; padding: 15px; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; border-left: 4px solid #10b981;">
-                            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <strong style="color: #10b981; font-size: 0.95rem; letter-spacing: -0.5px;">[로컬 이과 마스터 멘토 검증 완료, 준비 중]</strong>
-                            </div>
-                            <p style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px; line-height: 1.6;">
-                                기존 문과/상경계열 핵심 창업진 외에도, 이과 입시 파워를 극대화하기 위해 보성고 직속 선배진 합류가 완료되어 실무 투입 준비를 마쳤습니다.
-                            </p>
-                            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.6;">
-                                <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 6px;">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <div><strong style="color: var(--text-main);">메디컬 학종 (중앙대 의대):</strong> <span style="color: var(--text-muted);">극강의 내신 방어와 의대 맞춤형 세특 로직 최적화 담당</span></div>
-                                </li>
-                                <li style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 6px;">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <div><strong style="color: var(--text-main);">정시/서울대 공대 (서울대 기계공학):</strong> <span style="color: var(--text-muted);">수능 데이터를 기반으로 한 정시 및 심층 면접 전략 제공</span></div>
-                                </li>
-                                <li style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px; flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                    <div style="color: #94A3B8;"><strong>수리논술 (서강대 수학과):</strong> 합류 예정 (세부 일정 조율 중)</div>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li>
                         <h4>3. 완성된 리포트 URL 납품</h4>
@@ -306,7 +324,7 @@
                 <p>송파·방이 학군의 정점을 찍은 데이터 분석 기반의 명문대 창업진이 최상의 컨설팅 퀄리티를 유지합니다.</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 25px;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 25px;">
                 <!-- 대표 멘토 CEO -->
                 <div style="background: #FFF; border: 1px solid var(--border-light); border-top: 3px solid var(--bg-corporate); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 35px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.03)';">
                     <img src="assets/khu.png" alt="경희대" style="position: absolute; bottom: -15px; right: -15px; width: 100px; height: 100px; object-fit: contain; opacity: 0.08; pointer-events: none;">
@@ -326,14 +344,14 @@
                 <div style="background: #FFF; border: 1px solid var(--border-light); border-top: 3px solid var(--bg-corporate); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 35px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.03)';">
                     <img src="assets/hyu.png" alt="한양대" style="position: absolute; bottom: -15px; right: -15px; width: 100px; height: 100px; object-fit: contain; opacity: 0.08; pointer-events: none;">
                     <div style="margin-bottom: 20px; position: relative;">
-                        <h3 style="font-size: 1.3rem; color: var(--bg-corporate); font-weight: 800; margin: 0; letter-spacing: -0.5px;">CTO</h3>
+                        <h3 style="font-size: 1.3rem; color: var(--bg-corporate); font-weight: 800; margin: 0; letter-spacing: -0.5px;">CPO</h3>
                     </div>
                     <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">한양대 공과대학</div>
                     
                     <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Key Responsibility</div>
                     <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; letter-spacing: -0.3px;">AI 워크플로우 및 교육 데이터 최적화</div>
                     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: var(--text-muted);">•</span> AI 기반 분석 시스템 설계 및 송파구 특화 교육 지도(Map) 개발 총괄</li>
+                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: var(--text-muted);">•</span> AI 기반 운영 자동화 시스템 설계 및 송파구 특화 교육 지도(Map) 개발 총괄</li>
                     </ul>
                 </div>
                 
@@ -352,24 +370,11 @@
                     </ul>
                 </div>
 
-                <!-- 인문 C멘토 CRO -->
-                <div style="background: #FFF; border: 1px solid var(--border-light); border-top: 3px solid var(--bg-corporate); border-radius: 12px; padding: 40px 24px 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 35px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.03)';">
-                    <img src="assets/ku.png" alt="고려대" style="position: absolute; bottom: -15px; right: -15px; width: 100px; height: 100px; object-fit: contain; opacity: 0.08; pointer-events: none;">
-                    <div style="margin-bottom: 20px; position: relative;">
-                        <h3 style="font-size: 1.3rem; color: var(--bg-corporate); font-weight: 800; margin: 0; letter-spacing: -0.5px;">COO</h3>
-                    </div>
-                    <div style="font-size: 0.9rem; color: var(--text-main); font-weight: 700; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light);">고려대 경영학부</div>
-                    
-                    <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Key Responsibility</div>
-                    <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; letter-spacing: -0.3px;">HR 인프라 및 운영 품질 관리(QC)</div>
-                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-                        <li style="position: relative; padding-left: 10px; margin-bottom: 4px;"><span style="position: absolute; left: 0; top: 0; color: var(--text-muted);">•</span> 전국 명문대 멘토진 리크루팅 총괄 및 내부 리포트 생산 공정 품질 관리</li>
-                    </ul>
-                </div>
+
             </div>
                 
             <div style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-light); max-width: 600px; margin-left: auto; margin-right: auto;">
-                * 모든 임원진은 방이동 코어 학군인 <strong style="color: var(--text-main);">보성고등학교 동문</strong>으로 연결되어 있습니다.<br>
+                * 모든 창업진은 방이동 코어 학군인 <strong style="color: var(--text-main);">보성고등학교 동문</strong>으로 연결되어 있습니다.<br>
                 <span style="font-size: 0.85rem; white-space: nowrap;">(자연과학계열 특별 자문: 한양대 화학과 자문멘토)</span>
             </div>
         </div>
@@ -383,32 +388,40 @@
                 <p>좋은 게 좋은 동아리식 제휴가 아닙니다. 역할과 권리를 명확히 나눕니다.</p>
             </div>
             
-            <div class="partnership-box" style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-left: 4px solid #ef4444; border-radius: 8px; padding: 25px 30px; margin-bottom: 30px; text-align: left; margin-top: 40px;">
-                <h4 style="color: #ef4444; margin-bottom: 10px; font-size: 1.2rem; font-weight: 800;">[상생 서약] 단 한 명의 원생도 건드리지 않습니다.</h4>
-                <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 500; max-width: 100%;">PS:LAB은 어떠한 경우에도 교과목 수업 및 교과 과외를 진행하거나 알선하지 않습니다. 오직 '생기부/세특 컨설팅' 영역에만 머물며 제휴 학원에 재원생이 안정적으로 종속되도록 든든한 방패 역할을 수행합니다.</p>
+            <div class="partnership-box" style="background: rgba(15, 23, 42, 0.95); border-radius: 12px; padding: 35px; margin-bottom: 40px; text-align: left; margin-top: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h4 style="color: #fff; margin: 0; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px;">[상생 서약] 단 한 명의 원생도 건드리지 않습니다.</h4>
+                </div>
+                <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.6; margin: 0; font-weight: 500;">PS:LAB은 어떠한 경우에도 교과목 수업 및 교과 과외를 진행하거나 알선하지 않습니다. 오직 <strong style="color:#38bdf8;">'생기부/세특 컨설팅'</strong> 영역에만 머물며 제휴 학원에 재원생이 안정적으로 종속되도록 든든한 방패 역할을 수행합니다.</p>
             </div>
             
-            <div class="partnership-box" style="margin-top: 0;">
-                <h3>학원 측 도입 비용: 0원</h3>
-                <p>가맹비나 수수료는 일절 없습니다. 수익(컨설팅 비용)은 PS:LAB이 학부모님으로부터 직접 수취합니다.<br>대신, 저희는 비용 0원의 정당성을 위해 아래의 <strong>상호 협력(Mutual Cooperation)</strong>을 요청드립니다.</p>
+            <div class="partnership-box" style="margin-top: 0; border: none; padding: 0;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="font-size: 1.8rem; font-weight: 900; color: var(--bg-corporate); margin-bottom: 10px;">도입 비용: 0원</h3>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">가맹비나 수수료는 일절 없습니다. 수익(컨설팅 비용)은 PS:LAB이 학부모님으로부터 직접 수취합니다.<br>대신, 저희는 비용 0원의 정당성을 위해 아래의 <strong style="color: var(--text-main);">상호 협력(Mutual Cooperation)</strong>을 요청드립니다.</p>
+                </div>
                 
-                <div class="p-grid" style="grid-template-columns: 1fr; gap: 20px;">
-                    <div class="p-item" style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="color: #60A5FA; font-weight: 700;">1. 초기 브랜드 세션 보장</h4>
-                        <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.6;">제휴 초기, 원내 재원생 및 학부모 대상 30~60분 분량의 PS:LAB 무료 입시 세미나 및 서비스 홍보 타임 제공</p>
+                <div class="p-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;">
+                    <div style="background: #FFF; padding: 30px 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: 3rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: 10px; font-family: 'Arial Black', sans-serif;">01</div>
+                        <h4 style="color: var(--bg-corporate); font-weight: 800; font-size: 1.15rem; margin-bottom: 12px; letter-spacing: -0.3px;">초기 브랜드 세션 보장</h4>
+                        <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">제휴 초기, 원내 재원생 및 학부모 대상 30~60분 분량의 PS:LAB 무료 입시 세미나 및 서비스 홍보 타임 제공</p>
                     </div>
-                    <div class="p-item" style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="color: #60A5FA; font-weight: 700;">2. 오프라인 홍보 거점 구축</h4>
-                        <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.6;">학원 데스크 및 로비 등 주요 동선 내 PS:LAB 공식 팜플렛 및 홍보물 상시 비치</p>
+                    <div style="background: #FFF; padding: 30px 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: 3rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: 10px; font-family: 'Arial Black', sans-serif;">02</div>
+                        <h4 style="color: var(--bg-corporate); font-weight: 800; font-size: 1.15rem; margin-bottom: 12px; letter-spacing: -0.3px;">오프라인 홍보 거점</h4>
+                        <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">학원 데스크 및 로비 등 주요 동선 내 PS:LAB 공식 팜플렛 및 홍보물 상시 비치</p>
                     </div>
-                    <div class="p-item" style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="color: #60A5FA; font-weight: 700;">3. 전문성 기반 구두 홍보</h4>
-                        <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.6;">학원 강사진이 상담 및 수업 과정에서 PS:LAB 컨설팅의 품질을 직접 언급하고 적극적으로 추천하는 파트너십 구축</p>
+                    <div style="background: #FFF; padding: 30px 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: 3rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: 10px; font-family: 'Arial Black', sans-serif;">03</div>
+                        <h4 style="color: var(--bg-corporate); font-weight: 800; font-size: 1.15rem; margin-bottom: 12px; letter-spacing: -0.3px;">구두 홍보 파트너십</h4>
+                        <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">학원 강사진이 상담 및 수업 과정에서 PS:LAB 컨설팅의 품질을 직접 언급하고 적극적으로 추천</p>
                     </div>
                 </div>
                 
-                <div style="margin-top: 50px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <a href="#" onclick="alert('준비중입니다.'); return false;" class="cta-btn" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s ease;">제안서 PDF 다운로드</a>
+                <div style="margin-top: 70px; margin-bottom: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+
                     <!-- 카카오톡 오픈채팅 주소 연동 완료 -->
                     <a href="https://open.kakao.com/o/sgVULiqi" target="_blank" class="cta-btn" style="background: white; color: var(--bg-corporate);">파트너십 논의하기 (카카오톡)</a>
                 </div>
@@ -467,5 +480,8 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
+

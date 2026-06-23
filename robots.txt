@@ -27,8 +27,5 @@ Disallow: /pdf_extracted.txt
 Disallow: /pdf_text_raw.txt
 Disallow: /pdf_text2.txt
 Disallow: /report_source.pdf
-Disallow: /assets/competitor_
-Disallow: /assets/competitor_baejewook.pdf
-Disallow: /assets/competitor_godaehyun.pdf
 
 Sitemap: https://www.pslabedu.kr/sitemap.xml

@@ -248,15 +248,22 @@
         
         /* Mobile adjustments */
         @media (max-width: 768px) {
+            .experts-hero { padding: 5rem 5% 2rem; }
+            .experts-hero h1 { font-size: 2.2rem; }
+            .filter-container { gap: 0.8rem; padding: 1rem 5%; top: 60px; }
+            .filter-btn { font-size: 0.9rem; padding: 0 0 0.3rem 0; }
+            .expert-list { padding: 1rem 5% 3rem; }
             .expert-item {
                 flex-direction: column;
                 padding: 2rem 0;
+                gap: 1rem;
             }
             .expert-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
             }
+            .expert-index { font-size: 1.3rem; min-width: auto; padding-top: 0; }
         }
 
             .highlight {
@@ -266,6 +273,16 @@
             display: inline-block;
         }
     </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PS:LAB 전문가 그룹 | Experts">
+    <meta property="og:description" content="PS:LAB의 입시 전문가 그룹을 소개합니다.">
+    <meta property="og:url" content="https://www.pslabedu.kr/experts.html">
+    <meta property="og:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PS:LAB 전문가 그룹 | Experts">
+    <meta name="twitter:description" content="PS:LAB의 입시 전문가 그룹을 소개합니다.">
+    <meta name="twitter:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <link rel="canonical" href="https://www.pslabedu.kr/experts.html">
 </head>
 <body>
     <nav class="navbar">
@@ -343,20 +360,19 @@
     <script>
         const expertsData = [
     { id: 14, college: "서울대학교 의과대학", major: "의예과", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "강동 한영고등학교 졸업", strengths: ["일반고 의예 학종 합격 케이스 — 학교생활 충실성 + 인성·독서 위주 / 성실도 강점"], accepted: "<strong class='highlight'>[의예 3관왕]</strong> 서울대 의예 · 연세대 의예 · 충남대 의예", external: "", tags: ["#일반고의예학종", "#강동한영고", "#성실도"], qc: true, security: false, uniLogo: "assets/snu.png" },
-    { id: 13, college: "중앙대학교 의과대학", major: "의학부", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["보성고 전교권 / 메디컬 학종 특화 라인"], accepted: "", external: "", tags: ["#송파보성고", "#메디컬학종", "#전교권"], qc: false, security: false, uniLogo: "assets/cau_med_logo.svg" },
+    { id: 13, college: "중앙대학교 의과대학", major: "의학부", role: "대표 멘토진", categories: ["대표 멘토진", "의생명 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["보성고 전교권 / 메디컬 학종 특화 라인"], accepted: "", external: "", tags: ["#송파보성고", "#메디컬학종", "#전교권"], qc: false, security: false, uniLogo: "assets/cau_med_logo.svg" },
     { id: 15, college: "중앙대학교 의과대학", major: "의학부", role: "정시 전략", categories: ["의생명 계열", "정시 전략"], passType: "학종+정시 병행", hs: "강동 동북고등학교 졸업", strengths: ["냉철한 자기객관화 / 효율적 공부 전략 / 약점 보완"], accepted: "카이스트 · 건국대 의예", external: "모교 동북고 잇다 멘토링 (주 2회 진행 중) — 생기부 분석 + 공부 가이드", tags: ["#메디컬정시", "#자기객관화", "#모교멘토링"], qc: false, security: false, uniLogo: "assets/cau_med_logo.svg" },
     { id: 10, college: "경희대학교 한의과대학", major: "한의예과", role: "정시 전략", categories: ["의생명 계열", "정시 전략"], passType: "학종+정시 병행", hs: "", strengths: ["이슈·교과 연결점 신규 발굴 (예: 루나코인·암호화폐) / 통일 스토리 유지"], accepted: "", external: "밀착형 컨설팅 전문 / 학부모 피드백 전문 / 1년+ 수학 온라인 조교", tags: ["#한의예", "#밀착형컨설팅", "#정시학종병행"], qc: false, security: false, uniLogo: "assets/khu.png" },
     
     { id: 5, college: "서울대학교 공과대학", major: "전기정보공학부", role: "멘토", categories: ["이공 계열"], passType: "학종", hs: "", strengths: ["이공계·메디컬 학종 / 문제인식→탐구→배움 3년 연계 설계"], accepted: "카이스트 무학과 · 연세대 전기전자 · 고려대 전기전자", external: "자사고 후배 컨설팅 다수 / 한양대·강원대 약대 진학 지도", tags: ["#이공계학종", "#자사고출신", "#현재진행컨설팅"], qc: false, security: false, uniLogo: "assets/snu.png" },
-    { id: 2, college: "서울대학교 사회과학대학", major: "경제학부", role: "대표 멘토진", categories: ["대표 멘토진", "정시 전략"], passType: "정시", hs: "송파 보성고등학교 졸업", strengths: ["일반고 2.4 / 수시 → 정시 전환형"], accepted: "고려대 전기전자 차석 · 한양대 인터칼리지 수석", external: "", tags: ["#정시전환형", "#수능내신밸런스", "#전략적효율"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 2, college: "서울대학교 사회과학대학", major: "경제학부", role: "대표 멘토진", categories: ["대표 멘토진", "정시 전략"], passType: "정시", hs: "송파 보성고등학교 졸업", strengths: ["일반고 2.4 / 수시 → 정시 전환형"], accepted: "고려대 전기전자 차석 · 한양대 인터칼리지 수석", external: "", tags: ["#정시전환형", "#수능내신밸런스", "#전략적효율"], qc: false, security: false, uniLogo: "assets/snu.png", cafeLink: "https://cafe.naver.com/suhui/29555308" },
     { id: 17, college: "서울대학교 공과대학", major: "기계공학부", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "송파 보성고등학교 졸업", strengths: [], accepted: "연세대 · 카이스트", external: "", tags: ["#송파보성고", "#정시이공", "#카이스트연세대"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 16, college: "서울대학교 공과대학", major: "원자핵공학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "학종+정시 병행", hs: "송파 잠신고등학교 졸업", strengths: [], accepted: "고려대", external: "", tags: ["#송파잠신고", "#이공특수트랙", "#정시학종병행"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 20, college: "서울대학교 인문대학", major: "역사학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["카테고리 정체성 + 학문적 다각화 / 1학년 상경→2학년 어문·사회→3학년 인문·역사"], accepted: "<strong class='highlight'>[학과 매트릭스]</strong> 연세대 · 고려대 · 성균관대 (역사·경제·국제 계열 동시)", external: "대치동 입시 컨설팅 학원 2곳 호평 / 면접 학원 조교 제의", tags: ["#외고출신", "#학과매트릭스", "#학종다중합격"], qc: false, security: false, uniLogo: "assets/snu.png" },
-    { id: 29, college: "서울대학교 인문대학", major: "독어독문학과", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["지방 일반고 + 외고 비출신 어문계열 서울대 학종 / 체계적 생기부 관리로 약점 극복"], accepted: "<strong class='highlight'>[학종 6관왕 — 전부 최초 합격]</strong> 연세대 독어독문 · 고려대 영어영문 · 성균관대 인문계열 · 한양대 미디어커뮤니케이션 · 중앙대 영어영문", external: "대형 입시 학원 전임 강사 / 면접 컨설팅 전문", tags: ["#학종6관왕", "#외고비출신어문", "#지방일반고서울대"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 26, college: "서울대학교 학부대학", major: "자유전공학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["기승전결·연결성 있는 스토리 생기부"], accepted: "성균관대", external: "", tags: ["#서울대자전", "#학종", "#일반고"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 21, college: "서울대학교 사범대학", major: "", role: "멘토", categories: ["인문·교육 계열", "이공 계열"], passType: "학종", hs: "", strengths: ["본인 역량 대비 활동의 변화·성장 서사 설계"], accepted: "", external: "입시 컨설턴트 보고서 작성", tags: ["#사범대", "#이공계학종", "#변화서사"], qc: false, security: false, uniLogo: "assets/snu.png" },
 
-    { id: 3, college: "고려대학교 경영대학", major: "경영학과", role: "대표 멘토진", categories: ["대표 멘토진", "상경·사회 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 1.8 / 정석 학종 파이터"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 경영 · 성균관대 경영 · 서강대 경제", external: "", tags: ["#학종4관왕", "#정석학종파이터", "#일관된생기부"], qc: false, security: false, uniLogo: "assets/ku.png" },
+    { id: 3, college: "고려대학교 경영대학", major: "경영학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 1.8 / 정석 학종 파이터"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 경영 · 성균관대 경영 · 서강대 경제", external: "", tags: ["#학종4관왕", "#정석학종파이터", "#일관된생기부"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 24, college: "고려대학교 정경대학", major: "경제학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["나만의 프로젝트 탐구·타과목 융합"], accepted: "성균관대 자유전공 · 고려대 산업경영공", external: "", tags: ["#학종", "#수행평가진로연결", "#융합탐구"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 25, college: "고려대학교 정경대학", major: "", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["동기→과정→결과→복기·수정점 4단계 구조 / 수평·수직적 활동 연장"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 HASS · 성균관대 글리 · 성균관대 사회과학계열", external: "", tags: ["#외고출신", "#학종4관왕", "#사회과학"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 23, college: "고려대학교 정보보호학부", major: "사이버국방학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "", strengths: [], accepted: "한양대 파이낸스경영 · 서강대 AI자전", external: "입시 학원 강사 (학부모 보고서 작성)", tags: ["#사이버국방학과", "#국방부계약학과", "#보안전문"], qc: false, security: true, uniLogo: "assets/ku.png" },
@@ -372,7 +388,7 @@
     { id: 12, college: "한양대학교 경영대학", major: "경영학부", role: "멘토", categories: ["상경·사회 계열"], passType: "학종+교과 병행", hs: "송파 오금고등학교 졸업", strengths: [], accepted: "성균관대 사회학", external: "", tags: ["#송파오금고", "#학종교과병행", "#상경계열"], qc: false, security: false, uniLogo: "assets/hyu.png" },
     { id: 27, college: "한양대학교 사회과학대학", major: "", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["전공 적합성 + 탐구 역량 + 인성·리더십 어필 / 어문 라인 학종 통과"], accepted: "중앙대 러시아어문 · 한국외대 노어", external: "", tags: ["#외고출신", "#어문라인", "#학종다중합격"], qc: false, security: false, uniLogo: "assets/hyu.png" },
 
-    { id: 1, college: "경희대학교 이과대학", major: "지리학과", role: "대표 멘토진", categories: ["대표 멘토진", "인문·교육 계열", "이공 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 약점 극복형 / 3학년 역전 생기부 / 미적분 5등급 극복 / 경희대식 내신 2.9"], accepted: "아주대 최종합 · 시립대 1차", external: "", tags: ["#일반고학종", "#약점극복형", "#문이과교차"], qc: false, security: false, uniLogo: "assets/khu.png" },
+    { id: 1, college: "경희대학교 이과대학", major: "지리학과", role: "대표 멘토진", categories: ["대표 멘토진", "인문·교육 계열", "이공 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 약점 극복형 / 3학년 역전 생기부 / 미적분 5등급 극복 / 경희대식 내신 2.9"], accepted: "아주대 최종합 · 시립대 1차", external: "", tags: ["#일반고학종", "#약점극복형", "#문이과교차"], qc: false, security: false, uniLogo: "assets/khu.png", cafeLink: "https://cafe.naver.com/suhui/29555867" },
     { id: 6, college: "경희대학교 생명과학대학", major: "", role: "멘토", categories: ["의생명 계열"], passType: "학종", hs: "", strengths: ["3년 일관 관심사 / 학년·교과 연계 탐구 / 본인 빌드업"], accepted: "이화여대 · 건국대 · 홍익대", external: "대형 입시 컨설팅 학원 다년 근무 (3곳) / 1:1 + 학급 단위 멘토링 진행 중", tags: ["#생명과학탐구", "#컨설팅+멘토링병행", "#현재진행"], qc: false, security: false, uniLogo: "assets/khu.png" },
     { id: 18, college: "경희대학교 경영대학", major: "경영학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["일반고 탐구 보고서 / 계기→내용→결론→비판 4단계 구조"], accepted: "건국대 경영 · 국민대 법학", external: "입시 플랫폼 자료집 집필진 / 윈터스쿨 생기부 튜터 (학생 4명 밀착)", tags: ["#일반고학종", "#탐구보고서", "#상경계열"], qc: false, security: false, uniLogo: "assets/khu.png" }
 ];
@@ -411,6 +427,15 @@
             }
 
             filtered.sort((a, b) => {
+                if (filter === "대표 멘토진") {
+                    const order = [2, 13, 4, 1];
+                    let aIdx = order.indexOf(a.id);
+                    let bIdx = order.indexOf(b.id);
+                    if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+                    if (aIdx !== -1) return -1;
+                    if (bIdx !== -1) return 1;
+                }
+
                 let aLocal = isLocalMentor(a.hs) ? 0 : 1;
                 let bLocal = isLocalMentor(b.hs) ? 0 : 1;
                 
@@ -470,11 +495,14 @@
                 
                 let tagsHtml = expert.tags.map(t => `<span style="background: rgba(37,99,235,0.06); color: var(--color-accent); border: 1px solid rgba(37,99,235,0.15); padding: 5px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: -0.3px;">${t}</span>`).join('');
                 
+                let cafeLinkHtml = expert.cafeLink ? `<a href="${expert.cafeLink}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:4px; background:#03C75A; color:white; text-decoration:none; font-size:0.75rem; font-weight:900; box-shadow:0 2px 4px rgba(3,199,90,0.2);" title="네이버 수만휘 칼럼">N</a>` : '';
+                
                 let headerHtml = `
                     <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                             <img src="${expert.uniLogo}" alt="Logo" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.style.display='none'">
                             <h3 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.5px;">${expert.college}</h3>
+                            ${cafeLinkHtml}
                             ${categoryBadgeHtml}
                             ${roleBadgeHtml}
                             ${qcBadgeHtml}
@@ -527,6 +555,8 @@
 
         renderExperts();
     </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+
+
