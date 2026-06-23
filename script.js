@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.requestAnimationFrame(step);
             observer.unobserve(target);
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
     countElements.forEach(el => {
         countObserver.observe(el);

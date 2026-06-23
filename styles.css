@@ -201,6 +201,8 @@ h2 {
 
 .logo span {
     color: var(--color-accent);
+    display: inline-block;
+    transform: translateY(-0.08em);
 }
 
 .nav-links {
