@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo_symbol.png">
+    <title>pslab | 칼럼: [입시 프로토콜 해독하기] 서강대 학종편</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .column-detail-section { padding: 8rem 5% 5rem; min-height: 80vh; background-color: var(--color-bg-main); }
+        .column-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 3rem 4rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .column-header { border-bottom: 2px solid var(--color-bg-light); padding-bottom: 2rem; margin-bottom: 2.5rem; text-align: center; }
+        .column-badge { background: rgba(37,99,235,0.1); color: var(--color-accent); font-size: 0.85rem; font-weight: 800; padding: 6px 14px; border-radius: 6px; display: inline-block; margin-bottom: 1rem; }
+        .column-title { font-size: 2.2rem; font-weight: 900; color: var(--color-primary); line-height: 1.4; margin-bottom: 1rem; word-break: keep-all; }
+        .column-meta { color: var(--color-text-muted); font-size: 0.95rem; }
+        .column-content { font-size: 1.1rem; line-height: 1.8; color: #334155; word-break: keep-all; }
+        .column-content h2 { font-size: 1.6rem; color: var(--color-primary); margin-top: 3rem; margin-bottom: 1.2rem; font-weight: 800; }
+        .column-content h3 { font-size: 1.3rem; color: var(--color-primary); margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; }
+        .column-content p { margin-bottom: 1.2rem; }
+        .column-content hr { border: 0; height: 1px; background: #e2e8f0; margin: 3rem 0; }
+        .column-content strong { font-weight: 800; color: var(--color-accent); }
+        .column-content .quote-block { background: #f8fafc; border-left: 4px solid var(--color-accent); padding: 1.5rem; margin: 2rem 0; font-style: italic; color: #475569; font-weight: 500; }
+        .column-footer { margin-top: 4rem; padding-top: 2rem; border-top: 2px dashed #e2e8f0; text-align: center; }
+        .cta-box { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; margin-top: 2rem; }
+        .cta-box p { font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; }
+        @media(max-width: 768px) { .column-container { padding: 2rem; } .column-title { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+            <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+                <span>2026.07 정식 런칭</span>
+            </div>
+        </div>
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab" style="height: 28px; width: auto;"></a>
+            <ul class="nav-links" style="margin: 0 auto; gap: 2rem;">
+                <li style="white-space: nowrap;"><a href="songpa_index.html" style="color: var(--color-accent); font-weight: 700;">SONGPA</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#about">팀 프로필</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#process">프로세스</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#programs">플랜/가격</a></li>
+                <li style="white-space: nowrap;"><a href="columns.html">칼럼&수기</a></li>
+                <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
+                <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
+            </ul>
+            <div class="nav-cta" style="flex-shrink: 0;">
+                <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">상담 신청하기</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="column-detail-section">
+        <div class="column-container">
+            <div class="column-header">
+                <span class="column-badge">pslab 오리지널 칼럼</span>
+                <h1 class="column-title">[입시 프로토콜 해독하기] 서강대 학종편 : 면접도 최저도 없다는 건 무슨 뜻일까?</h1>
+                <p class="column-meta">작성: pslab 입시 연구팀 &nbsp;|&nbsp; <span style="color: #059669; font-weight: 700;">수만휘 동시 게재 인기 칼럼</span></p>
+            </div>
+            <div class="column-content">
+                <p style="text-align: center; font-size: 1.3rem; font-weight: 700; color: var(--color-primary); margin-bottom: 2rem;">서성한 학교별 해부 그 첫 번째, 서강대 학생부종합전형을 뜯어봅니다</p>
+
+                <p>안녕하세요. [입시 프로토콜 해독하기] 두 번째 칼럼으로 다시 인사드립니다. 지난 첫 칼럼에서 서성한 라인 학종이 그 위, 아래와 어떻게 다른 블록을 이루는지 전반적으로 풀었고, 마지막에 "이제부터 학교를 하나씩 뜯어보겠다"고 약속드렸습니다. 그 첫 타자가 서강대입니다.</p>
+
+                <p>신촌에 위치한, 대학 중 최상급의 입지를 가진 서강대는 그 위상, 능력 또한 자타공인으로 더욱 인정받는, 정말 매력적인 대학이라고 볼 수 있습니다.</p>
+
+                <div class="quote-block">
+                    "진리에 순종하라. OBEDIRE VERITATI"<br><br>
+                    "그대 서강의 자랑이듯, 서강 그대의 자랑이어라."<br>
+                    <span style="font-size: 0.9rem; color: #64748b;">- 서강대의 정체성이 어떤 문장으로도, 이 한 문장보단 잘 표현될 수 없는, 서강대의 슬로건입니다.</span>
+                </div>
+
+                <p>알바트로스와 소수정예로 비유되고, 특유의 붉은색과 은색의 조합이 이름을 듣기만 해도 떠오르는, 한국의 리버럴 아츠 칼리지로 불리는 대학이죠. 이제 본격적으로, 서강대 학종전형 소개로 들어가겠습니다.</p>
+
+                <p style="text-align: center; font-weight: 700; margin-top: 3rem;">서강대 학종을 딱 한 줄로 줄이면 이렇습니다.</p>
+                <h2 style="text-align: center; color: var(--color-accent); font-size: 1.8rem; margin-top: 0.5rem;">"면접도 없고, 수능 최저도 없다."</h2>
+
+                <p style="text-align: center; font-style: italic; color: #64748b;">얼핏 들으면 "오. 조건이 없네? 부담이 적겠는데?" 싶으실 겁니다.</p>
+
+                <p><strong>그런데 이 한 줄이, 서성한 안에서도 서강대를 가장 독특하고 가장 매서운 자리에 앉혀 놓습니다.</strong> 지난 칼럼에서 꺼냈던 Only 생기부라는 '독립변수'를 다시 데려와 풀어보죠.</p>
+
+                <div class="quote-block" style="text-align: center; font-size: 1.2rem; font-weight: 700; border-left: none; border-top: 4px solid var(--color-accent); border-bottom: 4px solid var(--color-accent);">
+                    서강대 학종은 '서류 단판'이다
+                </div>
+
+                <p>2027학년도 기준 서강대 학생부종합 일반전형은 <strong>"서류평가 100%, 면접 없음, 수능 최저 없음"</strong>입니다. 1단계 배수로 거르는 것도 없이 일괄로 서류만 보고 합격자를 가립니다. <strong>올해부터 한 가지 바뀐 건, 기존 학생부종합(일반)이 일반 I (487명)과 일반 II (74명)로 분리됐다는 점이에요.</strong> 모집단위 특성을 반영하려는 변경인데, 일반 I 이 사실상 주력이고 일반 II 는 자유전공학부 등 일부 모집단위 중심입니다. 인문학부·사회과학부·지식융합미디어학부 일부 인원과 인문학기반·SCIENCE기반·AI기반 자유전공학부를 묶어 선발하는 구조입니다. 평가 방식은 둘 다 똑같습니다. 서류 100%, 그게 전부예요.</p>
+
+                <p>같은 서강대 안에서 비교하면 그림이 선명합니다. 교과 지역균형(178명)은 수능 최저(국·수·영·탐(1) 중 3개 영역 각 3등급)가 붙고, 논술(171명)도 최저(3개 영역 등급합 7)가 붙습니다. <strong>오직 학종만 면접도 최저도 걸지 않죠.</strong></p>
+
+                <p>지난 칼럼에서 면접이나 최저는 일반고 학생에게 서류 말고 합격을 노릴 '변수'가 하나 더 생기는 것이라고 말씀드렸습니다. 생기부의 비교과 수준이 특목, 자사고에 비교해 객관적으로 그 평균이 낮은 일반고 입장에선, 서류 평가라는 '단일 변수'에서 벗어나 가능성을 창출해내는 것이 중요합니다. <strong>그 관점에서 서강대 학종은 그 독립변수가 정확히 0. 0인 전형입니다.</strong> 서성한 세 학교 중에서도 가장 순수하게, 가장 극단적으로 생기부 하나만 보는 "서류 단판 승부"라는 뜻이죠.</p>
+
+                <p>사실상 서강대 문과를, 일반고 재학생의 입장에서, '일반고치고 내신도 압도적이지 않은데, 본인의 고교가 학종에 그렇게 자신있지 않고, 객관적으로 보았을 때 서강대에서 원하는 학종 인재가 아니다' 하면 (특히 본인 고교에서 소위, '서강대 합격한 사람이 적다.'라는 소문이 돈다면) 지원을 하시는 건 명백히 <strong>비추천입니다.</strong> 외고, 일부 자사고들의 놀이터에 섣불리 발을 들일 가능성이 큽니다. 일반고 생기부를 그냥 들고간다면 서강대는, 안정 카드가 안정이 아닐 수 있고, 상향이 우주 상향이 될 수 있습니다. 당연히, 이과도 과고, 자사고로 치환을 한다면 마찬가지입니다.</p>
+
+                <p>특히 이 글의 주독자이신 '일반고 학생분들'은 서강대 지원을 지원 전까지 매우 심사숙고하시며, 정말 조심하셔야합니다. 일반고 학생들에게 서강대는 확실한 카드라고는, 내신 등 압도적인 학업역량이 뒷받침 되지 않는 이상 장담을 하기가 정말 힘들 정도로, 수준 높은 고교들이 발을 매우 많이 담그는 대학입니다.</p>
+
+                <hr>
+
+                <h2>참고로 서강대는,</h2>
+                <ol>
+                    <li>학종에서 진로 반영비가 높지 않고 (성장가능성을 30%, 학업역량을 50%로 놓는 것은, 객관적으로 진로 탐구를 매우 앞서나가서 하는 것보다는, 학업 관련 자체에 집중하고, 세특 또한 학생의 그 과목의 학업의 근본적인 역량을 보는 방식을 선호하는 것을 시사합니다. 전공적합성, 계열적합성이 아니라 '성장가능성'이라는 용어에서 이미 끝난거긴 하지만요.)</li>
+                    <li>입학처에서 매년 입시 설명회에서 대놓고 <strong>'전공적합성'을 안본다</strong>고 선언한 대학입니다.</li>
+                </ol>
+                <p>아래에서 후술하겠지만, <strong>서강대는 정말 그 과목의 근본에 맞는 방식으로, 학생이 배움을 얼마나 딥하게 하였는지를 주로 보는 편입니다.</strong></p>
+
+                <p>다만 당연한 것은 <strong>계열, 즉 이수 과목이 그 지원 학과에 맞아야 된다는 것입니다.</strong> 이 사실을 무시해선, 본인의 역량이 특출나지 않는 이상 교차지원이 <strong>금기시</strong>되는 환경에서 합격을 무조건 기대하기 힘듭니다. [교차 지원은 정말 특수한 경우를 제외하곤 않고, 그렇게 추천드리진 않습니다. 가능성이 낮은 레드 오션에 스스로 들어가는 것이거든요.] 문과 생기부를 이과 전공에 지원하다간 과고, 자사고에 혼쭐이 날 수 있고, 이과 생기부로 컷이 낮(아 보이)는 문과 학과를 쓰다가 외고에 혼쭐이 날 수 있습니다. 화학을 안 이수하고 화공생명공을 쓰는 것도 마찬가지겠지요.</p>
+
+                <div class="quote-block" style="text-align: center;">
+                    면접도 최저도 없다는 건, 생기부가 거의 전부라는 뜻
+                </div>
+
+                <p>조건이 없다는 게 왜 부담이 적은 게 아니라 오히려 매서울까요. 뒤집으면 답이 나옵니다. <strong>입시는 기본적으로 상대평가입니다. 한정된 표본 내에서, 다른 지원자들과 경쟁을 할 수 밖에 없는 구조이죠.</strong> 면접이 없으니 서류에서 갈린 뒤 만회할 두 번째 기회가 없습니다. 최저가 없으니 수능으로 경쟁자가 걸러질 일도 없죠. <strong>남는 건 생기부 완성도 하나입니다.</strong></p>
+
+                <p>서강대 서류평가는 학업역량, 성장가능성, 공동체역량 세 축으로 1,000점을 정성평가합니다. 비중은 학업역량 50%, 성장가능성 30%, 공동체역량 20%예요. 학업역량 안에서도 성취수준(40%)에 더해 창의적 문제해결력(10%)을 따로 봅니다. <strong>단순 내신 숫자가 아니라 세특과 탐구에서 드러나는 사고의 깊이를 보겠다는 신호죠.</strong> 면접이 없으니, 앞서 말한 계열(이수 과목)만 맞아떨어지면, 그 위에서 세특·탐구에 학업의 깊이가 얼마나 박혀 있는지가 그대로 당락을 가릅니다.</p>
+
+                <p><strong>그래서 서강대 학종은 고교 환경과 생기부 밀도가 가장 적나라하게 드러나는 구간입니다.</strong><br>
+                활동의 단순 양이 아니라 세특·탐구에 새겨 넣은 학업적 깊이에서 앞서는 학교일수록 유리하고, 평범한 일반고에는 서성한 안에서도 가장 빡빡한 문이 됩니다.</p>
+
+                <p style="color: #64748b; font-size: 0.95rem;">[다만 당연하게도, 일반고라고 무조건 안 된다는 뜻이 절대 아닙니다. 면접도 최저도 없다는 건, 거꾸로 수능을 따로 챙길 여력이 없어도 생기부 하나가 인재상에 정확히 맞으면 그것만으로 승부가 된다는 뜻이기도 합니다. "결이 맞는" 탐구가 촘촘한 일반고 생기부라면 충분히 붙습니다.]</p>
+
+                <p>서류 단판이라 사소한 결격이 치명적입니다. 학교폭력 조치사항은 1호면 1,000점 만점에서 100점이 깎이고, 2호부터 9호까지는 과락(0점) 처리됩니다. <strong>(학폭은 절대 금지입니다!!!)</strong></p>
+
+                <hr>
+
+                <h2 style="text-align: center;">그래서 전년도, 과거 입결과 충원율을 어떻게 읽고, 참고해야 하나?</h2>
+
+                <p>여기서부터가 핵심입니다. 지난 칼럼에서 서성한 학종의 내신 입결이 낮아 보이고 충원율이 미친 듯이 도는 이유를 설명했는데, 서강대는 그게 수치로 또렷하게 찍힙니다.</p>
+
+                <p>2026학년도 서강대 학종 일반전형의 최초 경쟁률은 평균 13.86:1이었습니다. <strong>그런데 추가합격까지 반영한 실질 경쟁률은 5.57:1로 내려앉고, 평균 충원율은 약 <span style="color: var(--color-accent); text-decoration: underline;">149%</span>였습니다.</strong> 충원율 149%가 무슨 말이냐면, 처음 뽑은 100명이 거의 다 빠져나가고 그 위로 추가합격을 50명쯤 더 돌렸다는 뜻입니다. 이과 인기 학과는 더 셉니다. 시스템반도체공학과 충원율 <strong>257.1%</strong>, 기계공학과 <strong>244.0%</strong>. 합격해 놓고도 두 바퀴 넘게, 더 좋은 카드로 떠난 거죠.</p>
+
+                <p>서강대가 대입에선 학교의 위치상, 구조적으로 학종 합격자 유출은 정말 감수해야할 숙명입니다...<br>
+                연고대의 경우, 메디컬, 서울대와 이과의 카이스트, <strong>포스텍으로, 혹은 서로 유출되는 정도이지만,</strong> 서강대부터는 성, 한, Ist들과도 서로 주고받는 관계를 형성, 그 위로는 거의 무조건 유출되는 구조이니까요. 문과의 경우 일부 문디컬 지원자를 제외하고, 서,연,고에 미친듯이 유출되는 구조이죠. <strong>즉 연고대는 서울대나, 서로 유출 /// 반면 서강대부터는 <span style="text-decoration: underline;">확실히 3개 학교의 유출, 수시카드는 6개.</span> 서강대가 아예 안끼고 나를 적정 지원을 성, 한만 지원하지 않는 이상 충원율을 현 상황에서 줄이기는 쉽지 않죠.</strong></p>
+
+                <p>같은 서강대 교과 지역균형은 한술 더 뜹니다. <strong>2026학년도 최초 10.85:1에서 <span style="font-style: italic;">실질 1.57:1로 떨어지고, 평균 충원율은 약 441%. 사회과학부는 788.9%, 화학과는 640%까지 돌았습니다.</span></strong> 등록자 평균 내신을 봐도 인문에서 사회과학부 1.40, 경영학부 1.60등급 선이고요.</p>
+
+                <p>이 숫자들을 보고</p>
+                <div class="quote-block" style="text-align: center;">
+                    "어? 충원 이렇게나 도는데?"<br>
+                    "내신이 생각보다 너무 낮은데?"<br>
+                    "로또 기대해볼 수 있겠는데?"
+                </div>
+
+                <p>하면 딱 함정에 빠집니다. <strong>그 낮아 보이는 자리는 단순 내신은 낮아도 생기부가 단단한 특목·자사고 지원자들이 위로 빠지며 만든 착시예요.</strong> 그 자리를 다른 특목/자사/일반고 학생이 가져갈 가능성과, 지원자 본인이 가져갈 가능성을 잘 저울질하셔야 됩니다. <strong>서류 단판인 서강대에서는, 숫자만 보고 들어간 평범한 일반고가 고래 싸움에 새우 등 터지는 일이 특히 매몰차게 일어납니다.</strong></p>
+
+                <hr>
+
+                <h2 style="text-align: center;">일반고라면 서강대 학종을 어떻게 봐야 하는가</h2>
+
+                <p>지난 칼럼의 그 단어를 다시 꺼냅니다. <strong>'감수'</strong>입니다.</p>
+
+                <p>서강대 학종은 면접도 최저도 없어, 일반고가 안고 들어가는 불리함을 <strong>만회할 <span style="text-decoration: underline;">추가 변수</span>가 없습니다. 그러니 판단 기준은 분명해요. 충원율이 높아 보인다거나 입결이 낮아 보인다가 아니라, <span style="font-style: italic;">내 생기부(내신은 당연히 포함)가 인재상에 얼마나 정확히 맞는가 하나입니다.</span></strong><br>
+                <strong><span style="font-style: italic;">스스로의 펀더멘탈에 기대를 걸고, 충분히 가능성있다고 객관적으로 평가된다면, 무조건 걱정만 하는 것은 무리입니다. 다만 충원율이 저렇게 도는 만큼, 생기부 펀더멘탈이 받쳐주는 일반고라면 추합 끝물에 합격으로 들어가는 그림은 분명히 있습니다. 숫자만 믿고 지르는 것과, 펀더멘탈을 깔고 도전하는 것은 전혀 다른 이야기죠.</span></strong></p>
+
+                <p>기본적으로 100% 충원율 이상은 자랑하는 서강대 학종은, 사실상 일반고 학생들에겐 최초합은 사치, 추합이 구세주 역할을 톡톡히 합니다. 최초합이 중요한게 아닙니다. <strong><span style="text-decoration: underline;">"합격했다는 사실"</span></strong>이것이 중요한 것이죠. (특히 기계공학과, 화공생명공학과 등 서강대 내에서 많이 뽑는 학과는 정말 최초합이 아니라고 절망하는 것은 금지입니다.) 물론 동일 대학 교과의 충원율 '명성(?)'에 비하면 학종은 그렇게 대단한 편도 아니지만요.</p>
+
+                <p>물론 서강대를 '상향'으로 / '안정'으로 쓰는 차이나, 얼마나 '상향'이거나에 따라 취해야 될 지원 방향성은 달라질 수 있습니다. 일단 서강대에선, 합격자의 표본은 자사고, 과고, 문과 학과의 경우 특히나 외고가 정말로 많으니, <strong>학종 전형에서 이전 입결의 '내신 결과'로 상향, 적정 등을 평가하는 것은 <span style="color: #ef4444; text-decoration: underline;">매우매우 위험</span>하다는 것만은 명심해주시면 좋을 것 같습니다.</strong></p>
+
+                <div class="quote-block" style="text-align: center; font-size: 0.95rem; border-left: none; border-top: 2px solid #e2e8f0; border-bottom: 2px solid #e2e8f0; background: none;">
+                    (내신은 당연히 기본이긴합니다. 또한 일반고 학생들이 자사고, 특목고 학생들에 비해 거의 무조건 '수치상 우위'를 누릴 수 있는 항목이기도 하죠.<br>
+                    하지만 학생부라는 단일변수 평가인 서강대 학종의 시스템에선,<br>
+                    <strong>자신이 내신도 일반고치고 압도적이지 않은데.</strong><br>
+                    <strong>'자신의 고교'에서 역대 서강대 학종 합격자가 그렇게 많지 않고'.</strong><br>
+                    <strong>생기부도 '동일 내신 대비' '좋다고는 평가받지 않는다'면.</strong><br>
+                    <strong>생기부 관련해서. 또한 지원 카드 관련해서 서강대를 한 번쯤 돌아보실 필요는 있습니다.</strong>)
+                </div>
+
+                <p>한 가지 더. 농어촌·기초생활·보훈·장애·자립 자격이면 기회균형(85명), 다문화·군인·소방경찰 자녀나 가톨릭 추천이면 서강가치(34명) 트랙이 따로 열려 있습니다. 이것도 서류 100%고요. 본인이 지원 조건에 해당되시다면 일반전형만 보지 말고 무조건 최소한 고려를 하시는 것을 추천드립니다. 특수 전형은 조건이 맞는 학생들에게 주어지는 엄연한 기회입니다. 리스크를 감수하면 분명히 통과했을 때 그 가치가 정말로 빛을 발하는 전형입니다.</p>
+
+                <hr>
+
+                <p>이렇게 서성한 학교별 해부의 첫 타자로 서강대를 봤습니다. 학종이 전체적으로 면접도 최저도 없는, 서성한에서 가장 순수한 서류 단판. 그 한 줄에서 시작해 충원율의 정체까지 풀어봤네요. 다음 칼럼에서는 같은 라인이지만 면접과 최저가 얽혀 결이 또 다른 성균관대와 한양대부터 이어 적어보도록 하겠습니다.</p>
+                <p>마지막으로 긴 글 읽어주셔서 감사하다는 말을 남기며 마치겠습니다.</p>
+            </div>
+            
+            <div class="column-footer">
+                <div class="cta-box">
+                    <p>내 생기부와 성적, 흔들림 없는 전략이 필요하다면?</p>
+                    <a href="index.html#programs" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1.1rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(37,99,235,0.3);">pslab 컨설팅 플랜 보기</a>
+                </div>
+                <div style="margin-top: 2.5rem; display: flex; justify-content: center; gap: 1rem;">
+                    <a href="columns.html" class="btn btn-outline" style="border: none; background: #e2e8f0; font-weight: 700; color: #475569;">&larr; 목록으로 돌아가기</a>
+                    <a href="https://cafe.naver.com/suhui/29560497" target="_blank" class="btn btn-outline" style="border: none; background: #dcfce7; color: #166534; font-weight: 700;">수만휘 원문 보기</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab Logo" style="height: 26px; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%); opacity: 0.9;"></div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
+                <div>운영주체: 피에스랩 운영팀 &nbsp;|&nbsp; 문의: <a href="mailto:ancienthyun@khu.ac.kr" style="color: rgba(255,255,255,0.7);">ancienthyun@khu.ac.kr</a></div>
+                <div>카카오톡 1:1 문의: <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="color: rgba(255,255,255,0.7);">오픈채팅 바로가기</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 pslab Analytics. All rights reserved. &nbsp;|&nbsp;
+                <a href="terms.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">이용약관</a>
+                &nbsp;|&nbsp;
+                <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">개인정보처리방침</a>
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

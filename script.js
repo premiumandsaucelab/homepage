@@ -80,6 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.setAttribute('aria-label', '메뉴 열기');
         hamburger.innerHTML = '<span></span><span></span><span></span>';
         navContainer.appendChild(hamburger);
+        // Add CTA to mobile menu
+        const ctaClone = document.querySelector('.nav-cta a');
+        if (ctaClone && !navLinks.querySelector('.mobile-cta')) {
+            const li = document.createElement('li');
+            li.className = 'mobile-cta';
+            const clone = ctaClone.cloneNode(true);
+            clone.style.padding = '0.8rem 2rem';
+            clone.style.fontSize = '1.1rem';
+            li.appendChild(clone);
+            navLinks.appendChild(li);
+        }
+
+       
+
+
         
         // Toggle logic
         hamburger.addEventListener('click', () => {

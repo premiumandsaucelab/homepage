@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS:LAB | 송파 4개교 심층 분석 리포트</title>
+    <title>pslab | 송파 4개교 심층 분석 리포트</title>
     <meta name="description" content="2028 대입 개편안 대비 보성고, 동북고, 오금고, 덕수고 심층 분석 및 고교 선택 전략">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -27,20 +27,35 @@
         .report-table tr:hover td { background-color: #f1f5f9; }
         .highlight-box { background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.1) 100%); border: 1px solid rgba(37, 99, 235, 0.2); padding: 2.5rem; margin: 3rem 0; border-radius: 12px; position: relative; }
         .school-icon-h2 { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; background: #fff; padding: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Mobile: table stays in its horizontal-scroll container; tighten cells
+           so more of the 4-school comparison is visible per swipe. */
+        @media (max-width: 768px) {
+            .report-table-container { margin: 2rem 0; -webkit-overflow-scrolling: touch; }
+            .report-table th, .report-table td { padding: 0.8rem 0.7rem; font-size: 0.82rem; }
+            .report-table th { font-size: 0.82rem; }
+            .highlight-box { padding: 1.5rem 1.25rem; margin: 2rem 0; }
+        }
     </style>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PS:LAB | 송파 4개교 심층 분석 리포트">
+    <meta property="og:title" content="pslab | 송파 4개교 심층 분석 리포트">
     <meta property="og:description" content="2028 대입 개편안 대비 보성고, 동북고, 오금고, 덕수고 심층 분석 및 고교 선택 전략">
     <meta property="og:url" content="https://www.pslabedu.kr/songpa_core_schools.html">
-    <meta property="og:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <meta property="og:image" content="https://www.pslabedu.kr/assets/logo_full.png">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="PS:LAB | 송파 4개교 심층 분석 리포트">
+    <meta name="twitter:title" content="pslab | 송파 4개교 심층 분석 리포트">
     <meta name="twitter:description" content="2028 대입 개편안 대비 보성고, 동북고, 오금고, 덕수고 심층 분석 및 고교 선택 전략">
-    <meta name="twitter:image" content="https://www.pslabedu.kr/assets/logo_true_alpha.png">
+    <meta name="twitter:image" content="https://www.pslabedu.kr/assets/logo_full.png">
     <link rel="canonical" href="https://www.pslabedu.kr/songpa_core_schools.html">
 </head>
 <body>
     <nav class="navbar">
+<div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+          <span>2026.07 정식 런칭</span>
+      </div>
+  </div>
+
         <div class="nav-container">
             <a href="index.html" class="logo">PS<span>:</span>LAB</a>
             <ul class="nav-links">
@@ -51,7 +66,7 @@
 
     <header class="report-header">
         <div class="container">
-            <span class="badge" style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 0; padding: 0.4rem 1.2rem; font-weight: 600; margin-bottom: 2.5rem; display: inline-block; font-size: 0.85rem; letter-spacing: 1px;">PS:LAB 심층 입시 분석</span>
+            <span class="badge" style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 0; padding: 0.4rem 1.2rem; font-weight: 600; margin-bottom: 2.5rem; display: inline-block; font-size: 0.85rem; letter-spacing: 1px;">pslab 심층 입시 분석</span>
             <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.4; letter-spacing: -1.5px; color: #ffffff;">송파 4개교 대입 전략 완전 분석<br><span style="color: #60a5fa; font-weight: 700;">보성고 · 동북고 · 오금고 · 덕수고</span></h1>
             <p style="margin-top: 1.5rem; font-size: 1.1rem; color: #94a3b8; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.75; word-break: keep-all;">이 리포트는 송파·강동 지역 학부모, 학생을 위한 학교별 입시 전략 가이드입니다. 각 학교 출신 멘토진이 제시하는 학교 특성에 최적화된 맞춤 전략을 확인하세요.</p>
         </div>
@@ -115,17 +130,17 @@
             </div>
 
             <!-- 1. 보성고 -->
-            <h2 id="boseong">1. 보성고등학교 : 송파 일반고 최상위 입시 실적</h2>
-            <p>보성고등학교는 송파 일반고 중 최상위 입시 실적을 기록하며, 의학 계열 및 SKY 진학을 목표로 하는 남학생들에게 가장 선호도가 높은 학교입니다.</p>
+            <h2 id="boseong">1. 보성고등학교 : 송파&강동 일반고 최상위 입시 실적</h2>
+            <p>보성고등학교는 송파&강동 일반고 중 최상위 입시 실적을 기록하며, 의학 계열 및 SKY 진학을 목표로 하는 남학생들에게 가장 선호도가 높은 학교입니다.</p>
 
-            <h3>1.1 최근 대입 실적 (2025학년도)</h3>
-            <p>2025학년도 대입에서 의학계열 20명, 서울대 5명, 연세대 15명, 고려대 18명 합격이라는 송파 일반고 최상위 실적을 기록했습니다. 단순 진학률이 아닌 의대 및 최상위권 대학에 두루 합격하며, 내신 1.3~1.4 등급대의 학생들도 학생부종합전형으로 의대에 합격하는 등 학종 역량도 증명하고 있습니다.</p>
+            <h3>2025 입시 결과 분석</h3>
+            <p>2025학년도 대입에서 의학계열 20명, 서울대 5명, 연세대 15명, 고려대 18명 합격이라는 송파&강동 일반고 최상위 실적을 기록했습니다. 단순 진학률이 아닌 의대 및 최상위권 대학에 두루 합격하며, 내신 1.3~1.4 등급대의 학생들도 학생부종합전형으로 의대에 합격하는 등 학종 역량도 증명하고 있습니다.</p>
 
             <h3>1.2 핵심 입시 전략 (휴먼터치 시스템)</h3>
             <p>보성고의 가장 큰 강점은 학생부 차별화를 위한 <strong>'휴먼터치'</strong> 시스템입니다. 진로 진학 로드맵 수립, 맞춤형 가이드 책자, 개인의 서사가 드러나는 1:1 상담 기반 학생부 코칭이 이루어집니다. 수능 대비 병행 및 합불 데이터 기반 분석을 통해 수시(학종)와 정시(수능)를 전략적으로 모두 공략할 수 있는 환경입니다.</p>
 
-            <h3>1.3 PS:LAB 멘토 보유 현황</h3>
-            <p>PS:LAB은 보성고 출신 서울대, 의대, 연고대 합격 멘토를 다수 보유하고 있습니다. 보성고 특유의 학생부 차별화 전략, '보아반' 등 내부 프로그램 활용법, 교과 융합 프로그램 연계 세특 설계 노하우를 제공합니다.</p>
+            <h3>1.3 피에스랩 멘토 보유 현황</h3>
+            <p>피에스랩은 보성고 출신 서울대, 의대, 연고대 합격 멘토를 다수 보유하고 있습니다. 보성고 특유의 학생부 차별화 전략, '보아반' 등 내부 프로그램 활용법, 교과 융합 프로그램 연계 세특 설계 노하우를 제공합니다.</p>
 
             <!-- 2. 동북고 -->
             <h2 id="dongbuk">2. 동북고등학교 : 학종 최강 사립 남고</h2>
@@ -137,7 +152,7 @@
             <h3>2.2 핵심 입시 전략 (학종 특화 교육과정)</h3>
             <p>동북고의 핵심 경쟁력은 <strong>학종 대비 특화 교육과정</strong>입니다. 수능 출제 과목 전체를 학교 지정 과목에 포함하여 교과 이수와 수능 대비를 동시에 진행합니다. 자연계는 2학년 1학기에 물화생지 4과목 동시 선택이 가능하며 고급 물리/화학 거점을 개설합니다. 학생부 강화를 위해 서울대 평생교육원 연계 진로 컨설팅, 면접/논술 대비반이 운영됩니다.</p>
             
-            <h3>2.3 PS:LAB 멘토 보유 현황</h3>
+            <h3>2.3 피에스랩 멘토 보유 현황</h3>
             <p>동북고 출신 의대 및 SKY 합격 멘토를 보유하고 있습니다. 동북바칼로레아 기반 탐구 활동 설계, 고려대 면접 대비 등 동북고만의 학종 코드를 꿰뚫는 전략을 지원합니다.</p>
 
             <!-- 3. 오금고 -->
@@ -150,7 +165,7 @@
             <h3>3.2 핵심 입시 전략 (인프라 및 공유캠퍼스)</h3>
             <p>PCR 검사 장비 등 과학중점학교 수준의 장비와 우수 교사진을 바탕으로, <strong>과학 탐구 특화</strong>(학생 주도 자율 과학 탐구 프로젝트)와 인문융합 탐구를 전폭적으로 지원합니다. 가락고, 방산고와 함께 공유캠퍼스를 운영하여 학생들의 과목 선택권을 넓히며, 매년 120명 대상 외부 전문 진학 컨설팅을 실시합니다. 상대적으로 덜 치열한 내신 강점을 살려 교과 전형 및 균형 잡힌 학종 대비가 유리합니다.</p>
 
-            <h3>3.3 PS:LAB 멘토 보유 현황</h3>
+            <h3>3.3 피에스랩 멘토 보유 현황</h3>
             <p>오금고 출신 이공계 및 인문계 합격 멘토를 다수 보유하고 있습니다. 오금고만의 과학 탐구 프로젝트를 학생부 세특에 녹여내는 방법, 공유캠퍼스 100% 활용 전략 등 내부 사정을 잘 아는 맞춤 코칭을 제공합니다.</p>
 
             <!-- 4. 덕수고 -->
@@ -163,11 +178,11 @@
             <h3>4.2 핵심 입시 전략 (내신 선점 및 교과 집중)</h3>
             <p>신흥 학군의 특성상 내신 경쟁 강도가 타 핵심 학군에 비해 상대적으로 낮아 상위 <strong>내신 취득에 유리한 환경</strong>입니다. 교과 우수 학생들이 주요 대학 교과 전형에 집중 지원하여 성공하는 경향을 보입니다. 사립에서 공립으로 전환된 특수한 역사 덕분에 오랜 진학 지도 역량이 학교에 뿌리내려져 있어 고교학점제 등 교육과정 다양화에 기민하게 대응하고 있습니다.</p>
 
-            <h3>4.3 PS:LAB 멘토 보유 현황</h3>
+            <h3>4.3 피에스랩 멘토 보유 현황</h3>
             <p>덕수고 출신 주요 대학 합격 멘토가 위례 학군의 입시 환경, 덕수고 특유의 내신 전략 및 교과 전형 집중 지원 전략을 현장 경험을 바탕으로 가이드합니다.</p>
 
             <!-- 5. 결론 -->
-            <h2 id="conclusion">5. 2028 대입 개편과 송파 4개교 학교 선택 전략</h2>
+            <h2 id="conclusion">5. 2028 대입 개편과 송파&강동 4개교 학교 선택 전략</h2>
             
             <p>2028학년도 대입부터 내신이 5등급제로 완화(상위 10% 1등급)됨에 따라, 학생부 세특의 정성적 기록이 입시 변별력의 핵심으로 부상했습니다. 각 전형별 목표와 학생 성향에 따른 추천 학교는 다음과 같습니다.</p>
 
@@ -182,31 +197,28 @@
                         과학/인문 융합 인프라를 십분 활용하면서도 살인적인 내신 경쟁을 피하고자 하는 학생에게 적합합니다. <strong>중상위권 대학 교과전형 및 학종</strong>을 안정적으로 병행 타격할 수 있는 밸런스 픽입니다.
                     </li>
                     <li style="margin-bottom: 0; background: #ffffff; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <strong style="color: #0f172a; font-size: 1.15rem; display: block; margin-bottom: 0.2rem;"><span style="color: #3b82f6;">◆</span> 덕수고 <span style="color:var(--color-text-muted); font-weight: normal; font-size: 1rem;">| 위례/송파 내신 선점 및 교과 전략</span></strong>
+                        <strong style="color: #0f172a; font-size: 1.15rem; display: block; margin-bottom: 0.2rem;"><span style="color: #3b82f6;">◆</span> 덕수고 <span style="color:var(--color-text-muted); font-weight: normal; font-size: 1rem;">| 위례/송파&강동 내신 선점 및 교과 전략</span></strong>
                         위례 학군 내에서 빠르게 성장하는 학교의 인프라를 선점하여 <strong>최상위 내신을 상대적으로 수월하게 취득</strong>하고자 할 때 최적입니다. 안정적인 등급을 바탕으로 교과 우수자 전형을 주력으로 삼기에 매우 유리합니다.
                     </li>
                 </ul>
             </div>
             
             <div style="text-align: center; margin-top: 4rem;">
-                <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(37,99,235,0.3);">무료 사전예약 신청하기 &rarr;</a>
+                <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(37,99,235,0.3);">상담 신청하기 &rarr;</a>
             </div>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container footer-content">
-            <div class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
-                <img src="assets/logo_true_alpha.png" alt="PS:LAB Logo" style="height: 30px; width: 30px; min-width: 30px; flex-shrink: 0; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%);  opacity: 0.9;" onerror="this.onerror=null; this.alt='로고 오류';">
-                PS<span>:</span>LAB
-            </div>
+            <div class="footer-logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab Logo" style="height: 26px; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%); opacity: 0.9;"></div>
             <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
-                <div>운영주체: PS:LAB 준비팀 &nbsp;|&nbsp; 문의: <a href="mailto:daehyunkoh@pslabedu.kr" style="color: rgba(255,255,255,0.7);">daehyunkoh@pslabedu.kr</a></div>
+                <div>운영주체: 피에스랩 운영팀 &nbsp;|&nbsp; 문의: <a href="mailto:ancienthyun@khu.ac.kr" style="color: rgba(255,255,255,0.7);">ancienthyun@khu.ac.kr</a></div>
                 <div>카카오톡 1:1 문의: <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="color: rgba(255,255,255,0.7);">오픈채팅 바로가기</a></div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 PS:LAB Analytics. All rights reserved. &nbsp;|&nbsp;
+            <p>&copy; 2026 pslab Analytics. All rights reserved. &nbsp;|&nbsp;
                 <a href="terms.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">이용약관</a>
                 &nbsp;|&nbsp;
                 <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">개인정보처리방침</a>

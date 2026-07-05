@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo_symbol.png">
+    <title>pslab | 칼럼 & 수기</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .faq-page-section { padding: 8rem 5% 5rem; min-height: 80vh; background-color: var(--color-bg-main); }
+
+        /* 카테고리 그룹 (2단 아코디언) */
+        .faq-group { margin-bottom: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .faq-category { padding: 1.3rem 1.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); transition: background 0.3s; user-select: none; }
+        .faq-category:hover { background: linear-gradient(135deg, #eef2ff 0%, #e8ecf4 100%); }
+        .faq-category h3 { color: var(--color-primary); font-size: 1.25rem; font-weight: 800; margin: 0; }
+        .faq-category-icon { font-size: 1.4rem; color: var(--color-accent); transition: transform 0.3s ease; font-weight: 300; }
+        .faq-group.cat-open .faq-category-icon { transform: rotate(45deg); }
+        .faq-group.cat-open .faq-category { background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%); border-bottom: 1px solid var(--color-border); }
+
+        /* 카테고리 하위 문항 묶음 */
+        .faq-items { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .faq-group.cat-open .faq-items { max-height: 3000px; }
+
+        /* 개별 문항 카드 */
+        .faq-card { border-bottom: 1px solid var(--color-border); }
+        .faq-card:last-child { border-bottom: none; }
+        .faq-question { padding: 1.3rem 1.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.05rem; color: #333; background: #fff; transition: background 0.3s; margin: 0; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-answer { padding: 0 1.8rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease; color: var(--color-text-muted); line-height: 1.7; opacity: 0 !important; font-size: 0.95rem; }
+        .faq-answer.active { padding: 0.5rem 1.8rem 1.5rem; max-height: 1000px; opacity: 1 !important; }
+        .faq-icon { transition: transform 0.3s; font-size: 1.1rem; color: var(--color-accent); }
+        .faq-card.open .faq-icon { transform: rotate(45deg); }
+
+        /* 문항 개수 뱃지 */
+        .faq-count { font-size: 0.75rem; font-weight: 700; color: var(--color-accent); background: rgba(37,99,235,0.08); padding: 0.2rem 0.6rem; border-radius: 20px; margin-right: 0.8rem; }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="pslab | 자주 묻는 질문 (FAQ)">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://www.pslabedu.kr/faq.html">
+    <meta property="og:image" content="https://www.pslabedu.kr/assets/logo_full.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="pslab | 자주 묻는 질문 (FAQ)">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://www.pslabedu.kr/assets/logo_full.png">
+    <link rel="canonical" href="https://www.pslabedu.kr/faq.html">
+
+    <style>
+        .column-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(37,99,235,0.15) !important; border-color: rgba(37,99,235,0.3) !important; }
+        .column-card:hover .arrow-icon { transform: translateX(5px); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+<div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+          <span>2026.07 정식 런칭</span>
+      </div>
+  </div>
+
+    
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab" style="height: 28px; width: auto;"></a>
+            <ul class="nav-links" style="margin: 0 auto; gap: 2rem;">
+                <li style="white-space: nowrap;"><a href="songpa_index.html" style="color: var(--color-accent); font-weight: 700;">SONGPA</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#about">팀 프로필</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#process">프로세스</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#programs">플랜/가격</a></li>
+                <li style="white-space: nowrap;"><a href="columns.html">칼럼&수기</a></li>
+                <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
+                <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
+            </ul>
+            <div class="nav-cta" style="flex-shrink: 0;">
+                <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">상담 신청하기</a>
+            </div>
+            
+        </div>
+    </nav>
+    <main class="columns-page-section" style="padding: 8rem 5% 5rem; min-height: 80vh; background-color: var(--color-bg-main);">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 3rem;">
+                <h2 class="section-title">칼럼 & 수기</h2>
+                <p class="section-subtitle">창업진이 직접 작성한 생생한 입시 칼럼과 합격 수기를 확인하세요.</p>
+            </div>
+            <div class="columns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;" id="columns-container">
+
+                <a href="column_5.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="display: flex; gap: 8px;">
+                            <span class="badge" style="background: rgba(16,185,129,0.1); color: #059669; font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">합격 수기</span>
+                            <span class="badge" style="background: rgba(139,92,246,0.1); color: #7c3aed; font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><polyline points="16 6 23 6 23 13"></polyline></svg>
+                                인기
+                            </span>
+                        </div>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">일반고 내신 2.9, 경희대 합격</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/khu.png" alt="경희대 로고" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">경희대 지리학과(대표멘토)</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 수기</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+
+                <a href="column_6.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="display: flex; gap: 8px;">
+                            <span class="badge" style="background: rgba(16,185,129,0.1); color: #059669; font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">합격 수기</span>
+                            <span class="badge" style="background: rgba(139,92,246,0.1); color: #7c3aed; font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><polyline points="16 6 23 6 23 13"></polyline></svg>
+                                인기
+                            </span>
+                        </div>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">현역 일반고 2.5 정시로 서울대 경제학부(6모이후 이야기)</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/snu.png" alt="서울대 로고" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.1);">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">서울대 경제학부(대표멘토)</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 수기</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+
+                <a href="column_1.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-accent); font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">칼럼</span>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">9모 서성한, 그리고 수능 광명상가. 내가 무너진 이유와, 그 여름의 나에게 하고 싶은 말</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/khu.png" alt="경희대 로고" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">경희대 지리학과(대표멘토)</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 칼럼</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+
+                <a href="column_2.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-accent); font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">칼럼</span>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">내신이 낮은데 학종에 붙는 생기부엔, 공통점이 있었다</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/khu.png" alt="경희대 로고" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">경희대 지리학과(대표멘토)</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 칼럼</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+
+                <a href="column_3.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-accent); font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">칼럼</span>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">기말 끝난 지금이, 고3 생기부 마지막 골든타임인 이유</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/khu.png" alt="경희대 로고" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">경희대 지리학과(대표멘토)</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 칼럼</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+
+                <a href="column_4.html" class="column-card" style="text-decoration: none; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--color-border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-accent); font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 6px; display: inline-block;">칼럼</span>
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); line-height: 1.5; margin: 0; word-break: keep-all; flex-grow: 1;">[입시 프로토콜 해독하기] 서강대 학종편 : 면접도 최저도 없다는 건 무슨 뜻일까?</h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); padding: 4px; overflow: hidden; flex-shrink: 0;">
+                            <img src="assets/logo_symbol.png" alt="pslab 로고" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin: 0;">pslab 입시 연구팀</p>
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">pslab 오리지널 칼럼</p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; transition: transform 0.3s;" class="arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab Logo" style="height: 26px; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%); opacity: 0.9;"></div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
+                <div>운영주체: 피에스랩 운영팀 &nbsp;|&nbsp; 문의: <a href="mailto:ancienthyun@khu.ac.kr" style="color: rgba(255,255,255,0.7);">ancienthyun@khu.ac.kr</a></div>
+                <div>카카오톡 1:1 문의: <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="color: rgba(255,255,255,0.7);">오픈채팅 바로가기</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 pslab Analytics. All rights reserved. &nbsp;|&nbsp;
+                <a href="terms.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">이용약관</a>
+                &nbsp;|&nbsp;
+                <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">개인정보처리방침</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 카테고리 토글 (2단 아코디언 상위)
+        function toggleCategory(element) {
+            const group = element.parentElement;
+            group.classList.toggle('cat-open');
+        }
+
+        // 개별 문항 토글 (2단 아코디언 하위)
+        function toggleFaq(element) {
+            const card = element.parentElement;
+            const answer = element.nextElementSibling;
+            const isOpen = card.classList.contains('open');
+
+            // 같은 카테고리 내 다른 문항 닫기
+            const group = card.closest('.faq-group');
+            group.querySelectorAll('.faq-card').forEach(c => {
+                c.classList.remove('open');
+                c.querySelector('.faq-answer').classList.remove('active');
+            });
+
+            if (!isOpen) {
+                card.classList.add('open');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+<script src="script.js"></script>
+</body>
+</html>
+
+

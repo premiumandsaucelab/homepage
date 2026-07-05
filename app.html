@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#F2F4F6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="pslab 강동·송파">
+<link rel="apple-touch-icon" href="assets/logo_symbol.png">
+<link rel="icon" type="image/png" href="assets/logo_symbol.png">
+<link rel="manifest" href="app.webmanifest">
+<title>pslab | 강동·송파 입시 대시보드</title>
+<meta name="description" content="매일 여는 내 입시 대시보드. 생기부 완성도 진단, 맞춤 로드맵, 활동 플래너, 세특 탐구주제를 한 곳에서.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --accent:#5A5CD6; --accent-2:#7C7EE8; --accent-tint:#EDEEFC; --accent-deep:#3D3FB0;
+  --ink:#191F28; --ink-2:#4E5968; --ink-3:#8B95A1; --line:#E5E8EB;
+  --bg:#F2F4F6; --card:#FFFFFF;
+  --blue:#3182F6; --green:#12B886; --red:#F04452; --amber:#F5A623;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
+  --sh:0 2px 8px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);
+  --sh-lg:0 10px 30px rgba(0,0,0,.10);
+  --nav-h:60px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--font); color:var(--ink); background:#DCDFE3; line-height:1.5; -webkit-font-smoothing:antialiased; overscroll-behavior-y:none}
+button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit}
+a{color:inherit; text-decoration:none}
+img{display:block}
+.hide{display:none!important}
+
+.app{position:relative; max-width:460px; margin:0 auto; min-height:100vh; min-height:100dvh; background:var(--bg); overflow:hidden; display:flex; flex-direction:column; box-shadow:0 0 60px rgba(30,32,64,.16)}
+
+/* ===== Top bar ===== */
+.topbar{position:sticky; top:0; z-index:40; padding:calc(env(safe-area-inset-top) + 14px) 20px 12px; background:var(--bg); display:flex; align-items:center; justify-content:space-between}
+.topbar .hi{font-size:18px; font-weight:800; letter-spacing:-.5px}
+.topbar .hi small{display:block; font-size:12px; font-weight:600; color:var(--ink-3); margin-top:1px}
+.topbar .tb-right{display:flex; align-items:center; gap:6px}
+.streak{display:flex; align-items:center; gap:4px; background:#FFF3E0; color:#E8850C; font-size:12.5px; font-weight:800; padding:6px 11px; border-radius:999px}
+.icon-btn{width:38px; height:38px; border-radius:12px; background:var(--card); box-shadow:var(--sh); display:flex; align-items:center; justify-content:center; font-size:18px}
+
+.scroll{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px)}
+.screen{display:none; animation:fade .26s ease}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+.pad{padding:4px 20px}
+.sec-h{font-size:16px; font-weight:800; letter-spacing:-.4px; margin:22px 20px 12px; display:flex; align-items:baseline; justify-content:space-between}
+.sec-h button{font-size:13px; color:var(--ink-3); font-weight:600}
+
+/* ===== Cards ===== */
+.card{background:var(--card); border-radius:20px; box-shadow:var(--sh)}
+.mx{margin:0 20px 12px}
+.tap{transition:transform .12s}
+.tap:active{transform:scale(.98)}
+
+/* 완성도 hero (내 자산) */
+.asset{margin:6px 20px 14px; padding:22px; border-radius:24px; background:var(--card); box-shadow:var(--sh)}
+.asset .lab{font-size:13.5px; color:var(--ink-2); font-weight:700}
+.asset .big{display:flex; align-items:baseline; gap:6px; margin:8px 0 2px}
+.asset .big .num{font-size:44px; font-weight:800; letter-spacing:-2px; line-height:1}
+.asset .big .pct{font-size:22px; font-weight:800; color:var(--ink-3)}
+.asset .delta{font-size:12.5px; font-weight:700; color:var(--green)}
+.bars{display:flex; gap:6px; margin-top:18px}
+.bars .b{flex:1; text-align:center}
+.bars .b .track{height:56px; background:var(--bg); border-radius:8px; position:relative; overflow:hidden; display:flex; align-items:flex-end}
+.bars .b .fill{width:100%; background:linear-gradient(180deg,var(--accent-2),var(--accent)); border-radius:8px 8px 0 0; transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.bars .b .bl{font-size:10.5px; color:var(--ink-3); font-weight:700; margin-top:6px}
+.bars .b .bv{font-size:11px; color:var(--ink); font-weight:800; margin-top:2px}
+.asset .asset-cta{display:block; text-align:center; margin-top:18px; background:var(--accent-tint); color:var(--accent); font-weight:800; font-size:14px; padding:13px; border-radius:14px}
+
+/* 진단 유도(미완료) */
+.asset.empty{background:linear-gradient(135deg,#7C7EE8,#5A5CD6); color:#fff; box-shadow:var(--sh-lg)}
+.asset.empty .lab{color:rgba(255,255,255,.85)}
+.asset.empty h3{font-size:20px; font-weight:800; margin:8px 0 6px; letter-spacing:-.5px}
+.asset.empty p{font-size:13px; opacity:.9; margin:0 0 16px; line-height:1.55}
+.asset.empty .go{display:inline-flex; align-items:center; gap:6px; background:#fff; color:var(--accent); font-weight:800; font-size:14px; padding:12px 20px; border-radius:13px}
+
+/* Quick actions (송금/결제 자리) */
+.quick{display:flex; justify-content:space-between; padding:6px 24px 4px}
+.quick .qi{display:flex; flex-direction:column; align-items:center; gap:8px; flex:1}
+.quick .qi .ic{width:52px; height:52px; border-radius:17px; background:var(--card); box-shadow:var(--sh); display:flex; align-items:center; justify-content:center; font-size:24px; transition:transform .12s}
+.quick .qi:active .ic{transform:scale(.92)}
+.quick .qi span{font-size:12px; font-weight:700; color:var(--ink-2)}
+
+/* Mission card */
+.mission{margin:14px 20px 12px; padding:16px 18px; display:flex; align-items:center; gap:14px}
+.mission .mc{width:44px; height:44px; border-radius:14px; background:var(--accent-tint); display:flex; align-items:center; justify-content:center; font-size:22px; flex:none}
+.mission .mt{flex:1; min-width:0}
+.mission .mt .k{font-size:11.5px; font-weight:800; color:var(--accent); letter-spacing:.2px}
+.mission .mt .v{font-size:14px; font-weight:700; margin-top:2px; letter-spacing:-.3px; word-break:keep-all}
+.mission .mbtn{flex:none; font-size:13px; font-weight:800; color:#fff; background:var(--accent); padding:9px 15px; border-radius:11px; transition:all .15s}
+.mission .mbtn.done{background:var(--bg); color:var(--green)}
+
+/* Feed cards */
+.feed{padding:0 20px}
+.fc{background:var(--card); border-radius:18px; box-shadow:var(--sh); padding:16px 18px; margin-bottom:11px; display:flex; align-items:center; gap:14px; transition:transform .12s}
+.fc:active{transform:scale(.98)}
+.fc .fi{width:46px; height:46px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; flex:none}
+.fc .fi img{width:100%;height:100%;object-fit:contain;padding:7px;border-radius:14px}
+.fc .fx{flex:1; min-width:0}
+.fc .fx .ft{font-size:14.5px; font-weight:800; letter-spacing:-.3px; display:flex; align-items:center; gap:6px}
+.fc .fx .fs{font-size:12.5px; color:var(--ink-3); margin-top:3px; font-weight:500; word-break:keep-all; line-height:1.45}
+.fc .fgo{color:var(--ink-3); font-size:20px; flex:none}
+.dday{font-size:11px; font-weight:800; color:#fff; background:var(--red); padding:3px 9px; border-radius:8px}
+.dday.soon{background:var(--amber)} .dday.far{background:var(--ink-3)}
+
+/* ===== Generic screen header ===== */
+.shead{padding:calc(env(safe-area-inset-top) + 10px) 20px 6px; display:flex; align-items:center; gap:12px; position:sticky; top:0; background:var(--bg); z-index:30}
+.shead .back{font-size:26px; color:var(--ink); width:32px; margin-left:-6px}
+.shead h2{font-size:19px; font-weight:800; letter-spacing:-.5px; margin:0}
+.stitle{padding:14px 20px 2px}
+.stitle h1{font-size:24px; font-weight:800; letter-spacing:-.8px; margin:0 0 6px; word-break:keep-all}
+.stitle p{font-size:13.5px; color:var(--ink-2); margin:0}
+
+/* ===== 진단 flow ===== */
+.diag-wrap{padding:8px 20px 20px; min-height:60vh; display:flex; flex-direction:column}
+.diag-prog{height:6px; background:var(--line); border-radius:99px; margin:6px 0 26px; overflow:hidden}
+.diag-prog .pf{height:100%; background:var(--accent); border-radius:99px; transition:width .35s}
+.diag-step{font-size:13px; font-weight:800; color:var(--accent); margin-bottom:10px}
+.diag-q{font-size:24px; font-weight:800; letter-spacing:-.7px; line-height:1.35; word-break:keep-all}
+.diag-sub{font-size:13.5px; color:var(--ink-3); margin-top:8px}
+.diag-opts{display:flex; flex-direction:column; gap:10px; margin-top:28px}
+.opt{background:var(--card); border:2px solid var(--card); border-radius:16px; padding:17px 18px; font-size:15.5px; font-weight:700; text-align:left; box-shadow:var(--sh); transition:all .12s; display:flex; align-items:center; justify-content:space-between}
+.opt:active{transform:scale(.98)}
+.opt.sel{border-color:var(--accent); color:var(--accent); background:var(--accent-tint)}
+.opt .rc{width:22px; height:22px; border-radius:50%; border:2px solid var(--line); flex:none}
+.opt.sel .rc{border-color:var(--accent); background:var(--accent); box-shadow:inset 0 0 0 3px #fff}
+
+/* 진단 결과 */
+.result-score{text-align:center; padding:30px 20px 8px}
+.result-ring{width:180px; height:180px; margin:0 auto; position:relative}
+.result-ring svg{transform:rotate(-90deg)}
+.result-ring .rt{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center}
+.result-ring .rt .n{font-size:48px; font-weight:800; letter-spacing:-2px; line-height:1}
+.result-ring .rt .l{font-size:13px; color:var(--ink-3); font-weight:700; margin-top:4px}
+.grade-badge{display:inline-block; margin:14px auto 0; font-size:14px; font-weight:800; padding:8px 18px; border-radius:999px}
+.cat-list{padding:8px 20px}
+.cat{background:var(--card); border-radius:16px; box-shadow:var(--sh); padding:16px 18px; margin-bottom:10px}
+.cat .ch{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px}
+.cat .ch .cn{font-size:14.5px; font-weight:800}
+.cat .ch .cv{font-size:15px; font-weight:800; color:var(--accent)}
+.cat .cbar{height:8px; background:var(--bg); border-radius:99px; overflow:hidden}
+.cat .cbar .cf{height:100%; border-radius:99px; transition:width .7s}
+.cat .ctip{font-size:12.5px; color:var(--ink-2); line-height:1.6; margin-top:11px; word-break:keep-all}
+
+/* ===== Roadmap / Planner checklist ===== */
+.grade-tabs{display:flex; gap:8px; padding:14px 20px 4px}
+.grade-tabs button{flex:1; padding:11px; font-size:14px; font-weight:800; color:var(--ink-3); background:var(--card); border-radius:13px; box-shadow:var(--sh); transition:all .15s}
+.grade-tabs button.on{background:var(--accent); color:#fff}
+.check{display:flex; align-items:flex-start; gap:13px; background:var(--card); border-radius:15px; box-shadow:var(--sh); padding:15px 16px; margin:0 20px 9px; transition:transform .1s}
+.check:active{transform:scale(.99)}
+.check .box{width:24px; height:24px; border-radius:8px; border:2px solid var(--line); flex:none; display:flex; align-items:center; justify-content:center; font-size:14px; color:#fff; transition:all .15s; margin-top:1px}
+.check.done .box{background:var(--green); border-color:var(--green)}
+.check .ct{font-size:14px; font-weight:600; line-height:1.5; word-break:keep-all}
+.check.done .ct{color:var(--ink-3); text-decoration:line-through}
+.progress-pill{margin:6px 20px 12px; background:var(--card); border-radius:16px; box-shadow:var(--sh); padding:16px 18px}
+.progress-pill .pt{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px}
+.progress-pill .pt .a{font-size:14px; font-weight:800} .progress-pill .pt .b{font-size:15px; font-weight:800; color:var(--accent)}
+.progress-pill .ptrack{height:10px; background:var(--bg); border-radius:99px; overflow:hidden}
+.progress-pill .pfill{height:100%; background:linear-gradient(90deg,var(--accent-2),var(--accent)); border-radius:99px; transition:width .6s}
+
+/* Planner add */
+.planner-add{margin:8px 20px 14px; background:var(--card); border-radius:18px; box-shadow:var(--sh); padding:16px}
+.planner-add .row{display:flex; gap:8px}
+.planner-add input{flex:1; border:1.5px solid var(--line); border-radius:12px; padding:13px 14px; font-size:14.5px; font-family:inherit; color:var(--ink); outline:none; min-width:0}
+.planner-add input:focus{border-color:var(--accent)}
+.planner-add input[type=date]{flex:none; width:140px}
+.planner-add .addb{background:var(--accent); color:#fff; font-weight:800; font-size:14px; padding:0 18px; border-radius:12px; flex:none}
+.pl-item{display:flex; align-items:center; gap:12px; background:var(--card); border-radius:15px; box-shadow:var(--sh); padding:14px 16px; margin:0 20px 9px}
+.pl-item .pd{flex:none}
+.pl-item .px{flex:1; min-width:0}
+.pl-item .px .pn{font-size:14px; font-weight:700; word-break:keep-all}
+.pl-item .px .pdt{font-size:12px; color:var(--ink-3); margin-top:2px}
+.pl-item .del{color:var(--ink-3); font-size:18px; flex:none; padding:4px}
+.empty-state{text-align:center; padding:50px 30px; color:var(--ink-3)}
+.empty-state .es-ic{font-size:44px; margin-bottom:14px}
+.empty-state p{font-size:14px; font-weight:600; line-height:1.6}
+
+/* ===== 탐구주제 ===== */
+.topic-track{display:flex; gap:8px; overflow-x:auto; padding:14px 20px 6px; scrollbar-width:none}
+.topic-track::-webkit-scrollbar{display:none}
+.tchip{flex:none; font-size:13.5px; font-weight:800; color:var(--ink-3); background:var(--card); box-shadow:var(--sh); padding:10px 16px; border-radius:999px; display:flex; align-items:center; gap:6px}
+.tchip.on{background:var(--accent); color:#fff}
+.subj-group{margin:14px 20px 4px}
+.subj-group .sg-h{font-size:14px; font-weight:800; color:var(--accent); margin-bottom:9px; display:flex; align-items:center; gap:7px}
+.topic-item{background:var(--card); border-radius:15px; box-shadow:var(--sh); padding:15px 16px; margin-bottom:9px; font-size:14px; font-weight:600; line-height:1.55; word-break:keep-all; display:flex; gap:11px; align-items:flex-start}
+.topic-item .tn{width:22px;height:22px;border-radius:7px;background:var(--accent-tint);color:var(--accent);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px}
+
+/* ===== reference: 학교/멘토/플랜 (재사용 · 토스풍) ===== */
+.chips{display:flex; gap:8px; overflow-x:auto; padding:12px 20px 4px; scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:none; font-size:13.5px; font-weight:700; color:var(--ink-3); background:var(--card); box-shadow:var(--sh); padding:9px 16px; border-radius:999px}
+.chip.on{color:#fff; background:var(--accent)}
+.school{margin:0 20px 11px; overflow:hidden}
+.school .head{padding:16px 18px; display:flex; align-items:center; gap:13px; cursor:pointer}
+.school .logo{width:46px;height:46px;border-radius:13px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--accent);flex:none;overflow:hidden}
+.school .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+.school .h-main{flex:1;min-width:0}
+.school .h-main .nm{font-size:15.5px;font-weight:800;letter-spacing:-.4px;display:flex;align-items:center;gap:7px}
+.school .h-main .meta{font-size:12px;color:var(--ink-3);margin-top:3px}
+.reg-badge{font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px}
+.reg-badge.gd{color:#0369A1;background:#E0F2FE}.reg-badge.sp{color:#4B4DB8;background:var(--accent-tint)}
+.school .chev{color:var(--ink-3);font-size:20px;transition:transform .25s}
+.school.open .chev{transform:rotate(180deg)}
+.school .body{max-height:0;overflow:hidden;transition:max-height .35s ease}.school.open .body{max-height:1500px}
+.school .body-inner{padding:2px 18px 18px;border-top:1px solid var(--line)}
+.metric-row{display:flex;gap:8px;margin:15px 0}
+.metric{flex:1;background:var(--bg);border-radius:12px;padding:11px 6px;text-align:center}
+.metric .mv{font-size:13px;font-weight:900}.metric .ml{font-size:10.5px;color:var(--ink-3);margin-top:3px;font-weight:600}
+.stars{color:var(--amber);letter-spacing:1px;font-size:13px}
+.field{margin-top:13px}.field .ft{font-size:12px;font-weight:800;color:var(--accent);margin-bottom:5px}.field .fb{font-size:13px;color:var(--ink-2);line-height:1.65;word-break:keep-all}
+.tagline{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.tagline .tg{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-tint);padding:4px 9px;border-radius:8px}
+.school-cta{display:block;text-align:center;margin-top:15px;background:var(--ink);color:#fff;font-weight:800;font-size:13.5px;padding:13px;border-radius:12px}
+.mentor{margin:0 20px 11px;padding:16px 17px}
+.mentor .m-top{display:flex;gap:12px;align-items:center}
+.mentor .uni{width:44px;height:44px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}.mentor .uni img{width:100%;height:100%;object-fit:contain;padding:6px}
+.mentor .m-name{flex:1;min-width:0}.mentor .m-name .cg{font-size:14.5px;font-weight:800;letter-spacing:-.3px;line-height:1.3}.mentor .m-name .mj{font-size:12px;color:var(--ink-3);margin-top:2px}
+.mentor .role{font-size:10.5px;font-weight:800;color:var(--accent);background:var(--accent-tint);padding:4px 8px;border-radius:7px;flex:none;align-self:flex-start;white-space:nowrap}
+.mentor .hs{font-size:11.5px;font-weight:700;color:#0369A1;background:#E0F2FE;display:inline-block;padding:3px 9px;border-radius:7px;margin-top:12px}
+.mentor .accepted{font-size:12.5px;color:var(--ink-2);line-height:1.6;margin-top:10px;word-break:keep-all}.mentor .accepted .highlight{color:var(--accent);font-weight:800}
+.mentor .m-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.mentor .m-tags .mt{font-size:10.5px;color:var(--ink-3);background:var(--bg);padding:3px 8px;border-radius:7px;font-weight:600}
+.pass-badge{font-size:10px;font-weight:800;color:#4B4DB8;border:1px solid var(--accent);padding:2px 7px;border-radius:6px;margin-left:6px}
+.plan-toggle{display:flex;gap:6px;margin:14px 20px 4px;background:var(--card);box-shadow:var(--sh);padding:5px;border-radius:14px}
+.plan-toggle button{flex:1;padding:11px;font-size:13.5px;font-weight:800;color:var(--ink-3);border-radius:10px}.plan-toggle button.on{background:var(--accent);color:#fff}
+.plan{margin:0 20px 11px;padding:20px 18px;position:relative}.plan.best{outline:2px solid var(--accent)}
+.plan .best-badge{position:absolute;top:-10px;left:18px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px}
+.plan .p-name{font-size:15px;font-weight:800}.plan .p-desc{font-size:12.5px;color:var(--ink-3);margin-top:4px;line-height:1.5;word-break:keep-all}
+.plan .p-price{margin-top:14px;display:flex;align-items:baseline;gap:5px}.plan .p-price .amt{font-size:26px;font-weight:900;letter-spacing:-1px}.plan .p-price .unit{font-size:13px;color:var(--ink-3);font-weight:700}.plan .p-price .launch{font-size:10.5px;font-weight:800;color:var(--accent);border:1px solid var(--accent);padding:2px 7px;border-radius:6px}
+.plan ul{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}.plan ul li{font-size:12.8px;color:var(--ink-2);display:flex;gap:8px;line-height:1.5}.plan ul li::before{content:"✓";color:var(--green);font-weight:900;flex:none}
+.info-card{margin:0 20px 11px;padding:18px}.info-card h4{font-size:14.5px;font-weight:800;margin:0 0 8px}.info-card p{font-size:12.8px;color:var(--ink-2);line-height:1.7;margin:0;word-break:keep-all}
+.faq{margin:0 20px 10px;overflow:hidden}.faq .q{padding:16px 18px;display:flex;gap:11px;align-items:center;cursor:pointer;font-size:13.5px;font-weight:700}
+.faq .q .qmark{width:22px;height:22px;border-radius:7px;background:var(--accent-tint);color:var(--accent);font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.faq .q .qt{flex:1;letter-spacing:-.3px;word-break:keep-all}.faq .q .pm{color:var(--ink-3);font-size:19px;transition:transform .25s}.faq.open .q .pm{transform:rotate(45deg)}
+.faq .a{max-height:0;overflow:hidden;transition:max-height .3s ease}.faq.open .a{max-height:400px}.faq .a-in{padding:0 18px 16px 51px;font-size:12.8px;color:var(--ink-2);line-height:1.7;word-break:keep-all}
+.contact-row{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--card);box-shadow:var(--sh);border-radius:14px;margin:0 20px 9px;font-size:13px;font-weight:700}
+.contact-row .ci{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.contact-row .ci.k{background:#FEE500}.contact-row .ci.m{background:var(--accent-tint)}
+.contact-row .cx{flex:1;min-width:0}.contact-row .cx .cl{font-size:11px;color:var(--ink-3);font-weight:600}.contact-row .cx .cv{font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact-row .go{color:var(--ink-3);font-size:18px}
+.more-item{display:flex;align-items:center;gap:14px;padding:17px 18px;background:var(--card);box-shadow:var(--sh);border-radius:16px;margin:0 20px 10px}
+.more-item .mi{width:42px;height:42px;border-radius:13px;background:var(--accent-tint);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.more-item .mx{flex:1}.more-item .mx .mt2{font-size:15px;font-weight:800;letter-spacing:-.3px}.more-item .mx .ms{font-size:12px;color:var(--ink-3);margin-top:2px}
+.more-item .go{color:var(--ink-3);font-size:20px}
+.footer-mini{text-align:center;padding:22px 20px 30px;color:var(--ink-3);font-size:11px;line-height:1.7}.footer-mini a{color:var(--ink-3);text-decoration:underline}
+
+/* ===== Bottom nav ===== */
+.bottomnav{position:absolute;bottom:0;left:0;right:0;z-index:40;height:calc(var(--nav-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex}
+.bottomnav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--ink-3);font-size:10.5px;font-weight:700}
+.bottomnav button .nic{font-size:21px;line-height:1}
+.bottomnav button.on{color:var(--accent)}
+
+/* ===== Onboarding ===== */
+.onb{position:absolute;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top) + 20px) 24px calc(env(safe-area-inset-bottom) + 20px)}
+.onb .ob-prog{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:34px}
+.onb .ob-prog .f{height:100%;background:var(--accent);border-radius:99px;transition:width .35s}
+.onb .ob-step{display:none;flex:1;flex-direction:column;animation:fade .3s}
+.onb .ob-step.active{display:flex}
+.onb h1{font-size:26px;font-weight:800;letter-spacing:-.8px;line-height:1.35;margin:0 0 10px;word-break:keep-all}
+.onb .obsub{font-size:14px;color:var(--ink-3);margin:0 0 30px}
+.onb input.name{border:none;border-bottom:2.5px solid var(--accent);background:transparent;font-size:28px;font-weight:800;padding:8px 0;outline:none;font-family:inherit;color:var(--ink);letter-spacing:-.5px}
+.onb .ob-opts{display:flex;flex-direction:column;gap:10px}
+.onb .ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.onb .ob-o{background:var(--card);border:2px solid var(--card);border-radius:16px;padding:16px 18px;font-size:15.5px;font-weight:700;text-align:left;box-shadow:var(--sh);transition:all .12s;display:flex;align-items:center;gap:10px}
+.onb .ob-o:active{transform:scale(.97)}
+.onb .ob-o.sel{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
+.onb .ob-o .oe{font-size:20px}
+.onb select.school-sel{width:100%;border:2px solid var(--line);border-radius:16px;padding:16px 18px;font-size:15.5px;font-weight:700;font-family:inherit;color:var(--ink);background:var(--card);outline:none;-webkit-appearance:none;appearance:none}
+.onb .ob-btn{margin-top:20px;background:var(--accent);color:#fff;font-size:16px;font-weight:800;padding:17px;border-radius:16px;transition:all .15s}
+.onb .ob-btn:disabled{background:var(--line);color:var(--ink-3)}
+
+/* toast + sheet */
+.toast{position:absolute;left:50%;bottom:calc(var(--nav-h) + 22px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:11px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:all .3s;z-index:110;box-shadow:var(--sh-lg);white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ============ ONBOARDING ============ -->
+  <div class="onb hide" id="onb">
+    <div class="ob-prog"><div class="f" id="obProg" style="width:25%"></div></div>
+
+    <div class="ob-step active" data-step="0">
+      <h1>안녕! 먼저<br>이름을 알려줘 👋</h1>
+      <p class="obsub">앱을 네 이름으로 개인화할게요.</p>
+      <input class="name" id="obName" placeholder="김입시" maxlength="10" autocomplete="off">
+      <div style="flex:1"></div>
+      <button class="ob-btn" id="obBtn0" disabled onclick="onbNext()">다음</button>
+    </div>
+
+    <div class="ob-step" data-step="1">
+      <h1>어느 학교<br>다니고 있어?</h1>
+      <p class="obsub">우리 학교 맞춤 정보를 보여줄게요.</p>
+      <select class="school-sel" id="obSchool"></select>
+      <div style="flex:1"></div>
+      <button class="ob-btn" onclick="onbNext()">다음</button>
+    </div>
+
+    <div class="ob-step" data-step="2">
+      <h1>지금 몇 학년이야?</h1>
+      <p class="obsub">학년에 맞는 로드맵을 짜줄게요.</p>
+      <div class="ob-grid" id="obGrade"></div>
+      <div style="flex:1"></div>
+      <button class="ob-btn" id="obBtn2" disabled onclick="onbNext()">다음</button>
+    </div>
+
+    <div class="ob-step" data-step="3">
+      <h1>목표 계열은?</h1>
+      <p class="obsub">나중에 바꿀 수 있어요.</p>
+      <div class="ob-grid" id="obTrack"></div>
+      <div style="flex:1"></div>
+      <button class="ob-btn" id="obBtn3" disabled onclick="onbFinish()">시작하기 🚀</button>
+    </div>
+  </div>
+
+  <div class="scroll" id="scroll">
+
+    <!-- ============ HOME (대시보드) ============ -->
+    <section class="screen active" id="s-home">
+      <header class="topbar">
+        <div class="hi" id="homeHi">안녕하세요 👋<small id="homeSub">강동·송파 입시 대시보드</small></div>
+        <div class="tb-right">
+          <div class="streak" id="homeStreak">🔥 1일</div>
+          <button class="icon-btn" onclick="go('more')">≡</button>
+        </div>
+      </header>
+
+      <div id="assetBox"></div>
+
+      <div class="quick">
+        <button class="qi" onclick="go('diag')"><span class="ic">🩺</span><span>진단</span></button>
+        <button class="qi" onclick="go('roadmap')"><span class="ic">🗺️</span><span>로드맵</span></button>
+        <button class="qi" onclick="go('planner')"><span class="ic">📅</span><span>플래너</span></button>
+        <button class="qi" onclick="go('topics')"><span class="ic">💡</span><span>탐구주제</span></button>
+      </div>
+
+      <div class="card mission mx tap" id="missionCard"></div>
+
+      <div class="sec-h">오늘의 피드</div>
+      <div class="feed" id="homeFeed"></div>
+
+      <p class="footer-mini">
+        pslab · 강동·송파 입시 대시보드 (베타)<br>
+        문의 <a href="mailto:ancienthyun@khu.ac.kr">ancienthyun@khu.ac.kr</a> · <a href="index.html">웹사이트</a>
+      </p>
+    </section>
+
+    <!-- ============ 진단 ============ -->
+    <section class="screen" id="s-diag">
+      <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>생기부 자가진단</h2></div>
+      <div id="diagBody"></div>
+    </section>
+
+    <!-- ============ 로드맵 ============ -->
+    <section class="screen" id="s-roadmap">
+      <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>내 로드맵</h2></div>
+      <div class="stitle"><p style="margin-top:2px">체크할 때마다 진행률이 올라가고, 폰에 저장돼요.</p></div>
+      <div class="grade-tabs" id="rmTabs"></div>
+      <div id="rmProgress"></div>
+      <div id="rmList"></div>
+      <div style="height:10px"></div>
+    </section>
+
+    <!-- ============ 플래너 ============ -->
+    <section class="screen" id="s-planner">
+      <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>활동·수행평가 플래너</h2></div>
+      <div class="planner-add">
+        <div class="row" style="margin-bottom:8px"><input id="plName" placeholder="예: 생명과학 수행평가 발표" maxlength="40"></div>
+        <div class="row"><input type="date" id="plDate"><button class="addb" onclick="addPlan()">추가</button></div>
+      </div>
+      <div id="plList"></div>
+    </section>
+
+    <!-- ============ 탐구주제 ============ -->
+    <section class="screen" id="s-topics">
+      <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>세특 탐구주제</h2></div>
+      <div class="stitle"><p style="margin-top:2px">계열을 고르면 과목별 탐구 아이디어를 추천해요.</p></div>
+      <div class="topic-track" id="topicTrack"></div>
+      <div id="topicList"></div>
+      <div style="height:10px"></div>
+    </section>
+
+    <!-- ============ 더보기 ============ -->
+    <section class="screen" id="s-more">
+      <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>전체</h2></div>
+      <div style="height:6px"></div>
+      <button class="more-item" style="width:calc(100% - 40px)" onclick="go('school')"><span class="mi">🏫</span><span class="mx" style="text-align:left"><span class="mt2">강동·송파 학교 정보</span><span class="ms">우리 지역 학교별 입시 분석</span></span><span class="go">›</span></button>
+      <button class="more-item" style="width:calc(100% - 40px)" onclick="go('mentor')"><span class="mi">🎓</span><span class="mx" style="text-align:left"><span class="mt2">현역 선배 멘토 · Q&amp;A</span><span class="ms">방금 입시를 뚫은 선배들</span></span><span class="go">›</span></button>
+      <button class="more-item" style="width:calc(100% - 40px)" onclick="go('academy')"><span class="mi">📊</span><span class="mx" style="text-align:left"><span class="mt2">학원·컨설팅 플랜</span><span class="ms">런칭 기념가로 밀착 분석</span></span><span class="go">›</span></button>
+      <button class="more-item" style="width:calc(100% - 40px)" onclick="editProfile()"><span class="mi">👤</span><span class="mx" style="text-align:left"><span class="mt2" id="mpName">내 프로필</span><span class="ms" id="mpSub">학교·학년·목표 다시 설정</span></span><span class="go">›</span></button>
+
+      <div class="sec-h" style="margin-top:24px">문의하기</div>
+      <a class="contact-row" href="https://open.kakao.com/o/siqpqtli" target="_blank" rel="noopener"><span class="ci k">💬</span><span class="cx"><span class="cl">카카오톡 1:1 오픈채팅</span><span class="cv">지금 바로 상담하기</span></span><span class="go">›</span></a>
+      <a class="contact-row" href="mailto:ancienthyun@khu.ac.kr"><span class="ci m">✉️</span><span class="cx"><span class="cl">이메일 문의</span><span class="cv">ancienthyun@khu.ac.kr</span></span><span class="go">›</span></a>
+      <p class="footer-mini">© 2026 pslab Analytics · <a href="terms.html">이용약관</a> · <a href="privacy.html">개인정보처리방침</a></p>
+    </section>
+
+    <!-- ============ 학교 (reference) ============ -->
+    <section class="screen" id="s-school">
+      <div class="shead"><button class="back" onclick="go('more')">‹</button><h2>강동·송파 학교 정보</h2></div>
+      <div class="chips" id="schoolChips"></div>
+      <div id="schoolList" style="margin-top:6px"></div>
+      <div class="info-card card mx" style="background:var(--accent-tint)"><p style="color:#4B4DBB;font-weight:600">📍 우리 학교가 없나요? 카톡 문의로 분석을 요청해 주세요. 계속 추가됩니다.</p></div>
+      <div style="height:10px"></div>
+    </section>
+
+    <!-- ============ 멘토 (reference) ============ -->
+    <section class="screen" id="s-mentor">
+      <div class="shead"><button class="back" onclick="go('more')">‹</button><h2>현역 선배 멘토</h2></div>
+      <div class="mx" style="margin-top:8px"><div class="card" style="padding:18px;background:linear-gradient(135deg,#1E2040,#33356b);color:#fff">
+        <div style="font-size:17px;font-weight:800;margin-bottom:6px">선배에게 바로 질문하기</div>
+        <div style="font-size:12.5px;opacity:.85;margin-bottom:14px;line-height:1.5">생기부·과목선택·학교별 전략, 뭐든 물어보세요.</div>
+        <div style="display:flex;gap:9px">
+          <a href="https://open.kakao.com/o/siqpqtli" target="_blank" rel="noopener" style="flex:1;text-align:center;background:#FEE500;color:#191600;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">카톡 오픈채팅</a>
+          <a href="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec" target="_blank" rel="noopener" style="flex:1;text-align:center;background:var(--accent);color:#fff;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">멘토 배정 신청</a>
+        </div>
+      </div></div>
+      <div class="chips" id="mentorChips"></div>
+      <div class="mentor-count" id="mentorCount" style="padding:2px 20px 0;font-size:12.5px;color:var(--ink-3);font-weight:600"></div>
+      <div id="mentorList" style="margin-top:8px"></div>
+      <div style="height:10px"></div>
+    </section>
+
+    <!-- ============ 학원·플랜 (reference) ============ -->
+    <section class="screen" id="s-academy">
+      <div class="shead"><button class="back" onclick="go('more')">‹</button><h2>학원·컨설팅 플랜</h2></div>
+      <div class="stitle"><p style="margin-top:2px">대치동 절반 가격에, 현역 선배의 밀착 분석.</p></div>
+      <div class="plan-toggle"><button class="on" id="tgSusi" onclick="switchPlan('susi')">수시(학종)</button><button id="tgJeongsi" onclick="switchPlan('jeongsi')">정시(수능)</button></div>
+      <div id="planList"></div>
+      <div class="card info-card mx"><h4>💡 왜 이 가격이 가능한가요?</h4><p>AI 워크플로우로 마케팅비·데스크 인건비 거품을 걷어냈습니다. 절감분은 오롯이 분석 퀄리티에 투자돼요.</p></div>
+      <div class="sec-h">자주 묻는 질문</div>
+      <div id="faqList"></div>
+      <div style="height:10px"></div>
+    </section>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottomnav" id="bottomnav">
+    <button class="on" data-tab="home" onclick="go('home')"><span class="nic">🏠</span>홈</button>
+    <button data-tab="diag" onclick="go('diag')"><span class="nic">🩺</span>진단</button>
+    <button data-tab="roadmap" onclick="go('roadmap')"><span class="nic">🗺️</span>로드맵</button>
+    <button data-tab="planner" onclick="go('planner')"><span class="nic">📅</span>플래너</button>
+    <button data-tab="more" onclick="go('more')"><span class="nic">≡</span>전체</button>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="app.data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
