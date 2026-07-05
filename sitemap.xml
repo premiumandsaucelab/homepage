@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.pslabedu.kr/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.pslabedu.kr/songpa_index.html</loc><priority>0.9</priority></url>
-  <url><loc>https://www.pslabedu.kr/experts.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.pslabedu.kr/faq.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.pslabedu.kr/songpa_core_schools.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.pslabedu.kr/b2b_partnership_proposal.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.pslabedu.kr/songpa_b2b_partnership_proposal.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pslabedu.kr/</loc></url>
+  <url><loc>https://www.pslabedu.kr/songpa_index.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/experts.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/faq.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/songpa_core_schools.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/columns.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_1.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_2.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_3.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_4.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_5.html</loc></url>
+  <url><loc>https://www.pslabedu.kr/column_6.html</loc></url>
 </urlset>
