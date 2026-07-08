@@ -1,6 +1,3 @@
-// Clean, minimalistic design requires minimal JS.
-// We can add subtle entrance animations here if needed.
-
 document.addEventListener('DOMContentLoaded', () => {
     const nodes = document.querySelectorAll('.org-node');
     
@@ -80,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.setAttribute('aria-label', '메뉴 열기');
         hamburger.innerHTML = '<span></span><span></span><span></span>';
         navContainer.appendChild(hamburger);
+        
         // Add CTA to mobile menu
         const ctaClone = document.querySelector('.nav-cta a');
         if (ctaClone && !navLinks.querySelector('.mobile-cta')) {
@@ -91,10 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(clone);
             navLinks.appendChild(li);
         }
-
-       
-
-
         
         // Toggle logic
         hamburger.addEventListener('click', () => {
@@ -129,4 +123,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     highlightElements.forEach(el => highlightObserver.observe(el));
+
+    // --- Scroll to Top Button ---
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // --- Popup Logic ---
+    const popup = document.getElementById('pslabPromoPopup');
+    const closeBtn = document.getElementById('pslabPopupClose');
+    
+    if (popup && closeBtn) {
+        // Show popup slightly after load for a smooth effect
+        setTimeout(() => {
+            popup.classList.add('active');
+        }, 50);
+        
+        closeBtn.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+        
+        // Close on overlay click
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+            }
+        });
+    }
 });
