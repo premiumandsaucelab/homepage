@@ -7,7 +7,7 @@ const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const el = (t,c,h)=>{const n=document.createElement(t); if(c)n.className=c; if(h!=null)n.innerHTML=h; return n;};
 const REGION_LABEL={gangdong:"강동",songpa:"송파"};
-const RESERVE="https://script.google.com/macros/s/AKfycbwwUCtVHDbJmhxCk6w9qoKm1ny0ZeItyA_ywS9umickhlVRZS3mY_FzqGzRYLGi67Lx/exec";
+const RESERVE="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header";
 const KAKAO="https://open.kakao.com/o/siqpqtli";
 
 /* ---------- 저장소 ---------- */

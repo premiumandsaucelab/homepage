@@ -1958,3 +1958,85 @@ body .cta-box p {
     body .column-content ul, body .column-content ol { padding: 1.5rem 1.5rem 1.5rem 2.5rem; }
     body .cta-box { padding: 2rem 1.5rem; }
 }
+
+/* Floating Action Buttons */
+.floating-action-buttons {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+    align-items: flex-end;
+}
+.fab-btn-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.fab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.fab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.fab-btn.naver-cafe { background-color: #03c75a; }
+.fab-btn.kakao { background-color: #FEE500; }
+.fab-btn-label {
+    position: absolute;
+    right: 64px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+}
+.fab-btn-container:hover .fab-btn-label { opacity: 1; visibility: visible; }
+/* Scroll to Top Button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 96px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+.scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background-color: #f1f5f9; box-shadow: 0 6px 16px rgba(0,0,0,0.2); transform: translateY(-2px); }
+.scroll-top-btn svg { width: 24px; height: 24px; }
+@media (max-width: 768px) {
+    .floating-action-buttons { bottom: 80px; right: 16px; }
+    .fab-btn { width: 48px; height: 48px; }
+    .scroll-top-btn { bottom: 20px; right: 86px; width: 48px; height: 48px; }
+}
