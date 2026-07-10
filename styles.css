@@ -2492,3 +2492,12 @@ body .cta-box p {
     }
 }
 
+
+.region-nav-label{display:inline-flex;flex-direction:column;align-items:center;line-height:1.02;font-size:0.72rem;letter-spacing:0;}
+.nav-links .region-nav-label {
+    transform: translateY(-6px);
+}
+.region-nav-label--logo{font-size:1.15rem; font-weight:800; color:var(--color-primary); letter-spacing:-0.5px;}
+.logo > .region-nav-label--logo {
+    transform: translateY(2px);
+}
