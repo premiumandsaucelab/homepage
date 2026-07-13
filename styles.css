@@ -490,10 +490,11 @@ h2 {
 }
 
 .process-card {
-    background-color: var(--color-bg-light);
+    background-color: #ffffff;
     padding: 2.5rem 2rem;
     border-radius: var(--border-radius-lg);
-    border: 1px solid #e2e8f0;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     transition: var(--transition-standard);
 }
 
@@ -514,12 +515,16 @@ h2 {
 .process-card h3 {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
+    text-align: left;
 }
 
 .process-card p {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
     word-break: keep-all;
+    text-align: left;
+    margin: 0;
 }
 
 /* Contact Links */
@@ -1484,9 +1489,9 @@ h2 {
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    justify-content: space-around;
-    min-width: 100%;
-    animation: scroll-marquee 20s linear infinite;
+    width: max-content;
+    will-change: transform;
+    
 }
 
 .logo-marquee-track img {
@@ -1530,7 +1535,7 @@ h2 {
 
 @keyframes scroll-marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Highlighter Micro-animation */
@@ -2500,4 +2505,11 @@ body .cta-box p {
 .region-nav-label--logo{font-size:1.15rem; font-weight:800; color:var(--color-primary); letter-spacing:-0.5px;}
 .logo > .region-nav-label--logo {
     transform: translateY(2px);
+}
+
+.logo-marquee-wrapper {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: scroll-marquee 20s linear infinite;
 }
