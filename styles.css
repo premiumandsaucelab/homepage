@@ -2376,7 +2376,7 @@ body .cta-box p {
 /* Floating Action Buttons */
 .floating-action-buttons {
     position: fixed;
-    bottom: 90px;
+    bottom: 30px;
     right: 24px;
     display: flex;
     flex-direction: column;
@@ -2440,7 +2440,7 @@ body .cta-box p {
 
 @media (max-width: 768px) {
     .floating-action-buttons {
-        bottom: 80px;
+        bottom: 20px;
         right: 16px;
     }
     .fab-btn {
