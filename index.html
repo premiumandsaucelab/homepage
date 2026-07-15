@@ -872,7 +872,7 @@
 
     
     <div style="text-align: center;"><div class="pricing-tabs reveal" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin: 0 auto 3rem; padding: 6px 8px; background: #f8fafc; border-radius: 999px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; position: relative;">
-        <button type="button" class="pricing-tab" onclick="switchPricing('susi')" style="padding: 0.9rem 2.2rem; border-radius: 999px; border: none; font-weight: 800; font-size: 1.15rem; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 20px rgba(37,99,235,0.35); text-shadow: 0 1px 2px rgba(0,0,0,0.1); position: relative; z-index: 1;">수시(학생부종합) 플랜</button>
+        <button type="button" class="pricing-tab" onclick="switchPricing('susi')" style="padding: 0.9rem 2.2rem; border-radius: 999px; border: none; font-weight: 800; font-size: 1.15rem; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 20px rgba(37,99,235,0.35); text-shadow: 0 1px 2px rgba(0,0,0,0.1); position: relative; z-index: 1;">고1/2 수시</button>
         <button type="button" class="pricing-tab" onclick="switchPricing('high3')" style="padding: 0.9rem 2.2rem; border-radius: 999px; border: none; font-weight: 700; font-size: 1.15rem; background: transparent; color: #64748b; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1;" onmouseover="if(this.style.background==='transparent' || this.style.background==='') this.style.background='rgba(226,232,240,0.6)';" onmouseout="if(this.style.background==='rgba(226, 232, 240, 0.6)' || this.style.background==='rgba(226,232,240,0.6)') this.style.background='transparent';">고3 전용</button>
         <button type="button" class="pricing-tab" onclick="switchPricing('jeongsi')" style="padding: 0.9rem 2.2rem; border-radius: 999px; border: none; font-weight: 700; font-size: 1.15rem; background: transparent; color: #64748b; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1;" onmouseover="if(this.style.background==='transparent' || this.style.background==='') this.style.background='rgba(226,232,240,0.6)';" onmouseout="if(this.style.background==='rgba(226, 232, 240, 0.6)' || this.style.background==='rgba(226,232,240,0.6)') this.style.background='transparent';">정시(수능) 코칭 플랜</button>
     </div>
@@ -1207,7 +1207,8 @@
   (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
 
   ChannelIO('boot', {
-    "pluginKey": "82738e5c-744b-4a51-9e75-ed5083cb2ece"
+    "pluginKey": "82738e5c-744b-4a51-9e75-ed5083cb2ece",
+    "hidePopup": true
   });
 </script>
 <!-- End Channel Plugin -->
