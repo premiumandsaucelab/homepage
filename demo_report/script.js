@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ─── Popup Data ───
 const popupData = {
     mentor1: {
-        title: '전동훈 멘토 — 한양대 공과대학 26학번',
+        title: '자연 D멘토 — 한양대 공과대학 26학번',
         desc: `<strong>합격 대학</strong><br>
             한양대 공과대학 · 성균관대 공과대학 (모두 학종 합격)<br><br>
             <strong>내신 궤적</strong><br>
@@ -79,7 +79,7 @@ const popupData = {
             "합격의 핵심은 생기부 디자인입니다. 농어촌·고른기회 전형이 왜 기회의 땅인지, 면접에서 무엇이 갈리는지 — 직접 겪은 경험으로 알려드립니다."`
     },
     team_kyoho: {
-        title: '김호민 — 서울대 경제학부 26학번',
+        title: '서울대 경제학부 26학번',
         desc: `<strong>주요 합격 실적</strong><br>
             서울대 경제학부 · 고려대 전자전기공학부 차석 · 한양대 인터칼리지 수석<br><br>
             <strong>전문 영역</strong><br>
