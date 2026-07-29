@@ -2376,7 +2376,7 @@ body .cta-box p {
 /* Floating Action Buttons */
 .floating-action-buttons {
     position: fixed;
-    bottom: 104px;
+    bottom: 90px;
     right: 24px;
     display: flex;
     flex-direction: column;
@@ -2440,7 +2440,7 @@ body .cta-box p {
 
 @media (max-width: 768px) {
     .floating-action-buttons {
-        bottom: 92px;
+        bottom: 80px;
         right: 16px;
     }
     .fab-btn {
@@ -2453,8 +2453,8 @@ body .cta-box p {
 /* Scroll to Top Button */
 .scroll-top-btn {
     position: fixed;
-    bottom: 30px;
-    right: 96px; /* Positioned to the left of Channel Talk */
+    bottom: 90px;
+    right: 96px; /* Positioned to the left of KakaoTalk button */
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -2490,7 +2490,7 @@ body .cta-box p {
 
 @media (max-width: 768px) {
     .scroll-top-btn {
-        bottom: 20px;
+        bottom: 80px;
         right: 86px;
         width: 48px;
         height: 48px;

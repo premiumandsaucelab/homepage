@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -30,25 +30,32 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
-            <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
-                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
-                <span>2026.07 정식 런칭</span>
-            </div>
-        </div>
+<div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <a href="https://www.cbci.co.kr/news/articleView.html?idxno=588179" target="_blank" style="text-decoration: none; color: inherit; display: block; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+          <span style="font-weight: 700; color: var(--color-primary);">[언론보도] pslab 입시 컨설팅 런칭 기사 보러가기 &rarr;</span>
+      </div>
+    </a>
+</div>
+
+    
         <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <a href="index.html" class="logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab" style="height: 28px; width: auto;"></a>
-            <ul class="nav-links" style="margin: 0 auto; gap: 2rem;">
-                <li style="white-space: nowrap;"><a href="index.html#about">팀 프로필</a></li>
-                <li style="white-space: nowrap;"><a href="index.html#process">프로세스</a></li>
-                <li style="white-space: nowrap;"><a href="index.html#programs">플랜&가격</a></li>
+            <div style="flex: 1; display: flex; justify-content: flex-start;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab" style="height: 28px; width: auto;"></a>
+            </div>
+            <ul class="nav-links" style="margin: 0; padding: 0; display: flex; justify-content: center; gap: 2rem; flex: 2;">
+                
+                <li style="white-space: nowrap;"><a href="experts.html" style="color: var(--color-accent); font-weight: 700;">멘토진</a></li>
+                <li style="white-space: nowrap;"><a href="#programs">플랜&amp;가격</a></li>
                 <li style="white-space: nowrap;"><a href="columns.html">칼럼&수기</a></li>
                 <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
                 <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
             </ul>
-            <div class="nav-cta" style="flex-shrink: 0;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">상담 신청하기</a>
+            <div class="nav-cta" style="flex: 1; display: flex; justify-content: flex-end;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">입시 고민 남기기</a>
             </div>
+            
         </div>
     </nav>
     
@@ -206,20 +213,58 @@
         </div>
     </main>
     
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab Logo" style="height: 26px; object-fit: contain; filter: invert(100%) grayscale(100%) brightness(200%); opacity: 0.9;"></div>
-            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8;">
-                <div>운영주체: 피에스랩 운영팀 &nbsp;|&nbsp; 문의: <a href="mailto:daehyunkoh@pslabedu.kr" style="color: rgba(255,255,255,0.7);">daehyunkoh@pslabedu.kr</a></div>
-                <div>카카오톡 1:1 문의: <a href="https://open.kakao.com/o/s2o9h2Ci" target="_blank" style="color: rgba(255,255,255,0.7);">오픈채팅 바로가기</a></div>
+    <footer class="footer" style="background-color: #f8f9fa; color: #495057; padding: 4rem 0; border-top: 1px solid #e9ecef;">
+        <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; padding: 0 20px;">
+            
+            <!-- Row 1: Badges/Social Links -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="https://cafe.naver.com/f-e/cafes/10197921/members/XwxIXUHuaQZL_f4PLfDRheFGNhqU7wpcA-mnAFqEPDs?tab=articles" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #e9ecef; color: #6c757d; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.2 16.3L9.3 0H0V33H9.7V16.7L21.6 33H33V0H21.2V16.3Z" fill="#868e96"/></svg> 네이버 카페
+                </a>
+                <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #e9ecef; color: #6c757d; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 5.965-.136.467-.487 1.68-.56 1.966-.088.35.122.342.26.246.108-.076 1.7-1.127 2.39-1.583.842.235 1.733.36 2.64.36 4.97 0 9-3.185 9-7.115S16.97 4 12 4z" fill="#868e96"/></svg> 카카오톡 1:1 문의
+                </a>
+                <a href="https://namu.wiki/w/%ED%94%BC%EC%97%90%EC%8A%A4%EB%9E%A9" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #00A495; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 4px rgba(0,164,149,0.2);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg> 나무위키 문서 보기
+                </a>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 pslab Analytics. All rights reserved. &nbsp;|&nbsp;
-                <a href="terms.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">이용약관</a>
-                &nbsp;|&nbsp;
-                <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">개인정보처리방침</a>
-            </p>
+
+            <!-- Row 2: Contact Info -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#adb5bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span style="font-weight: 700; color: #495057;">이메일 문의</span>
+                    <a href="mailto:ancienthyun@khu.ac.kr" style="color: #6c757d; text-decoration: none;">ancienthyun@khu.ac.kr</a>
+                </div>
+                <div style="color: #dee2e6;">|</div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#adb5bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span style="font-weight: 700; color: #495057;">카카오톡 문의</span>
+                    <a href="https://open.kakao.com/o/siqpqtli" target="_blank" style="color: #6c757d; text-decoration: none;">오픈채팅 바로가기</a>
+                </div>
+            </div>
+
+            <!-- Row 3: Company Info -->
+            <div style="font-size: 0.85rem; color: #868e96; line-height: 1.8; word-break: keep-all;">
+                <div>운영주체: 피에스랩 운영팀 <span style="color: #dee2e6; margin: 0 6px;">|</span> 송파에서 나고 뚫은 팀이 직접 운영</div>
+                <div style="margin-top: 10px; color: #adb5bd;">
+                    pslab은 학교생활기록(생기부)을 제출받거나 저장하지 않습니다.<br>
+                    진단은 학생 본인이 직접 입력해 진행되며, 화상 시에도 파일을 수령·저장하지 않습니다.
+                </div>
+            </div>
+
+            <!-- Row 4: Links & Copyright -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #f1f3f5; padding-top: 2rem;">
+                <div style="font-size: 0.85rem;">
+                    <a href="terms.html" style="color: #868e96; text-decoration: none; margin-right: 12px; font-weight: 500;">서비스 이용약관</a>
+                    <span style="color: #dee2e6; margin-right: 12px;">|</span>
+                    <a href="privacy.html" style="color: #868e96; text-decoration: none; font-weight: 500;">개인정보 처리방침</a>
+                </div>
+                <div style="font-size: 0.8rem; color: #adb5bd; text-transform: uppercase;">
+                    @COPYRIGHT 2026 pslab Analytics ALL RIGHTS RESERVED
+                </div>
+            </div>
+            
         </div>
     </footer>
     <script src="script.js"></script>
@@ -234,41 +279,45 @@
 </script>
 <!-- End Channel Plugin -->
 
-    <!-- Popup Modal -->
-    <div id="pslabPromoPopup" class="pslab-popup-overlay">
-        <div class="pslab-popup-container">
-            <div class="pslab-popup-body">
-                <div class="pslab-popup-title">pslab 7월 수시 컨설팅 오픈</div>
-                
-                <div class="pslab-popup-text" style="line-height: 1.6; word-break: keep-all;">
-                    <img src="assets/logo_full.png" alt="pslab" style="height: 14px; vertical-align: middle; margin-right: 4px; margin-bottom: 2px;">
-                    송파·강동 학종 전문, 첫 정식 오픈<br>
-                    30명 한정, <mark style="background-color: #fef08a; color: #111; padding: 0 4px; font-weight: 700; border-radius: 2px;">"현재 17자리 남음"</mark>
-                </div>
-                
-                <div class="pslab-popup-divider"></div>
-
-                <div class="pslab-popup-text" style="line-height: 1.7; word-break: keep-all;">
-                    <strong>런칭 멤버 혜택</strong><br>
-                    - 런칭 특별 플랜 "사전진단" 이용 가능<br>
-                    - 런칭 혜택가 적용 <a href="#programs" onclick="document.getElementById('pslabPromoPopup').classList.remove('active')" style="color: #2563eb; font-weight: 700; text-decoration: underline; font-size: 0.95em; margin-left: 2px;">[플랜 보러가기]</a><br>
-                    - 대표 멘토 직접 응대
-                </div>
-                
-                <div class="pslab-popup-text" style="font-weight: 700; color: #1e3a8a; margin-top: 16px; font-size: 13.5px; word-break: keep-all;">
-                    - 고려대, 경희대, KIST가 지원하는 pslab
-                </div>
-
-                <div class="pslab-popup-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header" target="_blank" class="pslab-popup-btn pslab-popup-btn-blue">사전 진단 신청하기</a>
-                    <a href="https://open.kakao.com/o/siqpqtli" target="_blank" class="pslab-popup-btn pslab-popup-btn-kakao">카카오톡 문의하기</a>
-                </div>
-            </div>
-            <div class="pslab-popup-footer">
-                <button id="pslabPopupClose">닫기</button>
-            </div>
+    <!-- Floating Action Buttons -->
+    <div class="floating-action-buttons">
+        <div class="fab-btn-container">
+            <span class="fab-btn-label">네이버 카페</span>
+            <a href="https://cafe.naver.com/f-e/cafes/10197921/members/XwxIXUHuaQZL_f4PLfDRheFGNhqU7wpcA-mnAFqEPDs?tab=articles" target="_blank" class="fab-btn naver-cafe">
+                <svg width="18" height="18" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.2 16.3L9.3 0H0V33H9.7V16.7L21.6 33H33V0H21.2V16.3Z" fill="white"/></svg>
+            </a>
+        </div>
+        <div class="fab-btn-container">
+            <span class="fab-btn-label">카카오톡 문의</span>
+            <a href="https://open.kakao.com/o/s2o9h2Ci" target="_blank" class="fab-btn kakao">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 5.965-.136.467-.487 1.68-.56 1.966-.088.35.122.342.26.246.108-.076 1.7-1.127 2.39-1.583.842.235 1.733.36 2.64.36 4.97 0 9-3.185 9-7.115S16.97 4 12 4z" fill="#3C1E1E"/>
+                </svg>
+            </a>
         </div>
     </div>
-
-    </body>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="위로 가기">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+        </svg>
+    </button>
+    <script>
+        (function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (btn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        btn.classList.add('show');
+                    } else {
+                        btn.classList.remove('show');
+                    }
+                });
+                btn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        })();
+    </script>
+</body>
 </html>
