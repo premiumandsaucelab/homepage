@@ -1,5 +1,5 @@
 /* ============================================================
-   pslab 강동·송파 — 교육용 토스 (v1)
+   pslab — 교육용 토스 (v1)
    ============================================================ */
 'use strict';
 
@@ -7,8 +7,8 @@ const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const el = (t,c,h)=>{const n=document.createElement(t); if(c)n.className=c; if(h!=null)n.innerHTML=h; return n;};
 const REGION_LABEL={gangdong:"강동",songpa:"송파"};
-const RESERVE="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header";
-const KAKAO="https://open.kakao.com/o/siqpqtli";
+const RESERVE="https://forms.gle/YQpHB26F4dE5zVjB9";
+const KAKAO="https://open.kakao.com/o/sk4TTyAi";
 
 /* ---------- 저장소 ---------- */
 const KEY="pslab_gdsp_v1";
@@ -169,7 +169,7 @@ function renderFeed(){
   if(sc){
     feed.appendChild(fc("",sc.logo,`내 학교 · ${sc.name} 입시 정보`,sc.intro,"",()=>{ go("school"); setTimeout(()=>openSchool(sc.id),120); }));
   } else {
-    feed.appendChild(fc("🏫","",`강동·송파 학교 정보`,"우리 지역 학교별 입시 분석을 확인해요.","",()=>go("school")));
+    feed.appendChild(fc("🏫","",`전국 주요 학교 정보`,"전국 주요 학교별 입시 분석을 확인해요.","",()=>go("school")));
   }
 
   // 4) 맞춤 멘토 (같은 학교 우선 → 같은 계열)
@@ -375,9 +375,9 @@ function schoolCard(sc){
 function openSchool(id){ const c=$(`#schoolList .school[data-id="${id}"]`); if(c){ c.classList.add("open"); c.scrollIntoView({behavior:"smooth",block:"center"}); } }
 let schoolFilter="all";
 function renderSchool(){
-  $("#schoolChips").innerHTML=[["all","전체"],["gangdong","강동"],["songpa","송파"]].map(([v,l])=>`<button class="chip ${schoolFilter===v?'on':''}" onclick="setSchoolFilter('${v}')">${l}</button>`).join('');
+  $("#schoolChips").style.display = "none";
   const box=$("#schoolList"); box.innerHTML="";
-  SCHOOLS.filter(s=>schoolFilter==="all"||s.region===schoolFilter).forEach(s=>box.appendChild(schoolCard(s)));
+  SCHOOLS.forEach(s=>box.appendChild(schoolCard(s)));
 }
 function setSchoolFilter(v){ schoolFilter=v; renderSchool(); }
 

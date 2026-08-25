@@ -1,4 +1,4 @@
-/* pslab 강동·송파 앱 · 서비스워커
+/* pslab 앱 · 서비스워커
    전략: 네트워크 우선(network-first) → 최신 내용 즉시 반영, 오프라인이면 캐시 사용 */
 const CACHE = 'pslab-gd-sp-v3';
 const ASSETS = [

@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#F2F4F6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="pslab 강동·송파">
+<meta name="apple-mobile-web-app-title" content="pslab">
 <link rel="apple-touch-icon" href="assets/logo_symbol.png">
 <link rel="icon" type="image/png" href="assets/logo_symbol.png">
 <link rel="manifest" href="app.webmanifest">
-<title>pslab | 강동·송파 입시 대시보드</title>
+<title>pslab | 입시 대시보드</title>
 <meta name="description" content="매일 여는 내 입시 대시보드. 생기부 완성도 진단, 맞춤 로드맵, 활동 플래너, 세특 탐구주제를 한 곳에서.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
@@ -320,7 +320,7 @@ img{display:block}
     <!-- ============ HOME (대시보드) ============ -->
     <section class="screen active" id="s-home">
       <header class="topbar">
-        <div class="hi" id="homeHi">안녕하세요 👋<small id="homeSub">강동·송파 입시 대시보드</small></div>
+        <div class="hi" id="homeHi">안녕하세요 👋<small id="homeSub">입시 대시보드</small></div>
         <div class="tb-right">
           <div class="streak" id="homeStreak">🔥 1일</div>
           <button class="icon-btn" onclick="go('more')">≡</button>
@@ -342,7 +342,7 @@ img{display:block}
       <div class="feed" id="homeFeed"></div>
 
       <p class="footer-mini">
-        pslab · 강동·송파 입시 대시보드 (베타)<br>
+        pslab · 입시 대시보드 (베타)<br>
         문의 <a href="mailto:ancienthyun@khu.ac.kr">ancienthyun@khu.ac.kr</a> · <a href="index.html">웹사이트</a>
       </p>
     </section>
@@ -386,20 +386,20 @@ img{display:block}
     <section class="screen" id="s-more">
       <div class="shead"><button class="back" onclick="go('home')">‹</button><h2>전체</h2></div>
       <div style="height:6px"></div>
-      <button class="more-item" style="width:calc(100% - 40px)" onclick="go('school')"><span class="mi">🏫</span><span class="mx" style="text-align:left"><span class="mt2">강동·송파 학교 정보</span><span class="ms">우리 지역 학교별 입시 분석</span></span><span class="go">›</span></button>
+      <button class="more-item" style="width:calc(100% - 40px)" onclick="go('school')"><span class="mi">🏫</span><span class="mx" style="text-align:left"><span class="mt2">전국 주요 학교 정보</span><span class="ms">우리 지역 학교별 입시 분석</span></span><span class="go">›</span></button>
       <button class="more-item" style="width:calc(100% - 40px)" onclick="go('mentor')"><span class="mi">🎓</span><span class="mx" style="text-align:left"><span class="mt2">현역 선배 멘토 · Q&amp;A</span><span class="ms">방금 입시를 뚫은 선배들</span></span><span class="go">›</span></button>
       <button class="more-item" style="width:calc(100% - 40px)" onclick="go('academy')"><span class="mi">📊</span><span class="mx" style="text-align:left"><span class="mt2">학원·컨설팅 플랜</span><span class="ms">런칭 기념가로 밀착 분석</span></span><span class="go">›</span></button>
       <button class="more-item" style="width:calc(100% - 40px)" onclick="editProfile()"><span class="mi">👤</span><span class="mx" style="text-align:left"><span class="mt2" id="mpName">내 프로필</span><span class="ms" id="mpSub">학교·학년·목표 다시 설정</span></span><span class="go">›</span></button>
 
       <div class="sec-h" style="margin-top:24px">문의하기</div>
-      <a class="contact-row" href="https://open.kakao.com/o/s2o9h2Ci" target="_blank" rel="noopener"><span class="ci k">💬</span><span class="cx"><span class="cl">카카오톡 1:1 오픈채팅</span><span class="cv">지금 바로 상담하기</span></span><span class="go">›</span></a>
+      <a class="contact-row" href="https://open.kakao.com/o/sk4TTyAi" target="_blank" rel="noopener"><span class="ci k">💬</span><span class="cx"><span class="cl">카카오톡 1:1 오픈채팅</span><span class="cv">지금 바로 상담하기</span></span><span class="go">›</span></a>
       <a class="contact-row" href="mailto:ancienthyun@khu.ac.kr"><span class="ci m">✉️</span><span class="cx"><span class="cl">이메일 문의</span><span class="cv">ancienthyun@khu.ac.kr</span></span><span class="go">›</span></a>
       <p class="footer-mini">© 2026 pslab Analytics · <a href="terms.html">이용약관</a> · <a href="privacy.html">개인정보처리방침</a></p>
     </section>
 
     <!-- ============ 학교 (reference) ============ -->
     <section class="screen" id="s-school">
-      <div class="shead"><button class="back" onclick="go('more')">‹</button><h2>강동·송파 학교 정보</h2></div>
+      <div class="shead"><button class="back" onclick="go('more')">‹</button><h2>전국 주요 학교 정보</h2></div>
       <div class="chips" id="schoolChips"></div>
       <div id="schoolList" style="margin-top:6px"></div>
       <div class="info-card card mx" style="background:var(--accent-tint)"><p style="color:#4B4DBB;font-weight:600">📍 우리 학교가 없나요? 카톡 문의로 분석을 요청해 주세요. 계속 추가됩니다.</p></div>
@@ -413,8 +413,8 @@ img{display:block}
         <div style="font-size:17px;font-weight:800;margin-bottom:6px">선배에게 바로 질문하기</div>
         <div style="font-size:12.5px;opacity:.85;margin-bottom:14px;line-height:1.5">생기부·과목선택·학교별 전략, 뭐든 물어보세요.</div>
         <div style="display:flex;gap:9px">
-          <a href="https://open.kakao.com/o/s2o9h2Ci" target="_blank" rel="noopener" style="flex:1;text-align:center;background:#FEE500;color:#191600;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">카톡 오픈채팅</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header" target="_blank" rel="noopener" style="flex:1;text-align:center;background:var(--accent);color:#fff;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">멘토 배정 신청</a>
+          <a href="https://open.kakao.com/o/sk4TTyAi" target="_blank" rel="noopener" style="flex:1;text-align:center;background:#FEE500;color:#191600;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">카톡 오픈채팅</a>
+          <a href="https://forms.gle/YQpHB26F4dE5zVjB9" target="_blank" rel="noopener" style="flex:1;text-align:center;background:var(--accent);color:#fff;font-weight:800;font-size:13.5px;padding:12px;border-radius:12px">멘토 배정 신청</a>
         </div>
       </div></div>
       <div class="chips" id="mentorChips"></div>
@@ -472,7 +472,7 @@ img{display:block}
         </div>
         <div class="fab-btn-container">
             <span class="fab-btn-label">카카오톡 문의</span>
-            <a href="https://open.kakao.com/o/s2o9h2Ci" target="_blank" class="fab-btn kakao">
+            <a href="https://open.kakao.com/o/sk4TTyAi" target="_blank" class="fab-btn kakao">
                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 5.965-.136.467-.487 1.68-.56 1.966-.088.35.122.342.26.246.108-.076 1.7-1.127 2.39-1.583.842.235 1.733.36 2.64.36 4.97 0 9-3.185 9-7.115S16.97 4 12 4z" fill="#3C1E1E"/>
                 </svg>
