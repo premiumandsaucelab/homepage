@@ -8,7 +8,7 @@ const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const el = (t,c,h)=>{const n=document.createElement(t); if(c)n.className=c; if(h!=null)n.innerHTML=h; return n;};
 const REGION_LABEL={gangdong:"강동",songpa:"송파"};
 const RESERVE="https://forms.gle/YQpHB26F4dE5zVjB9";
-const KAKAO="https://open.kakao.com/o/sk4TTyAi";
+const KAKAO="https://open.kakao.com/o/sjqnBFKi";
 
 /* ---------- 저장소 ---------- */
 const KEY="pslab_gdsp_v1";
