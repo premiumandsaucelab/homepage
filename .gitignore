@@ -68,3 +68,6 @@ my_screenshot*.png
 
 # 학생 개인정보 포함 ? 공개 배포 금지
 demo_report/
+
+# local working notes - do not publish
+Claude outputs/
