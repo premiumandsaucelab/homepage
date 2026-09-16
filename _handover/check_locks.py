@@ -25,8 +25,10 @@ from datetime import datetime, timezone, timedelta
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASELINE = os.path.join(ROOT, "_handover", "baseline.json")
 
-# 검사에서 통째로 건너뛸 경로
-SKIP_DIRS = {".git", ".agents", "_handover", "node_modules", "__pycache__", ".vscode", ".idea"}
+# 검사에서 통째로 건너뛸 경로.
+# 배포에 안 들어가는 작업용 폴더가 생기면 여기 이름을 추가한다.
+SKIP_DIRS = {".git", ".agents", "_handover", "node_modules", "__pycache__",
+             ".vscode", ".idea", "Claude outputs"}
 
 # 본문 스캔 대상 확장자
 TEXT_EXT = {".html", ".htm", ".js", ".css", ".json", ".txt", ".xml", ".md"}
@@ -59,6 +61,8 @@ FORBIDDEN = [
     (r"채용\s*우선",                     "확정 스펙에 없는 표현"),
     (r"Director\s*Plan",                "폐기된 상품명"),
     (r"Architect\s*Plan",               "폐기된 상품명"),
+    (r"스탠다드\s*기획",                  "폐기된 상품명. 현재 라인업은 Compass·Navigation·Pilot"),
+    (r"프리미엄\s*밀착",                  "폐기된 상품명. 현재 라인업은 Compass·Navigation·Pilot"),
     (r"29\s*인",                        "멘토 총원은 28인"),
     (r"재추천\s*(율\s*)?70",             "재추천율은 80%"),
     (r"고려대(학교)?\s*선정",             "확인되지 않은 선정 표기"),
@@ -68,7 +72,21 @@ FORBIDDEN = [
     (r"(?i)<\s*input[^>]*type\s*=\s*[\"']?file",  "파일 업로드 입력칸. 생기부 업로드 UI는 구현 금지"),
     (r"(?i)(tosspayments|iamport|portone|nicepay|kcp\.co\.kr|stripe\.com/v3)", "결제/PG 연동. 이번 범위 아님"),
     (r"(?i)(AIza[0-9A-Za-z_\-]{30,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{30,})", "API 키로 보이는 문자열"),
+    (r"01[016789][-.\s]?\d{3,4}[-.\s]?\d{4}", "휴대폰 번호. 공개면에 전화번호는 노출하지 않는다"),
+    (r"\d{6}[-\s]?[1-4]\d{6}",          "주민등록번호 형태의 숫자"),
 ]
+
+# 검사에 걸리지만 의도적으로 남겨둔 것. (찾은 문자열, 파일경로) 가 여기 있으면 BLOCK 하지 않고
+# 맨 아래에 '허용됨'으로만 표시한다.
+#
+# 왜 지우지 않고 예외로 두나: 규칙을 통째로 빼버리면 같은 번호가 엉뚱한 페이지에 새로 생겨도
+# 아무도 모른다. 파일을 못 박아두면 '여기까지는 의도, 그 밖은 사고'가 구분된다.
+# 예외를 새로 넣을 때는 왜 허용하는지 옆에 한 줄 적을 것.
+ALLOWED = {
+    # 학원 원장 대상 B2B 페이지의 직통 연락처. 공개 노출을 감수하기로 판단함.
+    ("010-5435-2019", "b2b_partnership_proposal.html"),
+    ("010-5435-2019", "songpa_b2b_partnership_proposal.html"),
+}
 
 KST = timezone(timedelta(hours=9))
 
@@ -129,8 +147,12 @@ def cmd_snapshot():
 def cmd_check():
     problems = 0
 
-    # 1) 금지 표현
-    hits = []
+    # 1) 금지 표현 — 같은 표현은 한 덩어리로 묶어서 보고한다.
+    #    한 줄에 두 번 나오는 경우(mailto 링크 + 화면 표시)가 흔해서
+    #    건별로 찍으면 줄 수만 불어나고 무엇을 고쳐야 하는지가 안 보인다.
+    groups = {}   # (why, 찾은문자열) -> {파일: [줄번호]}
+    allowed_hits = {}
+    total = 0
     for rel, full in walk_files():
         if os.path.splitext(rel)[1].lower() not in TEXT_EXT:
             continue
@@ -142,17 +164,35 @@ def cmd_check():
         for pat, why in FORBIDDEN:
             for m in re.finditer(pat, text):
                 line = text.count("\n", 0, m.start()) + 1
-                hits.append((rel, line, m.group(0)[:40].replace("\n", " "), why))
+                frag = m.group(0)[:60].replace("\n", " ")
+                if (frag, rel) in ALLOWED:
+                    allowed_hits.setdefault((frag, rel), []).append(line)
+                    continue
+                groups.setdefault((why, frag), {}).setdefault(rel, []).append(line)
+                total += 1
 
     print("=" * 64)
     print("1. 금지 표현 검사")
     print("=" * 64)
-    if hits:
-        problems += len(hits)
-        for rel, line, frag, why in hits:
-            print("[BLOCK] %s:%d  \"%s\"  <- %s" % (rel, line, frag, why))
-    else:
+    if not groups:
         print("[OK] 0건")
+    else:
+        problems += len(groups)
+        for (why, frag), byfile in sorted(groups.items()):
+            print("[BLOCK] %s" % why)
+            hit_count = sum(len(v) for v in byfile.values())
+            print('        "%s"  —  %d곳 / %d개 파일' % (frag, hit_count, len(byfile)))
+            for rel in sorted(byfile):
+                lines = ",".join(str(x) for x in sorted(set(byfile[rel])))
+                print("        %s:%s" % (rel, lines))
+            print()
+        print("고쳐야 할 종류: %d가지 (총 %d곳)" % (len(groups), total))
+
+    if allowed_hits:
+        print()
+        for (frag, rel), lines in sorted(allowed_hits.items()):
+            ln = ",".join(str(x) for x in sorted(set(lines)))
+            print('[허용됨] "%s"  %s:%s  — ALLOWED 에 등록된 의도적 노출' % (frag, rel, ln))
 
     # 2) baseline 대조
     print()
@@ -212,12 +252,20 @@ def main():
     except Exception:
         pass
     arg = sys.argv[1] if len(sys.argv) > 1 else ""
-    if arg == "snapshot":
-        return cmd_snapshot()
-    if arg == "check":
-        return cmd_check()
-    print(__doc__)
-    return 2
+    try:
+        if arg == "snapshot":
+            return cmd_snapshot()
+        if arg == "check":
+            return cmd_check()
+        print(__doc__)
+        return 2
+    except BrokenPipeError:
+        # 출력을 head 같은 데로 넘겼을 때 나는 것. 검사 실패가 아니다.
+        try:
+            sys.stdout.close()
+        except Exception:
+            pass
+        return 0
 
 
 if __name__ == "__main__":
