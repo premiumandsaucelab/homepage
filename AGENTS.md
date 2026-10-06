@@ -91,7 +91,7 @@ styles.css, pslab-design-system.css, script.js
 CNAME, .nojekyll, robots.txt, sitemap.xml   ← 건드리지 않는다
 ```
 
-`songpa_index.html` 은 현재 메인 내비게이션에서 빠져 있다. 살리거나 지우는 건 지시가 있을 때만.
+`songpa_index.html`, `app.html` 계열(app.js, app.data.js, app.sw.js, app.webmanifest)은 2026-10-06 삭제됨. 다시 만들지 말 것.
 
 ---
 
