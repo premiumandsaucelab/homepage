@@ -69,7 +69,7 @@
 
     <header class="hero" style="background: linear-gradient(135deg, var(--color-bg-main) 0%, var(--color-bg-light) 100%); overflow: hidden;">
         <div class="hero-content" style="position: relative; z-index: 2; margin-top: 2rem; text-align: center; max-width: 1400px; padding: 0 20px;">
-            <span class="badge animate-pop-in" style="background: rgba(37,99,235,0.08); color: var(--color-accent); border: 1px solid rgba(37,99,235,0.2); font-weight: 700; padding: 0.4rem 1rem; font-size: 0.85rem;">현재 면접 전략 리포트 접수 중</span>
+            <span class="badge animate-pop-in" style="background: rgba(37,99,235,0.08); color: var(--color-accent); border: 1px solid rgba(37,99,235,0.2); font-weight: 700; padding: 0.4rem 1rem; font-size: 0.85rem;">대학별 면접 대비 워크북 접수 중</span>
             <h1 class="animate-pop-in delay-100 hero-long" style="font-size: clamp(1.2rem, 3.5vw, 3rem); line-height: 1.35; font-weight: 900; letter-spacing: -1.5px; margin-top: 1.2rem; word-break: keep-all; text-align: center;">입시를 가르쳐본 사람과, 직접 뚫고 나온 사람은 다릅니다.<br><span class="text-gradient nowrap-pc">저희는 작년에 이 입시를 통과했습니다.</span></h1>
             <p class="hero-subtitle animate-pop-in delay-200" style="font-size: 1.2rem; color: var(--color-text-muted); max-width: 900px; margin: 1.5rem auto 1.5rem; line-height: 1.7; font-weight: 500; word-break: keep-all;">
                 대치동 컨설팅의 한계를 넘다.<br>오직 우리 학교에 최적화된 <span class="highlight-anim">가장 정밀한 생기부 전략</span>.
@@ -767,10 +767,39 @@
     </div>
     
     <div id="pricing-interview">
-        <div style="text-align:center; padding: 5rem 2rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 24px; max-width: 900px; margin: 0 auto; margin-bottom: 2rem;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #334155; margin-bottom: 0.5rem;">오픈 준비중</div>
-            <p style="color: #64748b; font-size: 0.95rem;">가장 완벽한 리포트를 제공하기 위해 준비 중입니다.<br>조금만 기다려 주세요.</p>
+        <div class="container reveal delay-1" style="max-width: 760px; margin: 0 auto 2rem;">
+            <div class="pc-card pc-dark" style="background: linear-gradient(135deg, #0f172a 0%, #1e2d4a 60%, #0f172a 100%); border: 1px solid rgba(37,99,235,0.35); position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(37,99,235,0.12);">
+                <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(37,99,235,0.06);pointer-events:none;"></div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.5rem; position:relative; z-index:2;">
+                    <div class="pc-tier" style="background:rgba(37,99,235,0.25);color:#93c5fd;font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1.2px;border:1px solid rgba(37,99,235,0.3);white-space:nowrap;">고3 면접</div>
+                </div>
+                <div class="pc-name" style="color:#ffffff; position:relative; z-index:2;">대학별 면접 대비 워크북</div>
+                <p class="pc-sub" style="color:#94a3b8; position:relative; z-index:2; word-break:keep-all;">지원한 대학 한 곳, 그 전형 하나만 보고 만든 면접 준비 책이에요.</p>
+                <div class="pc-divider" style="background:rgba(255,255,255,0.1); position:relative; z-index:2;"></div>
+                <div style="position:relative; z-index:2;">
+                    <span class="pc-price" style="color:#ffffff; font-size: 1.4rem;">첫 대학 149,000원</span>
+                    <div style="color:#e2e8f0; font-size:0.9rem; font-weight:600; margin-top:4px; margin-bottom: 2px;">추가 대학 1곳당 109,000원</div>
+                </div>
+                <div class="pc-kw" style="color:#60a5fa; position:relative; z-index:2;">이렇게 구성돼 있어요</div>
+                <ul class="pc-features" style="position:relative; z-index:2;">
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">시작하기</strong> 한 장 요약, 반드시 준비할 질문 8개, 꼭 정의해 둘 개념, 가장 조심할 질문, 면접일까지 남은 기간에 맞춘 진도표</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">1부 대학과 개념</strong> 이 대학 알기, 내 기록 읽기, 개념 정의표</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">2부 예상 문제</strong> 기억 진단, 답변 만들기, 실전 카드 8, 예상 질문 30, 되물릴 지점</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">3부 해설</strong> 내 답을 먼저 만든 뒤에 펼쳐 보는 해설</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">실전</strong> 당일 흐름과 대기실, 10분 배분과 모르는 질문, 마지막 발언과 전날 점검표, 모의면접</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">부록</strong> 근거와 출처</div></li>
+                    <li class="pc-feature" style="color:#cbd5e1; word-break:keep-all;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="pc-check"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong style="color:#fff;">공통 별책 기본 태도</strong> 반드시 지킬 것, 준비해 두면 좋은 것, 믿지 않아도 되는 것</div></li>
+                </ul>
+                <div style="position:relative; z-index:2; color:#cbd5e1; font-size:0.92rem; line-height:1.7; word-break:keep-all; margin-top: 0.5rem;">
+                    <p style="margin:0 0 0.4rem;">모범 답안을 외우게 하지 않아요. 해설은 내 답을 먼저 만든 뒤에 보도록 책 뒤쪽에 모아 두었어요.</p>
+                    <p style="margin:0 0 0.4rem;">내용마다 근거가 있어요. 모집요강과 가이드북 몇 쪽에서 왔는지 부록에 적어 두었어요.</p>
+                    <p style="margin:0;">면접 날짜에 맞춘 진도표가 들어 있어서 수능 공부와 함께 해도 무리가 없어요.</p>
+                </div>
+                <div class="pc-footer" style="position:relative; z-index:2;">
+                    <div class="pc-delivery" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; color:#94a3b8;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> 신청 후 최대 3일 안에 받아요. 신청할 때 지원 대학, 전형, 면접일을 알려 주세요.</div>
+                    <a href="https://open.kakao.com/o/s3o4ypNi" target="_blank" class="pc-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;box-shadow:0 8px 20px rgba(29,78,216,0.3);">워크북 신청하기</a>
+                </div>
+            </div>
         </div>
     </div>
 
