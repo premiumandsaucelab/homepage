@@ -379,7 +379,7 @@
             <div style="font-size: 0.85rem; color: #868e96; line-height: 1.8; word-break: keep-all;">
                 <div>운영주체: 피에스랩 운영팀 <span style="color: #dee2e6; margin: 0 6px;">|</span> 최신 입시를 직접 뚫어낸 팀이 직접 운영</div>
                 <div style="margin-top: 10px; color: #adb5bd;">
-                    생활기록부는 진단·상담 목적으로만 사용하며, <br class="mobile-break">담당 멘토와 검수 운영진 외에는 접근하지 않습니다. 분석이 끝나면 파기하고, 요청하시면 즉시 파기합니다.
+                    학생이 보내 준 정보는 진단·상담 목적으로만 사용하며, <br class="mobile-break">담당 멘토와 검수 운영진 외에는 접근하지 않습니다. 분석이 끝나면 파기하고, 요청하시면 즉시 파기합니다.
                 </div>
             </div>
 
@@ -414,8 +414,8 @@
     { id: 20, college: "서울대학교 인문대학", major: "역사학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["카테고리 정체성 + 학문적 다각화 / 1학년 상경→2학년 어문·사회→3학년 인문·역사"], accepted: "<strong class='highlight'>[학과 매트릭스]</strong> 연세대 · 고려대 · 성균관대 (역사·경제·국제 계열 동시)", external: "대치동 입시 컨설팅 학원 2곳 호평 / 면접 학원 조교 제의", tags: ["#외고출신", "#학과매트릭스", "#학종다중합격"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 26, college: "서울대학교 학부대학", major: "자유전공학부", role: "멘토", categories: ["인문·교육 계열"], passType: "학종", hs: "", strengths: ["기승전결·연결성 있는 스토리 생기부"], accepted: "성균관대", external: "", tags: ["#서울대자전", "#학종", "#일반고"], qc: false, security: false, uniLogo: "assets/snu.png" },
     { id: 21, college: "서울대학교 사범대학", major: "", role: "멘토", categories: ["인문·교육 계열", "이공 계열"], passType: "학종", hs: "", strengths: ["본인 역량 대비 활동의 변화·성장 서사 설계"], accepted: "", external: "입시 컨설턴트 보고서 작성", tags: ["#사범대", "#이공계학종", "#변화서사"], qc: false, security: false, uniLogo: "assets/snu.png" },
+    { id: 3, college: "서울대학교 경영대학", major: "경영학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "하나고등학교 졸업", strengths: ["고입·수시 컨설팅 담당"], accepted: "연세대 경영", external: "하나고 전교 1등", tags: ["#하나고", "#고입컨설팅", "#상경계열"], qc: false, security: false, uniLogo: "assets/snu.png" },
 
-    { id: 3, college: "고려대학교 경영대학", major: "경영학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "송파 보성고등학교 졸업", strengths: ["일반고 1.8 / 정석 학종 파이터"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 경영 · 성균관대 경영 · 서강대 경제", external: "", tags: ["#학종4관왕", "#정석학종파이터", "#일관된생기부"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 24, college: "고려대학교 정경대학", major: "경제학과", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["나만의 프로젝트 탐구·타과목 융합"], accepted: "성균관대 자유전공 · 고려대 산업경영공", external: "", tags: ["#학종", "#수행평가진로연결", "#융합탐구"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 25, college: "고려대학교 정경대학", major: "", role: "멘토", categories: ["상경·사회 계열"], passType: "학종", hs: "", strengths: ["동기→과정→결과→복기·수정점 4단계 구조 / 수평·수직적 활동 연장"], accepted: "<strong class='highlight'>[학종 4관왕]</strong> 연세대 HASS · 성균관대 글리 · 성균관대 사회과학계열", external: "", tags: ["#외고출신", "#학종4관왕", "#사회과학"], qc: false, security: false, uniLogo: "assets/ku.png" },
     { id: 23, college: "고려대학교 정보보호학부", major: "사이버국방학과", role: "정시 전략", categories: ["이공 계열", "정시 전략"], passType: "정시", hs: "", strengths: [], accepted: "한양대 파이낸스경영 · 서강대 AI자전", external: "입시 학원 강사 (학부모 보고서 작성)", tags: ["#사이버국방학과", "#국방부계약학과", "#보안전문"], qc: false, security: true, uniLogo: "assets/ku.png" },
@@ -547,7 +547,7 @@
                             ${roleBadgeHtml}
                             ${qcBadgeHtml}
                             ${securityBadgeHtml}
-                            <span class="pass-type-tag">${expert.passType}</span>
+                            ${expert.passType ? `<span class="pass-type-tag">${expert.passType}</span>` : ''}
                         </div>
                         ${expert.major ? `<div style="font-size: 1.05rem; font-weight: 600; color: #64748b; margin-left: 36px;">${expert.major}</div>` : ''}
                     </div>
