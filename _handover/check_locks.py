@@ -89,8 +89,8 @@ FORBIDDEN = [
 # 예외를 새로 넣을 때는 왜 허용하는지 옆에 한 줄 적을 것.
 ALLOWED = {
     # 학원 원장 대상 B2B 페이지의 직통 연락처. 공개 노출을 감수하기로 판단함.
-    ("010-5435-2019", "b2b_partnership_proposal.html"),
-    ("010-5435-2019", "songpa_b2b_partnership_proposal.html"),
+    ("010-2446-8370", "b2b_partnership_proposal.html"),
+    ("010-2446-8370", "songpa_b2b_partnership_proposal.html"),
 }
 
 KST = timezone(timedelta(hours=9))

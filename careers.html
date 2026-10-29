@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://*.channel.io; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self' https://*.channel.io wss://*.channel.io; frame-src 'self' https://*.channel.io; object-src 'none'; base-uri 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo_symbol.png">
+    <title>채용 | 피에스랩 (pslab)</title>
+    <meta name="description" content="입시를 가장 잘 다루는 팀, 피에스랩과 함께 만들어 갈 동료를 찾아요.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* 토스 채용 스타일 전용 CSS */
+        .careers-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            box-sizing: border-box;
+        }
+
+        /* 2-1. 히어로 */
+        .careers-hero {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            border-bottom: 1px solid #f1f5f9;
+            padding: 8rem 1.5rem 3rem;
+        }
+        .careers-hero-title {
+            font-size: clamp(1.85rem, 4vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: -0.03em;
+            color: #111827;
+            text-align: center;
+            word-break: keep-all;
+            margin: 0;
+        }
+
+        /* 공통 섹션 라벨 */
+        .section-label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.01em;
+            margin-bottom: 1.25rem;
+        }
+
+        /* 1. 회사 소개 섹션 (본문 블록 720px 가운데 정렬, 텍스트 왼쪽 정렬) */
+        .careers-intro-section {
+            padding: 3.5rem 1.25rem 3.5rem;
+            background: #ffffff;
+        }
+        .intro-block {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .intro-single-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.75;
+            word-break: keep-all;
+        }
+        .intro-single-col p {
+            margin: 0;
+        }
+
+        /* 2. 크레덴셜 섹션 (SELECTED BY) */
+        .careers-credentials-section {
+            padding: 3.5rem 1.25rem;
+            background: #ffffff;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: center;
+        }
+        .credentials-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        .credentials-label {
+            font-size: 0.8rem;
+            font-weight: 750;
+            color: #94a3b8;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .credentials-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+        .credential-item {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.25rem;
+        }
+        .org-name {
+            font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+        .org-detail {
+            font-size: clamp(0.72rem, 0.8vw, 0.78rem);
+            color: #64748b;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .cred-divider {
+            width: 1px;
+            height: 32px;
+            background: #e2e8f0;
+            flex-shrink: 0;
+        }
+        .credentials-desc {
+            max-width: 720px;
+            margin: 2.25rem auto 0;
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.75;
+            word-break: keep-all;
+            text-align: center;
+        }
+
+        /* 2-2. 포지션 목록 */
+        .careers-section {
+            padding: 3.5rem 1.25rem 5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .careers-count {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .careers-count .count-num {
+            color: var(--color-accent);
+        }
+        .position-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid #f1f5f9;
+        }
+        .position-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.6rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s ease;
+            border-radius: 8px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .position-row:hover {
+            background: #f8fafc;
+        }
+        .position-main {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            min-width: 0;
+            padding-right: 1rem;
+        }
+        .position-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.02em;
+            word-break: keep-all;
+        }
+        .position-keywords {
+            font-size: 0.88rem;
+            color: #64748b;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            word-break: keep-all;
+            line-height: 1.4;
+        }
+        .position-badge {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 5px 14px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* Open Application */
+        .open-app-card {
+            margin-top: 2.5rem;
+            padding: 2.25rem 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .open-app-card:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+        .open-app-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 0;
+        }
+        .open-app-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            font-family: var(--font-heading);
+        }
+        .open-app-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            word-break: keep-all;
+            margin: 0;
+        }
+        .open-app-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .open-app-badge {
+            background: rgba(37,99,235,0.08);
+            color: var(--color-accent);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(37,99,235,0.18);
+        }
+        .arrow-circle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .open-app-card:hover .arrow-circle-btn {
+            background: var(--color-accent);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        /* Detail View Styles */
+        .detail-view {
+            display: none;
+            padding: 8.5rem 1.25rem 6rem;
+            max-width: 1040px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .back-nav {
+            margin-bottom: 2.25rem;
+        }
+        .back-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .back-nav a:hover {
+            color: var(--color-accent);
+        }
+        .detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 1.75rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .detail-title {
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111827;
+            margin: 0 0 0.6rem 0;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+        .detail-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.01em;
+        }
+        .detail-body-wrapper {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+        .detail-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .detail-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+        }
+        .btn-apply-desktop {
+            display: block;
+            width: 100%;
+            background: var(--color-accent);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 1.15rem;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.25);
+            transition: background 0.15s ease, transform 0.15s ease;
+            box-sizing: border-box;
+        }
+        .btn-apply-desktop:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .detail-section-title {
+            font-size: 1.25rem;
+            font-weight: 750;
+            color: #111827;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.02em;
+            word-break: keep-all;
+        }
+        .detail-bullet-list {
+            list-style-type: disc;
+            padding-left: 1.3rem;
+            margin: 0;
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+        .detail-bullet-list li {
+            margin-bottom: 0.45rem;
+        }
+        .journey-steps {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            word-break: keep-all;
+            line-height: 1.6;
+        }
+
+        /* Mobile Sticky Bottom Bar */
+        .mobile-apply-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid #e2e8f0;
+            padding: 0.85rem 1.25rem;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        .btn-apply-mobile {
+            display: block;
+            width: 100%;
+            background: var(--color-accent);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 0.95rem;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 3px 12px rgba(37,99,235,0.25);
+            box-sizing: border-box;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .careers-hero {
+                padding: 7rem 1.25rem 1.75rem;
+            }
+            .careers-intro-section {
+                padding: 3rem 1.25rem 2.5rem;
+            }
+            .credentials-row {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.25rem 1rem;
+            }
+            .cred-divider {
+                display: none;
+            }
+            .credential-item {
+                flex: none;
+                width: calc(50% - 1rem);
+                box-sizing: border-box;
+                padding: 0.5rem 0;
+            }
+            .credential-item:last-child {
+                width: 100%;
+            }
+            .org-name {
+                font-size: 1.05rem;
+            }
+            .org-detail {
+                font-size: 0.78rem;
+            }
+            .detail-view {
+                padding: 7.5rem 1.25rem 6rem;
+            }
+            .detail-body-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .detail-sidebar {
+                display: none;
+            }
+            body.is-detail .mobile-apply-bar {
+                display: block;
+            }
+            body.is-detail {
+                padding-bottom: 80px;
+            }
+            .open-app-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+                padding: 1.75rem 1.25rem;
+            }
+            .open-app-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .position-row {
+                padding: 1.35rem 0.75rem;
+            }
+            .position-title {
+                font-size: 1.1rem;
+            }
+            .position-keywords {
+                font-size: 0.82rem;
+            }
+            .position-badge {
+                font-size: 0.78rem;
+                padding: 4px 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+<div class="top-announcement-bar" style="background-color: rgba(255,255,255,0.8); backdrop-filter: blur(5px); color: var(--color-text-muted); text-align: center; padding: 8px 15px; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.3px; z-index: 1000; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <a href="https://www.cbci.co.kr/news/articleView.html?idxno=588179" target="_blank" style="text-decoration: none; color: inherit; display: block; width: 100%; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+      <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent); animation: pulse 2s infinite;"></span>
+          <span style="font-weight: 700; color: var(--color-primary);">[언론보도] 피에스랩 런칭 기사 보러가기 &rarr;</span>
+      </div>
+    </a>
+</div>
+
+    
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="flex: 1; display: flex; justify-content: flex-start;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center;"><img src="assets/logo_full.png" alt="pslab" style="height: 28px; width: auto;"></a>
+            </div>
+            <ul class="nav-links" style="margin: 0; padding: 0; display: flex; justify-content: center; gap: 2rem; flex: 2;">
+                
+                <li style="white-space: nowrap;"><a href="experts.html">멘토진</a></li>
+                <li style="white-space: nowrap;"><a href="index.html#programs">플랜&amp;가격</a></li>
+                <li style="white-space: nowrap;"><a href="columns.html">칼럼&수기</a></li>
+                <li style="white-space: nowrap;"><a href="faq.html">FAQ</a></li>
+                <li style="white-space: nowrap;"><a href="b2b_partnership_proposal.html">학원 제휴</a></li>
+                <li style="white-space: nowrap;"><a href="careers.html" style="color: var(--color-accent); font-weight: 700;">채용</a></li>
+            </ul>
+            <div class="nav-cta" style="flex: 1; display: flex; justify-content: flex-end;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-yh1RmZEtljz6Pg4IifrBh_mTQYO7jYvX-3GPfFti8hai7Q/viewform?usp=header" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px; font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2);">입시 고민 남기기</a>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- 1. 목록 뷰 (List View) -->
+    <main id="careersListView">
+        <!-- 2-1. 히어로 -->
+        <header class="careers-hero">
+            <div class="careers-container">
+                <h1 class="careers-hero-title">
+                    입시를 가장 잘 다루는 팀,<br>
+                    함께 만들어 갈 동료를 찾아요
+                </h1>
+            </div>
+        </header>
+
+        <!-- 1. 회사 소개 섹션 (우측 숫자 카드 삭제, 본문 720px 한 열 가운데 정렬) -->
+        <section class="careers-intro-section">
+            <div class="careers-container">
+                <div class="intro-block">
+                    <div class="section-label">우리는 이런 팀이에요</div>
+                    <div class="intro-single-col">
+                        <p>피에스랩은 입시를 막 통과한 사람들이 만든 입시 전략 팀이에요. 2026년 4월, 같은 해에 대학에 들어간 고등학교 동창들이 시작했어요.</p>
+                        <p>공개된 입시 자료를 AI로 정리하고, 어느 대학에 어떻게 지원할지에 대한 판단은 사람이 내려요. 그리고 왜 그렇게 판단했는지를 리포트로 남겨요.</p>
+                        <p>2026년 7월 말 첫 상품을 낸 뒤, 수시 원서 상담과 대학별 면접 대비 워크북을 운영하고 있어요. 광고 없이 입시 커뮤니티 글만으로 고객이 찾아왔어요.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 크레덴셜 섹션 (SELECTED BY) -->
+        <section class="careers-credentials-section">
+            <div class="credentials-container">
+                <div class="credentials-label">SELECTED BY</div>
+                
+                <div class="credentials-row">
+                    <div class="credential-item">
+                        <div class="org-name">과학기술정보통신부</div>
+                        <div class="org-detail">청년창업 간담회 초청</div>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="credential-item">
+                        <div class="org-name">중소벤처기업부</div>
+                        <div class="org-detail">모두의 창업 선발</div>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="credential-item">
+                        <div class="org-name">하나금융그룹</div>
+                        <div class="org-detail">하나소셜벤처유니버시티 선발</div>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="credential-item">
+                        <div class="org-name">연구개발특구진흥재단</div>
+                        <div class="org-detail">GRaND-K 창업학교 선발</div>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="credential-item">
+                        <div class="org-name">경희대학교</div>
+                        <div class="org-detail">KHU Valley Start-up 3위</div>
+                    </div>
+                </div>
+
+                <div class="credentials-desc">
+                    피에스랩은 정부 부처와 금융그룹, 대학의 창업 프로그램에 선발되어 운영 자금과 멘토링을 받고 있어요.<br>
+                    시작한 지 반년이 된 팀이지만, 먼저 알아봐 준 곳들이 있어요.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2-2. 포지션 목록 -->
+        <section class="careers-section">
+            <div class="careers-count">
+                <span class="count-num">5</span>개의 포지션이 열려있어요.
+            </div>
+
+            <div class="position-list">
+                <!-- 행 1: CTO / Full-stack Developer -->
+                <a href="#cto" class="position-row" data-role="cto">
+                    <div class="position-main">
+                        <div class="position-title">CTO / Full-stack Developer</div>
+                        <div class="position-keywords">초기 멤버 · 풀스택 · 생성형 AI · 개인정보 보호</div>
+                    </div>
+                    <div class="position-badge">협의</div>
+                </a>
+
+                <!-- 행 2: PM (입시 전문가) -->
+                <a href="#pm" class="position-row" data-role="pm">
+                    <div class="position-main">
+                        <div class="position-title">PM (입시 전문가)</div>
+                        <div class="position-keywords">상품 기획 · 판단 기준 설계 · 품질 검수 · 신규 입시 영역</div>
+                    </div>
+                    <div class="position-badge">시즌 집중</div>
+                </a>
+
+                <!-- 행 3: Growth Marketer -->
+                <a href="#growth" class="position-row" data-role="growth">
+                    <div class="position-main">
+                        <div class="position-title">Growth Marketer</div>
+                        <div class="position-keywords">커뮤니티 · 검색 광고 · SNS · B2B 제휴</div>
+                    </div>
+                    <div class="position-badge">협의</div>
+                </a>
+
+                <!-- 행 4: Product Designer (UX/UI) -->
+                <a href="#designer" class="position-row" data-role="designer">
+                    <div class="position-main">
+                        <div class="position-title">Product Designer (UX/UI)</div>
+                        <div class="position-keywords">문서 디자인 · UX/UI · 마케팅 소재</div>
+                    </div>
+                    <div class="position-badge">프로젝트 단위</div>
+                </a>
+
+                <!-- 행 5: Strategy & Operations -->
+                <a href="#strategy" class="position-row" data-role="strategy">
+                    <div class="position-main">
+                        <div class="position-title">Strategy & Operations</div>
+                        <div class="position-keywords">전략 기획 · 시장 조사 · 사업계획서 · 지표 관리</div>
+                    </div>
+                    <div class="position-badge">협의</div>
+                </a>
+            </div>
+
+            <!-- 2-3. Open Application -->
+            <a href="careers_apply.html?position=open" class="open-app-card">
+                <div class="open-app-left">
+                    <div class="open-app-title">Open Application</div>
+                    <p class="open-app-desc">
+                        지금 열린 포지션에 맞는 자리가 없어도 괜찮아요. 피에스랩이 하는 일과 만들 미래에 끌린다면 알려주세요.
+                    </p>
+                </div>
+                <div class="open-app-right">
+                    <span class="open-app-badge">제안형</span>
+                    <div class="arrow-circle-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <!-- 3. 상세 뷰 컨테이너 (Detail Views) -->
+    <div id="careersDetailView" class="detail-view">
+        <div class="back-nav">
+            <a href="#" id="backToListBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                전체 포지션 보기
+            </a>
+        </div>
+
+        <header class="detail-header">
+            <h1 class="detail-title" id="detailJobTitle">직무명</h1>
+            <div class="detail-subtitle">피에스랩 | 업무 위탁</div>
+        </header>
+
+        <div class="detail-body-wrapper">
+            <div class="detail-content">
+                <!-- 1. 공통: 팀 소개 -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">합류하게 될 팀에 대해 알려드려요</h2>
+                    <ul class="detail-bullet-list">
+                        <li>피에스랩은 공개된 입시 자료를 AI로 분석하고, 대학별 판단은 사람이 책임지는 팀이에요.</li>
+                        <li>2026년 7월 말 첫 상품을 낸 뒤 수시 원서 상담과 면접 대비 워크북을 운영하고 있어요.</li>
+                        <li>지금은 작은 팀이지만, 사람이 늘어도 같은 품질이 나오는 구조를 함께 만들 동료를 찾고 있어요.</li>
+                    </ul>
+                </section>
+
+                <!-- 2. 직무별 업무 (동적 교체 영역) -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">합류하면 함께 할 업무예요</h2>
+                    <ul class="detail-bullet-list" id="detailResponsibilities"></ul>
+                </section>
+
+                <!-- 3. 직무별 인재상 (동적 교체 영역) -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">이런 분과 함께하고 싶어요</h2>
+                    <ul class="detail-bullet-list" id="detailQualifications"></ul>
+                </section>
+
+                <!-- 4. 직무별 지원 팁 (동적 교체 영역) -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">지원서는 이렇게 작성하시는 걸 추천해요</h2>
+                    <ul class="detail-bullet-list" id="detailTips"></ul>
+                </section>
+
+                <!-- 5. 공통: 합류 여정 -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">피에스랩으로의 합류 여정</h2>
+                    <div class="journey-steps">
+                        지원 &gt; 대표 인터뷰 &gt; 과제 또는 포트폴리오 검토 &gt; 합류 결정
+                    </div>
+                </section>
+
+                <!-- 6. 공통: 확인 사항 -->
+                <section class="detail-section">
+                    <h2 class="detail-section-title">꼭 확인해주세요</h2>
+                    <ul class="detail-bullet-list">
+                        <li>현재 모든 포지션은 업무 위탁(프리랜서) 형태로 함께해요.</li>
+                        <li>업무 범위와 보상은 포지션별로 협의하고, 건별 또는 월 단위로 정산해요.</li>
+                        <li>원격 근무가 기본이고, 필요할 때 서울에서 만나요.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- 데스크톱 우측 스티키 지원 버튼 -->
+            <aside class="detail-sidebar">
+                <a href="#" class="btn-apply-desktop" id="applyBtnDesktop">지원하기</a>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 모바일 하단 고정 바 -->
+    <div class="mobile-apply-bar" id="mobileApplyBar">
+        <a href="#" class="btn-apply-mobile" id="applyBtnMobile">지원하기</a>
+    </div>
+
+    <!-- 공통 푸터 -->
+    <footer class="footer" style="background-color: #f8f9fa; color: #495057; padding: 4rem 0; border-top: 1px solid #e9ecef;">
+        <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; padding: 0 20px;">
+            
+            <!-- Row 1: Badges/Social Links -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="https://cafe.naver.com/f-e/cafes/10197921/members/XwxIXUHuaQZL_f4PLfDRheFGNhqU7wpcA-mnAFqEPDs?tab=articles" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #e9ecef; color: #6c757d; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.2 16.3L9.3 0H0V33H9.7V16.7L21.6 33H33V0H21.2V16.3Z" fill="#868e96"/></svg> 네이버 카페
+                </a>
+                <a href="https://open.kakao.com/o/s3o4ypNi" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #e9ecef; color: #6c757d; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 5.965-.136.467-.487 1.68-.56 1.966-.088.35.122.342.26.246.108-.076 1.7-1.127 2.39-1.583.842.235 1.733.36 2.64.36 4.97 0 9-3.185 9-7.115S16.97 4 12 4z" fill="#868e96"/></svg> 카카오톡 1:1 문의
+                </a>
+            </div>
+
+            <!-- Row 2: Contact Info -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#adb5bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span style="font-weight: 700; color: #495057;">이메일 문의</span>
+                    <a href="mailto:daehyun@pslabedu.kr" style="color: #6c757d; text-decoration: none;">daehyun@pslabedu.kr</a>
+                </div>
+                <div style="color: #dee2e6;">|</div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#adb5bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span style="font-weight: 700; color: #495057;">카카오톡 문의</span>
+                    <a href="https://open.kakao.com/o/s3o4ypNi" target="_blank" style="color: #6c757d; text-decoration: none;">오픈채팅 바로가기</a>
+                </div>
+            </div>
+
+            <!-- Row 3: Company Info -->
+            <div style="font-size: 0.85rem; color: #868e96; line-height: 1.8; word-break: keep-all;">
+                <div>운영주체: 피에스랩 운영팀 <span style="color: #dee2e6; margin: 0 6px;">|</span> 최신 입시를 직접 뚫어낸 팀이 직접 운영</div>
+                <div style="margin-top: 10px; color: #adb5bd;">
+                    학생이 보내 준 정보는 진단·상담 목적으로만 사용하며, <br class="mobile-break">담당 멘토와 검수 운영진 외에는 접근하지 않습니다. 분석이 끝나면 파기하고, 요청하시면 즉시 파기합니다.
+                </div>
+            </div>
+
+            <!-- Row 4: Links & Copyright -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #f1f3f5; padding-top: 2rem;">
+                <div style="font-size: 0.85rem;">
+                    <a href="terms.html" style="color: #868e96; text-decoration: none; margin-right: 12px; font-weight: 500;">서비스 이용약관</a>
+                    <span style="color: #dee2e6; margin-right: 12px;">|</span>
+                    <a href="privacy.html" style="color: #868e96; text-decoration: none; font-weight: 500;">개인정보 처리방침</a>
+                </div>
+                <div style="font-size: 0.8rem; color: #adb5bd; text-transform: uppercase;">
+                    @COPYRIGHT 2026 pslab Analytics ALL RIGHTS RESERVED
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+  ChannelIO('boot', {
+    "pluginKey": "82738e5c-744b-4a51-9e75-ed5083cb2ece"
+  });
+</script>
+<!-- End Channel Plugin -->
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-action-buttons">
+        <div class="fab-btn-container">
+            <span class="fab-btn-label">네이버 카페</span>
+            <a href="https://cafe.naver.com/f-e/cafes/10197921/members/XwxIXUHuaQZL_f4PLfDRheFGNhqU7wpcA-mnAFqEPDs?tab=articles" target="_blank" class="fab-btn naver-cafe">
+                <svg width="18" height="18" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.2 16.3L9.3 0H0V33H9.7V16.7L21.6 33H33V0H21.2V16.3Z" fill="white"/></svg>
+            </a>
+        </div>
+        <div class="fab-btn-container">
+            <span class="fab-btn-label">카카오톡 문의</span>
+            <a href="https://open.kakao.com/o/s3o4ypNi" target="_blank" class="fab-btn kakao">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 5.965-.136.467-.487 1.68-.56 1.966-.088.35.122.342.26.246.108-.076 1.7-1.127 2.39-1.583.842.235 1.733.36 2.64.36 4.97 0 9-3.185 9-7.115S16.97 4 12 4z" fill="#3C1E1E"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="위로 가기">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+        </svg>
+    </button>
+    <script>
+        (function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (btn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        btn.classList.add('show');
+                    } else {
+                        btn.classList.remove('show');
+                    }
+                });
+                btn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        })();
+    </script>
+
+<!-- 채용 상세 데이터 및 라우팅 스크립트 -->
+    <script>
+        (function() {
+            var POSITIONS = {
+                'cto': {
+                    title: 'CTO / Full-stack Developer',
+                    responsibilities: [
+                        '입시 자료 수집, 분석, 리포트 생성 과정을 제품 형태로 개발해요.',
+                        '학생과 학부모가 직접 쓰는 웹 서비스를 설계하고 개발해요.',
+                        '학생 개인정보를 안전하게 다루는 보호 체계를 만들고 관리해요.',
+                        '초기에는 풀스택 개발로 시작해, 기술 리드로 함께 성장할 분을 찾아요.'
+                    ],
+                    qualifications: [
+                        '웹 서비스를 처음부터 끝까지 만들어 배포해 본 분이 필요해요.',
+                        '생성형 AI API를 실제 서비스에 붙여 본 분이 필요해요.',
+                        '개인정보를 다루는 서비스의 보안을 중요하게 생각하는 분이면 더욱 좋아요.'
+                    ],
+                    tips: [
+                        '직접 만든 서비스가 있다면 링크와 본인이 맡은 범위를 함께 적어주세요.'
+                    ]
+                },
+                'pm': {
+                    title: 'PM (입시 전문가)',
+                    responsibilities: [
+                        '수시, 정시, 면접 상품의 구성과 판단 기준을 설계해요.',
+                        '리포트와 워크북의 품질 검수 기준을 정리하고 직접 검수해요.',
+                        '고입, 해외 대학 등 새로운 입시 영역의 상품을 기획해요.'
+                    ],
+                    qualifications: [
+                        '최근 입시를 직접 치렀고, 대학별 전형과 평가 방식을 깊이 이해하는 분이 필요해요.',
+                        '자신의 판단을 근거와 함께 문장으로 정리할 수 있는 분이 필요해요.',
+                        '입시 컨설팅이나 멘토링 경험이 있다면 더욱 좋아요.'
+                    ],
+                    tips: [
+                        '본인의 입시 경험(전형, 지원 과정에서 판단한 것)과, 다른 학생을 도와본 경험이 있다면 함께 적어주세요.'
+                    ]
+                },
+                'growth': {
+                    title: 'Growth Marketer',
+                    responsibilities: [
+                        '입시 커뮤니티, 검색 광고, SNS 채널을 운영하고 성과를 측정해요.',
+                        '입시 일정에 맞춘 시즌별 콘텐츠와 캠페인을 기획해요.',
+                        '학원, 학교 등 B2B 제휴 채널을 발굴해요.'
+                    ],
+                    qualifications: [
+                        '광고나 콘텐츠 성과를 숫자로 보고 개선해 본 분이 필요해요.',
+                        '수험생과 학부모가 어디서 정보를 찾는지 잘 아는 분이면 더욱 좋아요.'
+                    ],
+                    tips: [
+                        '운영해 본 채널이나 캠페인이 있다면, 무엇을 바꿨고 어떤 숫자가 달라졌는지 적어주세요.'
+                    ]
+                },
+                'designer': {
+                    title: 'Product Designer (UX/UI)',
+                    responsibilities: [
+                        '리포트, 워크북 등 고객이 받는 문서의 정보 구조와 디자인을 만들어요.',
+                        '웹 서비스 화면을 설계해요.',
+                        '홈페이지와 마케팅 소재를 디자인해요.'
+                    ],
+                    qualifications: [
+                        '정보가 많은 화면이나 문서를 읽기 쉽게 정리해 본 분이 필요해요.',
+                        '포트폴리오로 작업을 보여줄 수 있는 분이 필요해요.'
+                    ],
+                    tips: [
+                        '포트폴리오 링크와 함께, 각 작업에서 해결하려던 문제를 한 줄씩 적어주세요.'
+                    ]
+                },
+                'strategy': {
+                    title: 'Strategy & Operations',
+                    responsibilities: [
+                        '대표와 가장 가까이에서 회사의 방향과 우선순위를 함께 정해요.',
+                        '시장 조사와 경쟁 분석을 바탕으로 사업 전략과 성장 계획을 세워요.',
+                        '사업계획서, 투자 자료, 지원사업 서류를 기획하고 작성해요.',
+                        '매출, 고객, 운영 지표를 정리하고 관리해요.'
+                    ],
+                    qualifications: [
+                        '흩어진 정보를 모아 근거 있는 결론과 문서로 정리할 수 있는 분이 필요해요.',
+                        '숫자로 사업을 바라보고 설명할 수 있는 분이 필요해요.',
+                        '창업, 컨설팅, 전략 기획 관련 경험이 있다면 더욱 좋아요.'
+                    ],
+                    tips: [
+                        '직접 조사하고 분석해 결론을 낸 경험이 있다면, 어떤 근거로 어떤 판단을 했는지 적어주세요.'
+                    ]
+                }
+            };
+
+            var listView = document.getElementById('careersListView');
+            var detailView = document.getElementById('careersDetailView');
+            var mobileApplyBar = document.getElementById('mobileApplyBar');
+
+            var detailJobTitle = document.getElementById('detailJobTitle');
+            var detailResponsibilities = document.getElementById('detailResponsibilities');
+            var detailQualifications = document.getElementById('detailQualifications');
+            var detailTips = document.getElementById('detailTips');
+            var applyBtnDesktop = document.getElementById('applyBtnDesktop');
+            var applyBtnMobile = document.getElementById('applyBtnMobile');
+            var backToListBtn = document.getElementById('backToListBtn');
+
+            function renderRoute() {
+                var hash = (window.location.hash || '').replace('#', '').toLowerCase();
+                var position = POSITIONS[hash];
+
+                if (position) {
+                    document.title = position.title + ' 채용 | 피에스랩';
+                    detailJobTitle.textContent = position.title;
+
+                    function renderList(targetEl, items) {
+                        targetEl.innerHTML = '';
+                        items.forEach(function(item) {
+                            var li = document.createElement('li');
+                            li.textContent = item;
+                            targetEl.appendChild(li);
+                        });
+                    }
+
+                    renderList(detailResponsibilities, position.responsibilities);
+                    renderList(detailQualifications, position.qualifications);
+                    renderList(detailTips, position.tips);
+
+                    var mailUrl = 'careers_apply.html?position=' + encodeURIComponent(hash);
+                    applyBtnDesktop.setAttribute('href', mailUrl);
+                    applyBtnMobile.setAttribute('href', mailUrl);
+
+                    listView.style.display = 'none';
+                    detailView.style.display = 'block';
+                    document.body.classList.add('is-detail');
+                    window.scrollTo(0, 0);
+                } else {
+                    document.title = '채용 | 피에스랩 (pslab)';
+                    listView.style.display = 'block';
+                    detailView.style.display = 'none';
+                    document.body.classList.remove('is-detail');
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            backToListBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (window.location.hash) {
+                    window.location.hash = '';
+                } else {
+                    renderRoute();
+                }
+            });
+
+            window.addEventListener('hashchange', renderRoute);
+            renderRoute();
+        })();
+    </script>
+</body>
+</html>
