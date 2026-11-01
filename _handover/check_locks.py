@@ -91,6 +91,8 @@ ALLOWED = {
     # 학원 원장 대상 B2B 페이지의 직통 연락처. 공개 노출을 감수하기로 판단함.
     ("010-2446-8370", "b2b_partnership_proposal.html"),
     ("010-2446-8370", "songpa_b2b_partnership_proposal.html"),
+    # Meta 픽셀 ID 2897322043983656 의 앞 13자리가 주민번호 패턴에 걸리는 오탐. 대표 승인(2026-11-01).
+    ("2897322043983", "meta-pixel.js"),
 }
 
 KST = timezone(timedelta(hours=9))
