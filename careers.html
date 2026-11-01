@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         /* 토스 채용 스타일 전용 CSS */
         .careers-container {
@@ -23,20 +24,111 @@
 
         /* 2-1. 히어로 */
         .careers-hero {
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-            border-bottom: 1px solid #f1f5f9;
-            padding: 8rem 1.5rem 3rem;
+            background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 55%, #ffffff 100%);
+            border-bottom: 1px solid #e8eef8;
+            padding: 9.5rem 1.5rem 4.5rem;
+            overflow: hidden;
+        }
+        .careers-hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 3rem;
+        }
+        .careers-hero-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
         }
         .careers-hero-title {
-            font-size: clamp(1.85rem, 4vw, 2.75rem);
+            font-size: clamp(1.85rem, 3.6vw, 2.5rem);
             font-weight: 800;
             line-height: 1.35;
             letter-spacing: -0.03em;
             color: #111827;
-            text-align: center;
+            text-align: left;
             word-break: keep-all;
             margin: 0;
         }
+        .careers-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0.85rem 1.4rem;
+            background: var(--color-accent);
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(37,99,235,0.25);
+            transition: background 0.15s ease, transform 0.15s ease;
+            font-family: inherit;
+        }
+        .careers-hero-cta:hover {
+            background: var(--color-accent-hover, #1d4ed8);
+            transform: translateY(-1px);
+        }
+        .careers-hero-cta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 히어로 우측 그래픽 (장식, 텍스트 없음) */
+        .careers-hero-graphic {
+            position: relative;
+            height: 260px;
+        }
+        .hero-blob {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            right: -20px;
+            top: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.22), rgba(37,99,235,0) 70%);
+        }
+        .hero-card {
+            position: absolute;
+            width: 200px;
+            padding: 18px 18px 20px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 10px 28px rgba(15,23,42,0.08);
+            box-sizing: border-box;
+        }
+        .hero-card .bar {
+            height: 8px;
+            border-radius: 999px;
+            background: #e2e8f0;
+            margin-top: 10px;
+        }
+        .hero-card .bar.title {
+            width: 60%;
+            height: 10px;
+            background: #0f172a;
+            opacity: 0.85;
+            margin-top: 0;
+        }
+        .hero-card .bar.w80 { width: 80%; }
+        .hero-card .bar.w55 { width: 55%; }
+        .hero-card .chip {
+            display: inline-block;
+            width: 46px;
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(37,99,235,0.14);
+            margin-top: 14px;
+        }
+        .hero-card.c1 { left: 0; top: 20px; transform: rotate(-4deg); }
+        .hero-card.c2 { left: 60px; top: 80px; transform: rotate(2deg); }
+        .hero-card.c3 { left: 120px; top: 140px; border-color: rgba(37,99,235,0.35); }
+        .hero-card.c3 .bar.title { background: var(--color-accent); opacity: 1; }
 
         /* 공통 섹션 라벨 */
         .section-label {
@@ -53,27 +145,31 @@
             background: #ffffff;
         }
         .intro-block {
-            max-width: 720px;
+            max-width: 960px;
             margin: 0 auto;
             text-align: left;
         }
+        /* 소개 문단 3개를 카드 3개로 */
         .intro-single-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1.15rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
             color: #334155;
-            font-size: 1rem;
+            font-size: 0.98rem;
             line-height: 1.75;
             word-break: keep-all;
         }
         .intro-single-col p {
             margin: 0;
+            padding: 1.5rem 1.4rem;
+            background: #f8fafc;
+            border-top: 2px solid #0f172a;
         }
 
         /* 2. 크레덴셜 섹션 (SELECTED BY) */
         .careers-credentials-section {
             padding: 3.5rem 1.25rem;
-            background: #ffffff;
+            background: #f8fafc;
             border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
             text-align: center;
@@ -429,12 +525,31 @@
         }
 
         /* Responsive */
+        /* 이 페이지에서는 플로팅 버튼(네이버 카페, 카카오톡) 숨김 */
+        .floating-action-buttons {
+            display: none !important;
+        }
+
         @media (max-width: 860px) {
             .careers-hero {
-                padding: 7rem 1.25rem 1.75rem;
+                padding: 7.75rem 1.25rem 2.75rem;
+            }
+            .careers-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .careers-hero-graphic {
+                display: none;
+            }
+            .careers-hero-title {
+                font-size: 1.6rem;
             }
             .careers-intro-section {
                 padding: 3rem 1.25rem 2.5rem;
+            }
+            .intro-single-col {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
             }
             .credentials-row {
                 flex-wrap: wrap;
@@ -540,11 +655,24 @@
     <main id="careersListView">
         <!-- 2-1. 히어로 -->
         <header class="careers-hero">
-            <div class="careers-container">
-                <h1 class="careers-hero-title">
-                    입시를 가장 잘 다루는 팀,<br>
-                    함께 만들어 갈 동료를 찾아요
-                </h1>
+            <div class="careers-container careers-hero-grid">
+                <div class="careers-hero-text">
+                    <div class="careers-hero-label">채용</div>
+                    <h1 class="careers-hero-title">
+                        입시를 가장 잘 다루는 팀,<br>
+                        함께 만들어 갈 동료를 찾아요
+                    </h1>
+                    <button type="button" class="careers-hero-cta" id="heroToPositions">
+                        열린 포지션 보기
+                        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"></path></svg>
+                    </button>
+                </div>
+                <div class="careers-hero-graphic" aria-hidden="true">
+                    <div class="hero-blob"></div>
+                    <div class="hero-card c1"><div class="bar title"></div><div class="bar w80"></div><div class="bar w55"></div><span class="chip"></span></div>
+                    <div class="hero-card c2"><div class="bar title"></div><div class="bar w80"></div><div class="bar w55"></div><span class="chip"></span></div>
+                    <div class="hero-card c3"><div class="bar title"></div><div class="bar w80"></div><div class="bar w55"></div><span class="chip"></span></div>
+                </div>
             </div>
         </header>
 
@@ -603,7 +731,7 @@
 
 
         <!-- 2-2. 포지션 목록 -->
-        <section class="careers-section">
+        <section class="careers-section" id="openPositions">
             <div class="careers-count">
                 <span class="count-num">5</span>개의 포지션이 열려있어요.
             </div>
@@ -805,9 +933,9 @@
             
         </div>
     </footer>
+    </footer>
 
     <script src="script.js"></script>
-
 <!-- Channel Plugin Scripts -->
 <script>
   (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
@@ -1006,6 +1134,16 @@
 
             window.addEventListener('hashchange', renderRoute);
             renderRoute();
+
+            // 히어로 버튼: 해시를 바꾸지 않고 포지션 목록으로 스크롤 (해시 라우팅과 충돌 방지)
+            var heroToPositions = document.getElementById('heroToPositions');
+            var openPositions = document.getElementById('openPositions');
+            if (heroToPositions && openPositions) {
+                heroToPositions.addEventListener('click', function() {
+                    var top = openPositions.getBoundingClientRect().top + window.pageYOffset - 90;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                });
+            }
         })();
     </script>
 </body>
