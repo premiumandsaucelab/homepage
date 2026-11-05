@@ -248,9 +248,10 @@
         
         /* Mobile adjustments */
         @media (max-width: 768px) {
-            .experts-hero { padding: 5rem 5% 2rem; }
+            .experts-hero { padding: 8rem 5% 2rem; }
             .experts-hero h1 { font-size: 2.2rem; }
-            .filter-container { gap: 0.8rem; padding: 1rem 5%; top: 60px; }
+            .filter-container { gap: 0.8rem; padding: 1rem 5%; top: 106px; /* 실측 navbar 높이 (320~768px 구간 동일) */ }
+            div:has(> .filter-container) { display: contents; } /* 감싼 div가 필터만 담아 sticky가 안 붙던 문제 */
             .filter-btn { font-size: 0.9rem; padding: 0 0 0.3rem 0; }
             .expert-list { padding: 1rem 5% 3rem; }
             .expert-item {
