@@ -77,7 +77,7 @@
                 대치동 컨설팅의 한계를 넘다.<br>오직 우리 학교에 최적화된 <span class="highlight-anim">가장 정밀한 입시 전략</span>.
             </p>
             <div class="animate-pop-in delay-200" style="margin-bottom: 2.5rem; display: inline-block; background: rgba(255,255,255,0.8); color: #1e3a8a; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(37,99,235,0.1);">
-                고려대학교 · 경희대학교가 공인하고 지원하는 입시 네트워크
+                고려대학교 · 경희대학교가 지원하는 입시 네트워크
             </div>
             <div style="margin-top: 1rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;" class="animate-pop-in delay-300 songpa-hero-cta">
                 <a href="https://open.kakao.com/o/s3o4ypNi" target="_blank" rel="noopener" style="background: var(--color-accent); color: white; border-radius: 9999px; padding: 0.8rem 2rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37,99,235,0.3); transition: transform 0.2s;">
@@ -759,6 +759,13 @@
     .tooltip-container:hover .tooltip-text { visibility:visible; opacity:1; bottom:140%; }
     @media(max-width:880px){ .pc-grid { grid-template-columns:1fr !important; max-width:440px !important; } }
 </style>
+<style>
+/* #workbook 앵커: 고정 헤더(.navbar)에 카드 제목이 가리지 않도록 여백 확보.
+   실측 헤더 높이: 891px 이상 113px / 769~890px 메뉴 줄바꿈으로 135px / 768px 이하 106px */
+#workbook { scroll-margin-top: 130px; }
+@media (max-width: 890px) { #workbook { scroll-margin-top: 152px; } }
+@media (max-width: 768px) { #workbook { scroll-margin-top: 122px; } }
+</style>
 <section id="programs" class="section reveal" style="padding: 4rem 5% 5rem; background:#f8fafc;">
     <div class="container section-header reveal">
         <h2 style="font-size:2.8rem; font-weight:900; color:#0f172a; letter-spacing:-1px;">Pricing &amp; Service Plan</h2>
@@ -780,7 +787,7 @@
     
     <div id="pricing-interview">
         <div class="container reveal delay-1" style="max-width: 760px; margin: 0 auto 2rem;">
-            <div class="pc-card pc-dark" style="background: linear-gradient(135deg, #0f172a 0%, #1e2d4a 60%, #0f172a 100%); border: 1px solid rgba(37,99,235,0.35); position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(37,99,235,0.12);">
+            <div id="workbook" class="pc-card pc-dark" style="background: linear-gradient(135deg, #0f172a 0%, #1e2d4a 60%, #0f172a 100%); border: 1px solid rgba(37,99,235,0.35); position: relative; overflow: hidden; box-shadow: 0 8px 28px rgba(37,99,235,0.12);">
                 <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(37,99,235,0.06);pointer-events:none;"></div>
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.5rem; position:relative; z-index:2;">
                     <div class="pc-tier" style="background:rgba(37,99,235,0.25);color:#93c5fd;font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1.2px;border:1px solid rgba(37,99,235,0.3);white-space:nowrap;">고3 면접</div>
@@ -825,6 +832,24 @@
         </div>
     </div>
 
+    <script>
+    /* #workbook 로 들어오면 카드 위쪽 .reveal 의 등장 애니메이션(translateY)을 즉시 끝내 둔다.
+       안 그러면 이동 위치가 애니메이션 전 좌표로 계산돼 카드 제목이 헤더 밑으로 들어간다. */
+    (function () {
+        function settle() {
+            if (location.hash !== '#workbook') return;
+            var el = document.getElementById('workbook');
+            for (var n = el && el.parentElement; n; n = n.parentElement) {
+                if (n.classList && n.classList.contains('reveal')) {
+                    n.style.transition = 'none';
+                    n.classList.add('active');
+                }
+            }
+        }
+        settle();
+        window.addEventListener('hashchange', settle);
+    })();
+    </script>
     <div id="pricing-susi" style="display: none;">
         <div class="container pc-grid reveal delay-1">
             <!-- Compass -->
