@@ -71,3 +71,6 @@ demo_report/
 
 # local working notes - do not publish
 Claude outputs/
+
+# local-only internal lists (forbidden phrases, exceptions) - never commit
+_local/

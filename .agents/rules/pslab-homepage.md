@@ -14,7 +14,7 @@ description: pslabedu.kr 배포 소스 작업 규칙. 모든 요청에 항상 �
 2. `privacy.html`, `terms.html` 본문을 수정하지 않는다. 충돌을 찾으면 보고만 한다.
 3. `CNAME`, `.nojekyll` 을 수정·삭제하지 않는다.
 4. 요금(129,000 / 249,000 / 399,000), 멘토 28인, 재추천율 80%, 상단 바 문구,
-   공식 이메일 daehyunkoh@pslabedu.kr, 접수 폼 URL — **지시에 없으면 건드리지 않는다.**
+   공식 이메일 daehyun@pslabedu.kr, 접수 폼 URL — **지시에 없으면 건드리지 않는다.**
 5. 결제 연동, 파일 업로드 입력칸, 보호자 동의 플로우를 새로 만들지 않는다.
 6. API 키·토큰·비밀번호, 학생 개인정보를 어떤 파일에도 넣지 않는다. 공개 저장소다.
 7. 끝내기 전 `python _handover/check_locks.py check` 를 돌리고, `결과: 통과.` 를 확인한다.

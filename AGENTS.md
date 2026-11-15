@@ -63,17 +63,7 @@ AI 에이전트는 세션 시작 시 이 문서를 끝까지 읽고, 사용자�
 
 ## 2. 쓰지 않는 표현
 
-본문 검색 결과가 0건이어야 한다. 되살리지 말고, 새로 쓰지도 않는다.
-
-```
-무제한          30% 환급        합격 시 환급      선연락
-장학금 우선      채용 우선       Director Plan    Architect Plan
-29인            재추천 70%      고려대 선정       경희대 선정
-회사 이메일이 아닌 개인 주소 (@gmail.com, @khu.ac.kr, @naver.com 등)
-AKfycbylKX...   AKfycbyUGP...   (폐기된 접수 폼 URL 두 종)
-```
-
-전체 목록과 판정 기준은 `_handover/check_locks.py` 안의 `FORBIDDEN` 이 원본이다.
+금지 표현 목록은 _local/forbidden.json에 있다(로컬 전용). 문구를 쓰기 전 check_locks.py check를 반드시 돌린다.
 
 ---
 
