@@ -1,6 +1,6 @@
 {
- "commit": "e07af8d",
- "created_kst": "2026-11-15 20:10:42",
+ "commit": "03ff618",
+ "created_kst": "2026-11-17 10:56:39",
  "file_count": 97,
  "files": {
   ".gitignore": "70d64103a06609cd9f3afc466e453372326aa9e0e05ea0669c851f9496d65af0",
@@ -98,7 +98,7 @@
   "songpa_b2b_partnership_proposal.html": "c6bc5cfe74d31badb78317ecbc9c0d82fa408fd77531886b1d7ed9d3ba202b7a",
   "songpa_core_schools.html": "09754e25f2da9532fbcc88d119e62faf9f1e42f8b95036a78503b05254eb1f5a",
   "styles.css": "234199549b81d7fd2b6746f798cf34a57c4e2bd6f797b221a264982b30f95c0e",
-  "terms.html": "b6fbddc3eb9fbfad1724a5d2a50cc92d1303f594cb12c3f04c212e3308a57a19",
-  "workbook.html": "28f891914aa9d3475314eb93b2c06ca5a49a4fd3bcf6909f09df9debe4a98c22"
+  "terms.html": "dc16f0193f9bd0ae4d52ed307ce58f6d749938f727a3937f292c93eedf66ee1a",
+  "workbook.html": "5d0036087088f6d87530aad16be4820bfc5d5a73048e4f23c430b4f47e9b6565"
  }
 }
