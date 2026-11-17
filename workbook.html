@@ -105,17 +105,68 @@
         .features strong { color: #fff; margin-right: 4px; }
         .notes p { margin: 0 0 8px; font-size: 0.95rem; line-height: 1.7; }
 
-        details.wb-sample summary {
-            cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; color: #93c5fd;
-            font-size: 0.95rem; font-weight: 700; padding: 0.6rem 1rem; border: 1px solid rgba(147,197,253,0.35); border-radius: 8px;
+        /* 샘플: 가로로 넘기기 (한 장 = 본문 폭) */
+        #sample { scroll-margin-top: 8px; }
+        .slider {
+            display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; margin: 4px 0 0; padding: 0; list-style: none;
         }
-        details.wb-sample summary::-webkit-details-marker { display: none; }
-        .wb-caret { display: inline-block; transition: transform .2s; }
-        details.wb-sample[open] .wb-caret { transform: rotate(180deg); }
-        .sample-cap { color: #94a3b8; font-size: 0.82rem; font-weight: 600; margin: 0.9rem 0 0.6rem; }
-        .sample-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-        .sample-grid a { display: block; border-radius: 6px; overflow: hidden; background: #fff; }
-        .sample-grid img { display: block; width: 100%; height: auto; }
+        .slider::-webkit-scrollbar { display: none; }
+        .slider li { flex: 0 0 100%; scroll-snap-align: center; }
+        .slider a { display: block; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid rgba(255,255,255,0.12); }
+        .slider img { display: block; width: 100%; height: auto; aspect-ratio: 900 / 1272; }
+        .slider-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
+        .slider-nav button {
+            width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(147,197,253,0.45); background: transparent;
+            color: #93c5fd; font-size: 1.1rem; line-height: 1; cursor: pointer; font-family: inherit;
+        }
+        .slider-nav button:disabled { opacity: 0.3; cursor: default; }
+        .slider-count { color: #94a3b8; font-size: 0.9rem; font-weight: 700; min-width: 48px; text-align: center; }
+        .sample-cap { color: #94a3b8; font-size: 0.88rem; margin: 10px 0 0; text-align: center; }
+
+        /* 달라지는 것 */
+        .gains { list-style: none; margin: 0 0 18px; padding: 0; counter-reset: g; }
+        .gains li {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+            padding: 16px 16px 14px; margin-bottom: 10px;
+        }
+        .gains h3 { margin: 0 0 6px; color: #fff; font-size: 1.05rem; font-weight: 800; line-height: 1.45; letter-spacing: -0.3px; }
+        .gains p { margin: 0; font-size: 0.93rem; line-height: 1.65; }
+        .gains .tag { display: inline-block; color: #93c5fd; font-size: 0.8rem; font-weight: 700; margin-top: 8px; }
+
+        details.fold { border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; }
+        details.fold > summary {
+            cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+            padding: 14px 16px; color: #fff; font-weight: 700; font-size: 0.97rem; -webkit-tap-highlight-color: transparent;
+        }
+        details.fold > summary::-webkit-details-marker { display: none; }
+        details.fold > summary::after { content: "▾"; color: #93c5fd; transition: transform .2s; flex: none; }
+        details.fold[open] > summary::after { transform: rotate(180deg); }
+        details.fold .fold-body { padding: 0 16px 14px; }
+        details.fold .features { margin-bottom: 0; }
+
+        /* 신청 절차 */
+        .steps { list-style: none; margin: 0; padding: 0; }
+        .steps li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; }
+        .steps .num {
+            flex: none; width: 32px; height: 32px; border-radius: 50%; background: #2563eb; color: #fff;
+            display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;
+        }
+        .steps p { margin: 4px 0 0; color: #fff; font-size: 1rem; font-weight: 600; line-height: 1.55; }
+
+        .refund { margin: 14px 0 0; font-size: 0.88rem; line-height: 1.7; color: #94a3b8; }
+        .refund a { color: #93c5fd; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+        /* 자주 묻는 질문 */
+        .faq details.fold { margin-bottom: 8px; }
+        .faq .fold-body p { margin: 0; font-size: 0.93rem; line-height: 1.7; }
+
+        /* 만드는 곳 */
+        .maker { margin: 0; font-size: 0.93rem; }
+        .maker div { display: flex; gap: 12px; padding: 6px 0; }
+        .maker dt { flex: none; width: 64px; color: #94a3b8; }
+        .maker dd { margin: 0; color: #e2e8f0; word-break: break-all; }
+        .maker a { color: #93c5fd; text-decoration: none; }
 
         .price-card {
             background: linear-gradient(135deg, #0f172a 0%, #1e2d4a 60%, #0f172a 100%);
@@ -130,14 +181,19 @@
         footer { padding: 8px 0 28px; font-size: 0.8rem; color: #64748b; text-align: center; }
         footer a { color: #94a3b8; text-decoration: none; margin: 0 6px; }
 
-        /* 하단 고정 버튼 */
+        footer .sep { color: #334155; }
+
+        /* 하단 고정 버튼: 모바일 전용, 첫 화면 버튼이나 맨 아래 버튼이 보일 때는 숨김 */
         .sticky-cta {
             position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
             padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
             background: rgba(15,23,42,0.94); border-top: 1px solid rgba(255,255,255,0.1);
             -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+            transform: translateY(110%); visibility: hidden; transition: transform .25s ease, visibility .25s;
         }
+        .sticky-cta.show { transform: none; visibility: visible; }
         .sticky-cta .btn { max-width: 520px; margin: 0 auto; padding: 14px 18px; }
+        @media (min-width: 720px) { .sticky-cta { display: none; } body { padding-bottom: 0; } }
 
         @media (max-height: 700px) {
             .brand { margin-bottom: 18px; }
@@ -160,7 +216,7 @@
         <div class="hero-ad hero-ad1">
             <div class="chip">고3 면접</div>
             <h1>고3 수시 면접, 어디서부터 준비해야 할지 막막하신가요?</h1>
-            <p class="sub">지원 대학에 맞춰 만든 면접 워크북으로 시작해요. 신청 후 최대 3일 안에 받아요.</p>
+            <p class="sub">지원 대학에 맞춰 만든 면접 워크북으로 시작해요. 결제 후 최대 3일 안에 받아요.</p>
             <a href="https://open.kakao.com/o/gAszPrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
         </div>
 
@@ -181,7 +237,7 @@
         <div class="hero-ad hero-ad3">
             <div class="chip">고3 면접</div>
             <h1>첫 대학 149,000원, 추가 대학은 1곳당 109,000원이에요</h1>
-            <p class="sub">카카오톡 오픈채팅으로 지원 대학, 전형, 면접일만 알려 주시면 돼요. 신청 후 최대 3일 안에 받아요.</p>
+            <p class="sub">카카오톡 오픈채팅으로 지원 대학, 전형, 면접일만 알려 주시면 돼요. 결제 후 최대 3일 안에 받아요.</p>
             <a href="https://open.kakao.com/o/gAszPrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
             <a href="#sample" class="btn btn-ghost js-open-sample">샘플 먼저 보기</a>
         </div>
@@ -189,56 +245,130 @@
 </header>
 
 <main>
-    <!-- 워크북 구성 (index.html #workbook 카드 문구 그대로) -->
-    <section class="block">
+    <!-- 2) 샘플 미리보기: 접지 않고 펼쳐 둠, 가로로 넘기기 -->
+    <section class="block" id="sample">
         <div class="wrap">
-            <div class="kw">이렇게 구성돼 있어요</div>
-            <h2>대학별 면접 대비 워크북</h2>
-            <p class="lead">지원한 대학 한 곳, 그 전형 하나만 보고 만든 면접 준비 책이에요.</p>
-            <ul class="features">
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>시작하기</strong> 한 장 요약, 반드시 준비할 질문 8개, 꼭 정의해 둘 개념, 가장 조심할 질문, 면접일까지 남은 기간에 맞춘 진도표</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>1부 대학과 개념</strong> 이 대학 알기, 내 기록 읽기, 개념 정의표</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>2부 예상 문제</strong> 기억 진단, 답변 만들기, 실전 카드 8, 예상 질문 30, 되물릴 지점</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>3부 해설</strong> 내 답을 먼저 만든 뒤에 펼쳐 보는 해설</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>실전</strong> 당일 흐름과 대기실, 10분 배분과 모르는 질문, 마지막 발언과 전날 점검표, 모의면접</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>부록</strong> 근거와 출처</div></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>공통 별책 기본 태도</strong> 반드시 지킬 것, 준비해 두면 좋은 것, 믿지 않아도 되는 것</div></li>
+            <div class="kw">샘플 미리보기</div>
+            <h2>실제 워크북을 먼저 보세요</h2>
+            <ul class="slider" id="slider" aria-label="워크북 샘플">
+                <li><a href="assets/workbook_sample_cover.webp" target="_blank"><img src="assets/workbook_sample_cover.webp" alt="워크북 표지 예시" width="900" height="1272"></a></li>
+                <li><a href="assets/workbook_sample_day.webp" target="_blank"><img src="assets/workbook_sample_day.webp" alt="면접 당일 흐름 쪽 예시" loading="lazy" width="900" height="1272"></a></li>
+                <li><a href="assets/workbook_sample_source.webp" target="_blank"><img src="assets/workbook_sample_source.webp" alt="근거와 출처 부록 예시" loading="lazy" width="900" height="1272"></a></li>
             </ul>
-            <div class="notes">
-                <p>모범 답안을 외우게 하지 않아요. 해설은 내 답을 먼저 만든 뒤에 보도록 책 뒤쪽에 모아 두었어요.</p>
-                <p>내용마다 근거가 있어요. 모집요강과 가이드북 몇 쪽에서 왔는지 부록에 적어 두었어요.</p>
-                <p>면접 날짜에 맞춘 진도표가 들어 있어서 수능 공부와 함께 해도 무리가 없어요.</p>
+            <div class="slider-nav">
+                <button type="button" id="slider-prev" aria-label="이전 샘플">‹</button>
+                <span class="slider-count" id="slider-count">1 / 3</span>
+                <button type="button" id="slider-next" aria-label="다음 샘플">›</button>
             </div>
+            <p class="sample-cap">실제 워크북의 일부예요. 학생 정보는 가렸어요.</p>
         </div>
     </section>
 
-    <!-- 샘플 (index.html #workbook 과 같은 방식: 접힘 + lazy 이미지) -->
-    <section class="block" id="sample">
+    <!-- 3) 이 책으로 달라지는 것 -->
+    <section class="block">
         <div class="wrap">
-            <details class="wb-sample" id="sample-details">
-                <summary>샘플 보기 <span class="wb-caret">▾</span></summary>
-                <div class="sample-cap">실제 워크북 일부 (학생 정보 삭제, 일부 흐림 처리)</div>
-                <div class="sample-grid">
-                    <a href="assets/workbook_sample_cover.webp" target="_blank"><img src="assets/workbook_sample_cover.webp" alt="워크북 표지 예시" loading="lazy" width="300" height="424"></a>
-                    <a href="assets/workbook_sample_day.webp" target="_blank"><img src="assets/workbook_sample_day.webp" alt="면접 당일 흐름 쪽 예시" loading="lazy" width="300" height="424"></a>
-                    <a href="assets/workbook_sample_source.webp" target="_blank"><img src="assets/workbook_sample_source.webp" alt="근거와 출처 부록 예시" loading="lazy" width="300" height="424"></a>
+            <div class="kw">이 책으로 달라지는 것</div>
+            <h2>대학별 면접 대비 워크북</h2>
+            <p class="lead">지원한 대학 한 곳, 그 전형 하나만 보고 만든 면접 준비 책이에요.</p>
+            <ul class="gains">
+                <li>
+                    <h3>그 대학에서 물을 만한 질문을 미리 알고 들어가요</h3>
+                    <p>예상 질문 30개와 반드시 준비할 질문 8개가 들어 있어요. 내용마다 모집요강과 가이드북 몇 쪽에서 왔는지 부록에 적어 두었어요.</p>
+                </li>
+                <li>
+                    <h3>외운 답이 아니라 내 말로 답하는 연습을 해요</h3>
+                    <p>모범 답안을 외우게 하지 않아요. 해설은 내 답을 먼저 만든 뒤에 보도록 책 뒤쪽에 모아 두었어요.</p>
+                </li>
+                <li>
+                    <h3>면접일까지 무엇을 언제 할지 정해져 있어요</h3>
+                    <p>면접일까지 남은 기간에 맞춘 진도표가 들어 있어서 수능 공부와 함께 해도 무리가 없어요. 당일 흐름, 10분 배분, 전날 점검표도 담았어요.</p>
+                </li>
+            </ul>
+            <details class="fold">
+                <summary>목차 전체 보기</summary>
+                <div class="fold-body">
+                    <ul class="features">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>시작하기</strong> 한 장 요약, 반드시 준비할 질문 8개, 꼭 정의해 둘 개념, 가장 조심할 질문, 면접일까지 남은 기간에 맞춘 진도표</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>1부 대학과 개념</strong> 이 대학 알기, 내 기록 읽기, 개념 정의표</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>2부 예상 문제</strong> 기억 진단, 답변 만들기, 실전 카드 8, 예상 질문 30, 되물릴 지점</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>3부 해설</strong> 내 답을 먼저 만든 뒤에 펼쳐 보는 해설</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>실전</strong> 당일 흐름과 대기실, 10분 배분과 모르는 질문, 마지막 발언과 전날 점검표, 모의면접</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>부록</strong> 근거와 출처</div></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><div><strong>공통 별책 기본 태도</strong> 반드시 지킬 것, 준비해 두면 좋은 것, 믿지 않아도 되는 것</div></li>
+                    </ul>
                 </div>
             </details>
         </div>
     </section>
 
-    <!-- 가격 -->
+    <!-- 4) 신청 절차 -->
     <section class="block">
         <div class="wrap">
-            <div class="price-card">
-                <div class="price-main">첫 대학 149,000원</div>
-                <div class="price-sub">추가 대학 1곳당 109,000원</div>
-                <div class="delivery"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>신청 후 최대 3일 안에 받아요. 신청할 때 지원 대학, 전형, 면접일을 알려 주세요.</span></div>
-            </div>
+            <div class="kw">신청 방법</div>
+            <h2>세 단계면 돼요</h2>
+            <ol class="steps">
+                <li><span class="num">1</span><p>신청 버튼을 눌러 오픈채팅에 지원 대학, 전형, 면접일을 보내요</p></li>
+                <li><span class="num">2</span><p>계좌이체로 결제해요</p></li>
+                <li><span class="num">3</span><p>최대 3일 안에 PDF로 받아요</p></li>
+            </ol>
         </div>
     </section>
 
-    <section class="final">
+    <!-- 5) 가격 -->
+    <section class="block">
+        <div class="wrap">
+            <div class="kw">가격</div>
+            <div class="price-card">
+                <div class="price-main">첫 대학 149,000원</div>
+                <div class="price-sub">추가 대학 1곳당 109,000원</div>
+                <div class="delivery"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>결제 후 최대 3일 안에 받아요. 신청할 때 지원 대학, 전형, 면접일을 알려 주세요.</span></div>
+            </div>
+            <p class="refund">제작을 시작하기 전에는 전액 환불해요. 제작을 시작한 뒤에는 학생마다 따로 만드는 책이라 환불이 어려워요. 다만 저희 잘못(기한 초과, 내용 오류)이 있으면 원하시는 대로 다시 만들어 드리거나 전액 환불해 드려요. <a href="terms.html">자세한 기준은 이용약관에서 볼 수 있어요</a></p>
+        </div>
+    </section>
+
+    <!-- 6) 자주 묻는 질문 -->
+    <section class="block faq">
+        <div class="wrap">
+            <div class="kw">자주 묻는 질문</div>
+            <h2>궁금한 점을 모았어요</h2>
+            <details class="fold">
+                <summary>무엇을 보내야 하나요?</summary>
+                <div class="fold-body"><p>오픈채팅으로 지원 대학, 전형, 면접일을 알려 주시면 돼요.</p></div>
+            </details>
+            <details class="fold">
+                <summary>언제 받나요?</summary>
+                <div class="fold-body"><p>결제와 필요한 정보를 모두 받은 뒤 최대 3일 안에 PDF로 보내 드려요.</p></div>
+            </details>
+            <details class="fold">
+                <summary>대학이 여러 곳이면요?</summary>
+                <div class="fold-body"><p>워크북은 대학 한 곳, 그 전형 하나에 맞춰 만들어요. 첫 대학은 149,000원, 추가 대학은 1곳당 109,000원이에요.</p></div>
+            </details>
+            <details class="fold">
+                <summary>결제는 어떻게 하나요?</summary>
+                <div class="fold-body"><p>계좌이체로 결제해요. 계좌번호는 오픈채팅에서 안내해 드려요.</p></div>
+            </details>
+            <details class="fold">
+                <summary>환불은 되나요?</summary>
+                <div class="fold-body"><p>제작을 시작하기 전에는 전액 환불해요. 제작은 결제와 필요한 정보를 모두 받은 때 시작해요. 시작한 뒤에는 학생마다 따로 만드는 책이라 환불이 어렵고, 결제 전에 이 점을 먼저 안내해 드려요. 다만 기한을 넘기거나 내용에 오류가 있으면 원하시는 대로 다시 만들어 드리거나 전액 환불해 드려요.</p></div>
+            </details>
+        </div>
+    </section>
+
+    <!-- 7) 만드는 곳 (index.html 에 적힌 값만) -->
+    <section class="block">
+        <div class="wrap">
+            <div class="kw">만드는 곳</div>
+            <dl class="maker">
+                <div><dt>운영주체</dt><dd>피에스랩 운영팀</dd></div>
+                <div><dt>대표</dt><dd>고대현</dd></div>
+                <div><dt>이메일</dt><dd><a href="mailto:daehyun@pslabedu.kr">daehyun@pslabedu.kr</a></dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- 8) 하단 신청 버튼 -->
+    <section class="final" id="final-cta">
         <div class="wrap">
             <a href="https://open.kakao.com/o/gAszPrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
         </div>
@@ -247,22 +377,57 @@
 
 <footer>
     <div class="wrap">
-        <a href="index.html">pslab 홈</a>·<a href="terms.html">이용약관</a>·<a href="privacy.html">개인정보처리방침</a>
+        <a href="index.html">pslab 홈</a><span class="sep">|</span><a href="terms.html">이용약관</a><span class="sep">|</span><a href="privacy.html">개인정보처리방침</a>
     </div>
 </footer>
 
-<div class="sticky-cta">
-    <a href="https://open.kakao.com/o/gAszPrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a href="https://open.kakao.com/o/gAszPrXi" target="_blank" rel="noopener" class="btn" tabindex="-1">워크북 신청하기 <small>(오픈채팅)</small></a>
 </div>
 
 <script>
-/* "샘플 먼저 보기" → 샘플 영역을 펼친 뒤 이동 (#sample 직접 진입도 동일) */
+/* 샘플 가로 넘기기: 버튼과 쪽수 표시 */
 (function () {
-    var d = document.getElementById('sample-details');
-    function openSample() { if (d) d.open = true; }
-    var links = document.querySelectorAll('.js-open-sample');
-    for (var i = 0; i < links.length; i++) links[i].addEventListener('click', openSample);
-    if (location.hash === '#sample') openSample();
+    var s = document.getElementById('slider');
+    if (!s) return;
+    var prev = document.getElementById('slider-prev'), next = document.getElementById('slider-next'), cnt = document.getElementById('slider-count');
+    var n = s.children.length;
+    function idx() { return Math.round(s.scrollLeft / (s.clientWidth || 1)); }
+    function update() {
+        var i = Math.max(0, Math.min(n - 1, idx()));
+        cnt.textContent = (i + 1) + ' / ' + n;
+        prev.disabled = i === 0; next.disabled = i === n - 1;
+    }
+    function go(d) { s.scrollTo({ left: (idx() + d) * s.clientWidth, behavior: 'smooth' }); }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    s.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+})();
+
+/* 하단 고정 버튼: 첫 화면 버튼이나 맨 아래 버튼이 화면에 보이면 숨김 */
+(function () {
+    var bar = document.getElementById('sticky-cta');
+    if (!bar) return;
+    var link = bar.querySelector('a');
+    function set(show) {
+        bar.classList.toggle('show', show);
+        bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+        link.tabIndex = show ? 0 : -1;
+    }
+    if (!('IntersectionObserver' in window)) { set(true); return; }
+    var seen = [];
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            var k = seen.indexOf(e.target);
+            if (e.isIntersecting && k < 0) seen.push(e.target);
+            if (!e.isIntersecting && k >= 0) seen.splice(k, 1);
+        });
+        set(seen.length === 0);
+    });
+    var t = document.querySelectorAll('.hero .btn, #final-cta .btn');
+    for (var i = 0; i < t.length; i++) io.observe(t[i]);
 })();
 </script>
 </body>
