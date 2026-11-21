@@ -92,6 +92,7 @@
         .btn:active { transform: translateY(1px); }
         .btn small { font-weight: 600; font-size: 0.85rem; opacity: 0.85; }
         .btn-ghost { background: transparent; box-shadow: none; border: 1px solid rgba(147,197,253,0.45); color: #93c5fd; margin-top: 10px; }
+        .cta-hint { margin: 0 0 8px; color: #94a3b8; font-size: 0.88rem; text-align: center; }
 
         /* 공통 본문 */
         section.block { padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -217,7 +218,9 @@
             <div class="chip">고3 면접</div>
             <h1>고3 수시 면접, 어디서부터 준비해야 할지 막막하신가요?</h1>
             <p class="sub">지원 대학에 맞춰 만든 면접 워크북으로 시작해요. 결제 후 최대 3일 안에 받아요.</p>
+            <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
             <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
         </div>
 
         <!-- ad2_check -->
@@ -230,7 +233,9 @@
                 <li><span class="box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>준비 순서가 막막해요</li>
             </ul>
             <p class="sub">하나라도 해당된다면, 대학별 면접 워크북이 도움이 될 수 있어요.</p>
+            <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
             <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
         </div>
 
         <!-- ad3_price -->
@@ -238,7 +243,9 @@
             <div class="chip">고3 면접</div>
             <h1>첫 대학 149,000원, 추가 대학은 1곳당 109,000원이에요</h1>
             <p class="sub">카카오톡 오픈채팅으로 지원 대학, 전형, 면접일만 알려 주시면 돼요. 결제 후 최대 3일 안에 받아요.</p>
+            <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
             <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
             <a href="#sample" class="btn btn-ghost js-open-sample">샘플 먼저 보기</a>
         </div>
     </div>
@@ -370,7 +377,9 @@
     <!-- 8) 하단 신청 버튼 -->
     <section class="final" id="final-cta">
         <div class="wrap">
+            <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
             <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
         </div>
     </section>
 </main>
@@ -404,6 +413,18 @@
     s.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
     window.addEventListener('resize', update);
     update();
+})();
+
+/* 신청 폼 버튼: 오픈채팅 Lead와 별도로 폼 클릭만 기록 */
+(function () {
+    var links = document.querySelectorAll('.js-form-link');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function () {
+            var url = this.href;
+            if (typeof window.gtag === 'function') { try { window.gtag('event', 'form_click', { link_url: url }); } catch (e) {} }
+            if (typeof window.fbq === 'function') { try { window.fbq('trackCustom', 'FormClick'); } catch (e) {} }
+        });
+    }
 })();
 
 /* 하단 고정 버튼: 첫 화면 버튼이나 맨 아래 버튼이 화면에 보이면 숨김 */
