@@ -145,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('pslabPromoPopup');
     const closeBtn = document.getElementById('pslabPopupClose');
     
-    if (popup && closeBtn) {
+    // data-disabled 가 붙은 팝업은 띄우지 않는다 (index.html 팝업 비활성화 261125)
+    if (popup && closeBtn && !popup.hasAttribute('data-disabled')) {
         // Show popup slightly after load for a smooth effect
         setTimeout(() => {
             popup.classList.add('active');

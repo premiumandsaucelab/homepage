@@ -1263,7 +1263,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=261125"></script>
     
 
 <!-- Channel Plugin Scripts -->
@@ -1277,7 +1277,8 @@
 <!-- End Channel Plugin -->
 
     <!-- Popup Modal -->
-    <div id="pslabPromoPopup" class="pslab-popup-overlay">
+    <!-- 팝업 비활성화 261125: data-disabled 와 display:none 으로 숨김, script.js 팝업 로직이 data-disabled 를 보고 띄우지 않음. 다시 켜려면 두 속성을 지운다 -->
+    <div id="pslabPromoPopup" class="pslab-popup-overlay" data-disabled style="display: none;">
         <div class="pslab-popup-container">
             <div class="pslab-popup-body" style="padding: 1.8rem 1.6rem 1.2rem;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
