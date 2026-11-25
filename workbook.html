@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https: https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https: https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
@@ -93,6 +93,17 @@
         .btn small { font-weight: 600; font-size: 0.85rem; opacity: 0.85; }
         .btn-ghost { background: transparent; box-shadow: none; border: 1px solid rgba(147,197,253,0.45); color: #93c5fd; margin-top: 10px; }
         .cta-hint { margin: 0 0 8px; color: #94a3b8; font-size: 0.88rem; text-align: center; }
+        .btn + .cta-hint { margin-top: 16px; }
+        .cta-hint + .btn-ghost { margin-top: 0; }
+
+        /* 인라인 신청 폼 */
+        #apply-form { scroll-margin-top: 8px; }
+        .form-frame { background: #fff; border-radius: 12px; overflow: hidden; }
+        /* 높이 실측(구글 로그인 상태 기준, 제출 버튼과 구글 안내 줄까지): 폭 520px 약 905px, 폭 350px 약 1045px */
+        .form-frame iframe { display: block; border: 0; height: 920px; }
+        @media (max-width: 600px) { .form-frame iframe { height: 1060px; } }
+        .form-alt { margin: 12px 0 0; color: #94a3b8; font-size: 0.85rem; text-align: center; }
+        .form-alt a { color: #93c5fd; font-weight: 700; }
 
         /* 공통 본문 */
         section.block { padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -218,9 +229,9 @@
             <div class="chip">고3 면접</div>
             <h1>고3 수시 면접, 어디서부터 준비해야 할지 막막하신가요?</h1>
             <p class="sub">지원 대학에 맞춰 만든 면접 워크북으로 시작해요. 결제 후 최대 3일 안에 받아요.</p>
+            <a href="#apply-form" class="btn js-form-link">연락처 남기고 연락받기</a>
             <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
-            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
+            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn btn-ghost">워크북 신청하기 <small>(오픈채팅)</small></a>
         </div>
 
         <!-- ad2_check -->
@@ -233,9 +244,9 @@
                 <li><span class="box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>준비 순서가 막막해요</li>
             </ul>
             <p class="sub">하나라도 해당된다면, 대학별 면접 워크북이 도움이 될 수 있어요.</p>
+            <a href="#apply-form" class="btn js-form-link">연락처 남기고 연락받기</a>
             <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
-            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
+            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn btn-ghost">워크북 신청하기 <small>(오픈채팅)</small></a>
         </div>
 
         <!-- ad3_price -->
@@ -243,15 +254,27 @@
             <div class="chip">고3 면접</div>
             <h1>첫 대학 149,000원, 추가 대학은 1곳당 109,000원이에요</h1>
             <p class="sub">카카오톡 오픈채팅으로 지원 대학, 전형, 면접일만 알려 주시면 돼요. 결제 후 최대 3일 안에 받아요.</p>
+            <a href="#apply-form" class="btn js-form-link">연락처 남기고 연락받기</a>
             <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
-            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
+            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn btn-ghost">워크북 신청하기 <small>(오픈채팅)</small></a>
             <a href="#sample" class="btn btn-ghost js-open-sample">샘플 먼저 보기</a>
         </div>
     </div>
 </header>
 
 <main>
+    <!-- 신청 폼 (utm_content 공통) -->
+    <section class="block" id="apply-form">
+        <div class="wrap">
+            <h2>연락처만 남기면 먼저 연락드려요</h2>
+            <p class="lead">지원 대학과 휴대폰 번호나 이메일만 적어 주세요. 남긴다고 결제가 되지는 않아요.</p>
+            <div class="form-frame">
+                <iframe id="apply-form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform?embedded=true" width="100%" height="920" frameborder="0" loading="lazy" title="면접 워크북 신청 폼"></iframe>
+            </div>
+            <p class="form-alt">바로 묻고 싶으면 <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener">카카오톡 오픈채팅</a>으로 문의해 주세요.</p>
+        </div>
+    </section>
+
     <!-- 2) 샘플 미리보기: 접지 않고 펼쳐 둠, 가로로 넘기기 -->
     <section class="block" id="sample">
         <div class="wrap">
@@ -377,9 +400,9 @@
     <!-- 8) 하단 신청 버튼 -->
     <section class="final" id="final-cta">
         <div class="wrap">
+            <a href="#apply-form" class="btn js-form-link">연락처 남기고 연락받기</a>
             <p class="cta-hint">들어가서 지원 대학 이름만 먼저 보내 주세요.</p>
-            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn">워크북 신청하기 <small>(오픈채팅)</small></a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSft28wdr9jv6tLcLz66SculZpBOHjdmdcVTphSN2KIm3YHpJA/viewform" target="_blank" rel="noopener" class="btn btn-ghost js-form-link">연락처 남기고 연락받기</a>
+            <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn btn-ghost">워크북 신청하기 <small>(오픈채팅)</small></a>
         </div>
     </section>
 </main>
@@ -391,7 +414,7 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-    <a href="https://open.kakao.com/o/sQu1PrXi" target="_blank" rel="noopener" class="btn" tabindex="-1">워크북 신청하기 <small>(오픈채팅)</small></a>
+    <a href="#apply-form" class="btn js-form-link" tabindex="-1">연락처 남기고 연락받기</a>
 </div>
 
 <script>
@@ -415,19 +438,30 @@
     update();
 })();
 
-/* 신청 폼 버튼: 오픈채팅 Lead와 별도로 폼 클릭만 기록 */
+/* 신청 폼: 오픈채팅 Lead와 별도로 #apply-form 버튼 클릭(form_click), iframe 첫 조작(form_start)만 기록 */
 (function () {
     var links = document.querySelectorAll('.js-form-link');
     for (var i = 0; i < links.length; i++) {
         links[i].addEventListener('click', function () {
-            var url = this.href;
+            var url = this.getAttribute('href');
             if (typeof window.gtag === 'function') { try { window.gtag('event', 'form_click', { link_url: url }); } catch (e) {} }
             if (typeof window.fbq === 'function') { try { window.fbq('trackCustom', 'FormClick'); } catch (e) {} }
         });
     }
+    var frame = document.getElementById('apply-form-frame');
+    if (!frame) return;
+    var started = false;
+    function onBlur() {
+        if (started || document.activeElement !== frame) return;
+        started = true;
+        window.removeEventListener('blur', onBlur);
+        if (typeof window.gtag === 'function') { try { window.gtag('event', 'form_start', { form_location: 'workbook' }); } catch (e) {} }
+        if (typeof window.fbq === 'function') { try { window.fbq('trackCustom', 'FormStart'); } catch (e) {} }
+    }
+    window.addEventListener('blur', onBlur);
 })();
 
-/* 하단 고정 버튼: 첫 화면 버튼이나 맨 아래 버튼이 화면에 보이면 숨김 */
+/* 하단 고정 버튼: 첫 화면 버튼, 신청 폼, 맨 아래 버튼이 화면에 보이면 숨김 */
 (function () {
     var bar = document.getElementById('sticky-cta');
     if (!bar) return;
@@ -447,7 +481,7 @@
         });
         set(seen.length === 0);
     });
-    var t = document.querySelectorAll('.hero .btn, #final-cta .btn');
+    var t = document.querySelectorAll('.hero .btn, #apply-form, #final-cta .btn');
     for (var i = 0; i < t.length; i++) io.observe(t[i]);
 })();
 </script>
